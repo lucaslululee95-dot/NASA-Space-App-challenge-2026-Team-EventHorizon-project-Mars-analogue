@@ -304,11 +304,11 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-\- \*\*Tested on real data for one Mars site and several dry Earth regions.\*\* The results are a shortlist to check, not a confirmed answer.
+- **Tested on real data for one Mars site and several dry Earth regions.\*\* The results are a shortlist to check, not a confirmed answer.
 
-\- \*\*Iron only.\*\* The Earth side uses a red-to-blue ratio as a stand-in for iron, which is an approximation.
+\- **Iron only.\*\* The Earth side uses a red-to-blue ratio as a stand-in for iron, which is an approximation.
 
-\- \*\*Chlorine is converted but not scored.\*\* No satellite measure of chlorine on Earth has been validated for this comparison.
+\- **Chlorine is converted but not scored.\*\* No satellite measure of chlorine on Earth has been validated for this comparison.
 
 \- \*\*Coarse chemistry.\*\* Each 5-degree cell covers about 300 km, so every tile inside it gets the same chemistry value.
 
