@@ -304,23 +304,23 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-- **Tested on real data for one Mars site and several dry Earth regions.\*\* The results are a shortlist to check, not a confirmed answer.
+- **Tested on real data for one Mars site and several dry Earth regions.** The results are a shortlist to check, not a confirmed answer.
 
-\- **Iron only.\*\* The Earth side uses a red-to-blue ratio as a stand-in for iron, which is an approximation.
+- **Iron only.** The Earth side uses a red-to-blue ratio as a stand-in for iron, which is an approximation.
 
-\- **Chlorine is converted but not scored.\*\* No satellite measure of chlorine on Earth has been validated for this comparison.
+- **Chlorine is converted but not scored.** No satellite measure of chlorine on Earth has been validated for this comparison.
 
-\- \*\*Coarse chemistry.\*\* Each 5-degree cell covers about 300 km, so every tile inside it gets the same chemistry value.
+- **Coarse chemistry.** Each 5-degree cell covers about 300 km, so every tile inside it gets the same chemistry value.
 
-\- \*\*Different instruments.\*\* Mars and Earth images come from different instruments, so the texture features are less reliable than the elevation features.
+- **Different instruments.** Mars and Earth images come from different instruments, so the texture features are less reliable than the elevation features.
 
-\- \*\*Earth elevation includes buildings and trees.\*\* The dry filter helps, but built-up tiles can still get through.
+- **Earth elevation includes buildings and trees.** The dry filter helps, but built-up tiles can still get through.
 
-\- \*\*Lakes can look flat.\*\* Salt lakes in dry regions can pass the filter and look like smooth ground.
+- **Lakes can look flat.** Salt lakes in dry regions can pass the filter and look like smooth ground.
 
-\- \*\*Gaps in Mars elevation.\*\* Tiles with more than 2% gaps are skipped rather than filled.
+- **Gaps in Mars elevation.** Tiles with more than 2% gaps are skipped rather than filled.
 
-\- \*\*Not for the whole planet.\*\* The code keeps tiles in memory and requests Earth tiles one at a time, so a whole-planet search needs a different approach.
+- **Not for the whole planet.** The code keeps tiles in memory and requests Earth tiles one at a time, so a whole-planet search needs a different approach.
 
 
 
@@ -328,13 +328,13 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-\- Find a chlorine or salt measure that can be checked against known sites.
+- Find a chlorine or salt measure that can be checked against known sites.
 
-\- Add more dry regions, such as the Gobi, Tibet, and the Lut desert.
+- Add more dry regions, such as the Gobi, Tibet, and the Lut desert.
 
-\- Add image embeddings from a pretrained vision model as an extra terrain score.
+- Add image embeddings from a pretrained vision model as an extra terrain score.
 
-\- Add a map of the top matches.
+- Add a map of the top matches.
 
 
 
@@ -342,11 +342,11 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-\- Mars elevation and images: NASA and USGS CTX stereo products (public domain).
+- Mars elevation and images: NASA and USGS CTX stereo products (public domain).
 
-\- Mars iron and chlorine: NASA Mars Odyssey Gamma Ray Spectrometer, via the NASA Planetary Data System.
+- Mars iron and chlorine: NASA Mars Odyssey Gamma Ray Spectrometer, via the NASA Planetary Data System.
 
-\- Earth imagery and elevation: Copernicus Sentinel-2 and Copernicus DEM, accessed through Google Earth Engine.
+- Earth imagery and elevation: Copernicus Sentinel-2 and Copernicus DEM, accessed through Google Earth Engine.
 
 
 
