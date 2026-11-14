@@ -354,5 +354,5 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-Claude, an AI assistant made by Anthropic, helped with this project. It explained how to connect to Google Earth Engine, help wrote the comparison code, and explained how to build the converter for the NASA iron and chlorine tables. The team ran the code, fixed the errors it hit, checked the output files, and can explain how each part works.
+Claude, an AI assistant made by Anthropic, helped with this project. It explained how to connect to Google Earth Engine, helped write the comparison code, and explained how to build the converter for the NASA iron and chlorine tables. The team ran the code, fixed the errors it hit, checked the output files, and can explain how each part works.
 
