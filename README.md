@@ -12,15 +12,15 @@ This tool looks for places on Earth whose terrain and iron content resemble a ch
 
 1. **Tiles.** Mars and Earth are cut into square tiles of the same size, 10 km by 10 km by default. Each tile is resampled to a 64 by 64 grid.
 
-2\. \*\*Measurements.\*\* Each tile gets the same measurements: slope, relief, roughness, curvature, and image texture.
+2. **Measurements.** Each tile gets the same measurements: slope, relief, roughness, curvature, and image texture.
 
-3\. \*\*Shared scale.\*\* Mars and Earth numbers are scaled together, so one ruler applies to both.
+3. **Shared scale.** Mars and Earth numbers are scaled together, so one ruler applies to both.
 
-4\. \*\*Mars ranking.\*\* For each Mars tile, the program finds the closest Earth tile. This shows which Mars patches look most Earth-like.
+4. **Mars ranking.** For each Mars tile, the program finds the closest Earth tile. This shows which Mars patches look most Earth-like.
 
-5\. \*\*Target.\*\* The program uses the Mars tile nearest to your chosen position, normally Jezero.
+5. **Target.** The program uses the Mars tile nearest to your chosen position, normally Jezero.
 
-6\. \*\*Earth ranking.\*\* Each Earth tile gets a terrain score and an iron score. The final score combines them, and each match lists the terrain features it agrees and disagrees with the target on.
+6. **Earth ranking.** Each Earth tile gets a terrain score and an iron score. The final score combines them, and each match lists the terrain features it agrees and disagrees with the target on.
 
 
 
@@ -28,7 +28,7 @@ The output is two CSV files in a `results` folder: `mars\_most\_earthlike.csv` a
 
 
 
-\## Project layout
+## Project layout
 
 
 
@@ -72,7 +72,7 @@ mars\_analog/
 
 
 
-\## Set up (Windows, PowerShell)
+## Set up (Windows, PowerShell)
 
 
 
@@ -98,7 +98,7 @@ The demo uses made-up terrain, so its numbers have no scientific meaning. It sho
 
 
 
-\## Get the data
+## Get the data
 
 
 
@@ -114,7 +114,7 @@ New-Item -ItemType Directory -Force data\\mars
 
 
 
-\### 1. Mars elevation and image (CTX)
+### 1. Mars elevation and image (CTX)
 
 
 
@@ -156,7 +156,7 @@ The elevation model has gaps, about 30% in this pair. The program skips any tile
 
 
 
-\### 2. Mars iron and chlorine (GRS)
+### 2. Mars iron and chlorine (GRS)
 
 
 
@@ -170,9 +170,9 @@ Open the `unsmoothed/5x5` folder (`odgm\_xxxx` is the folder name shown on the p
 
 
 
-\- `fe\_5x5.tab` and `fe\_5x5.lbl` (iron)
+- `fe\_5x5.tab` and `fe\_5x5.lbl` (iron)
 
-\- `cl\_5x5.tab` and `cl\_5x5.lbl` (chlorine)
+- `cl\_5x5.tab` and `cl\_5x5.lbl` (chlorine)
 
 
 
@@ -194,15 +194,15 @@ Each run adds one element to `data\\mars\\elements\_grid.csv`. Each element is i
 
 
 
-\### 3. Earth (Google Earth Engine)
+### 3. Earth (Google Earth Engine)
 
 
 
-1\. Sign up at https://earthengine.google.com/signup with a Google account. Choose the noncommercial option, which creates a Google Cloud project. Registration can take a while.
+1. Sign up at https://earthengine.google.com/signup with a Google account. Choose the noncommercial option, which creates a Google Cloud project. Registration can take a while.
 
-2\. Note your project ID.
+2. Note your project ID.
 
-3\. Install the client and log in once:
+3. Install the client and log in once:
 
 
 
@@ -222,7 +222,7 @@ Earth tiles come from Sentinel-2 satellite images (`COPERNICUS/S2\_SR\_HARMONIZE
 
 
 
-\## Configure
+## Configure
 
 
 
@@ -262,7 +262,7 @@ Each region in `boxes` is written as `\[west, south, east, north]`. Negative num
 
 
 
-\## Run the comparison
+## Run the comparison
 
 
 
@@ -300,7 +300,7 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-\## Limits
+## Limits
 
 
 
@@ -324,7 +324,7 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-\## Next steps
+## Next steps
 
 
 
@@ -338,7 +338,7 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-\## Data sources
+## Data sources
 
 
 
@@ -350,7 +350,7 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 
 
-\## AI assistance
+## AI assistance
 
 
 
