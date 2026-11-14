@@ -6,11 +6,11 @@ This tool looks for places on Earth whose terrain and iron content resemble a ch
 
 
 
-\## What it does
+## What it does
 
 
 
-1\. \*\*Tiles.\*\* Mars and Earth are cut into square tiles of the same size, 10 km by 10 km by default. Each tile is resampled to a 64 by 64 grid.
+1. **Tiles.** Mars and Earth are cut into square tiles of the same size, 10 km by 10 km by default. Each tile is resampled to a 64 by 64 grid.
 
 2\. \*\*Measurements.\*\* Each tile gets the same measurements: slope, relief, roughness, curvature, and image texture.
 
