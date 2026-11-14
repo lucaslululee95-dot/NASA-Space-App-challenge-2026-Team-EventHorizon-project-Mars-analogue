@@ -1,0 +1,14 @@
+#python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Large data
+data/
+results/
+example_output/
+*.pkl
+
+# Backup made for editing
+*.backup.py
+config.backup.json

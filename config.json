@@ -1,0 +1,83 @@
+{
+  "tile_km": 10,
+  "grid_px": 64,
+  "mars": {
+    "dem_geotiff": "data/mars/ctx_dtm.tif",
+    "image_geotiff": "data/mars/ctx_ortho.tif",
+    "chemistry_csv": "data/mars/elements_grid.csv",
+    "bbox": [
+      77.35,
+      17.9,
+      77.8,
+      19.2
+    ],
+    "step_deg": 0.1,
+    "max_gap_fraction": 0.02
+  },
+  "earth": {
+    "boxes": [
+      [
+        -70,
+        -24,
+        -68,
+        -22
+      ],
+      [
+        14,
+        -25,
+        15.5,
+        -23
+      ],
+      [
+        -117.5,
+        34,
+        -115.5,
+        36
+      ],
+      [
+        24,
+        20,
+        26,
+        22
+      ],
+      [
+        130,
+        -26,
+        132,
+        -24
+      ],
+      [
+        57.5,
+        30,
+        59.5,
+        32
+      ],
+      [
+        102,
+        41,
+        104,
+        43
+      ],
+      [
+        80,
+        33,
+        82,
+        35
+      ]
+    ],
+    "step_deg": 0.5,
+    "gee_project": "apt-bonbon-455706-e6",
+    "year": 2023,
+    "cache": "data/cache/earth_tiles.pkl"
+  },
+  "target": [
+    18.38,
+    77.58
+  ],
+  "weights": {
+    "morph": 0.7,
+    "chem": 0.3
+  },
+  "max_ndvi": 0.15,
+  "top_k": 25
+}

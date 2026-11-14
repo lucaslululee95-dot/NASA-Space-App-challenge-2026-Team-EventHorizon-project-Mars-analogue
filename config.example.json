@@ -1,0 +1,21 @@
+{
+  "tile_km": 10,
+  "grid_px": 64,
+  "mars": {
+    "dem_geotiff": "data/mars/dem_geographic.tif",
+    "image_geotiff": "data/mars/image_geographic.tif",
+    "chemistry_csv": "data/mars/elements_grid.csv",
+    "bbox": [74, 14, 80, 22],
+    "step_deg": 0.25
+  },
+  "earth": {
+    "boxes": [[-70, -24, -68, -22], [24, 20, 28, 24]],
+    "step_deg": 0.25,
+    "gee_project": "your-earth-engine-project-id",
+    "year": 2023
+  },
+  "target": [18.38, 77.58],
+  "weights": {"morph": 0.7, "chem": 0.3},
+  "max_ndvi": 0.15,
+  "top_k": 25
+}
