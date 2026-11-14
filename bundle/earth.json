@@ -1,0 +1,2092 @@
+[
+ {
+  "name": "earth_-24.000_-70.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": -70.0,
+  "tile_km": 10,
+  "ndvi": 0.07482429242156304,
+  "chem": {
+   "ferric_index": 1.6396029221514594
+  }
+ },
+ {
+  "name": "earth_-24.000_-69.500",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": -69.5,
+  "tile_km": 10,
+  "ndvi": 0.05241155732334955,
+  "chem": {
+   "ferric_index": 1.5763659143769568
+  }
+ },
+ {
+  "name": "earth_-24.000_-69.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": -69.0,
+  "tile_km": 10,
+  "ndvi": 0.08216782539193276,
+  "chem": {
+   "ferric_index": 1.8113487215917026
+  }
+ },
+ {
+  "name": "earth_-24.000_-68.500",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": -68.5,
+  "tile_km": 10,
+  "ndvi": 0.05451197411724093,
+  "chem": {
+   "ferric_index": 1.987176442790881
+  }
+ },
+ {
+  "name": "earth_-24.000_-68.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": -68.0,
+  "tile_km": 10,
+  "ndvi": 0.0979775562375639,
+  "chem": {
+   "ferric_index": 2.112329454512243
+  }
+ },
+ {
+  "name": "earth_-23.500_-69.500",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": -69.5,
+  "tile_km": 10,
+  "ndvi": 0.05032331925548748,
+  "chem": {
+   "ferric_index": 1.6090718372568544
+  }
+ },
+ {
+  "name": "earth_-23.500_-69.000",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": -69.0,
+  "tile_km": 10,
+  "ndvi": 0.07792641406901057,
+  "chem": {
+   "ferric_index": 1.7498655021113503
+  }
+ },
+ {
+  "name": "earth_-23.500_-68.500",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": -68.5,
+  "tile_km": 10,
+  "ndvi": 0.06404880436013721,
+  "chem": {
+   "ferric_index": 1.7836644837805302
+  }
+ },
+ {
+  "name": "earth_-23.500_-68.000",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": -68.0,
+  "tile_km": 10,
+  "ndvi": 0.03108302973168639,
+  "chem": {
+   "ferric_index": 1.5070216506824772
+  }
+ },
+ {
+  "name": "earth_-23.000_-70.000",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": -70.0,
+  "tile_km": 10,
+  "ndvi": 0.05965069556847746,
+  "chem": {
+   "ferric_index": 1.6890353178976496
+  }
+ },
+ {
+  "name": "earth_-23.000_-69.500",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": -69.5,
+  "tile_km": 10,
+  "ndvi": 0.04875765704590781,
+  "chem": {
+   "ferric_index": 1.5725118954636543
+  }
+ },
+ {
+  "name": "earth_-23.000_-69.000",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": -69.0,
+  "tile_km": 10,
+  "ndvi": 0.049842426479869154,
+  "chem": {
+   "ferric_index": 1.6633069702852001
+  }
+ },
+ {
+  "name": "earth_-23.000_-68.500",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": -68.5,
+  "tile_km": 10,
+  "ndvi": 0.06533083930310157,
+  "chem": {
+   "ferric_index": 1.7044396344757768
+  }
+ },
+ {
+  "name": "earth_-23.000_-68.000",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": -68.0,
+  "tile_km": 10,
+  "ndvi": 0.08755486206517209,
+  "chem": {
+   "ferric_index": 2.01136547987503
+  }
+ },
+ {
+  "name": "earth_-22.500_-70.000",
+  "planet": "earth",
+  "lat": -22.5,
+  "lon": -70.0,
+  "tile_km": 10,
+  "ndvi": 0.03539707849774621,
+  "chem": {
+   "ferric_index": 1.5735377036692473
+  }
+ },
+ {
+  "name": "earth_-22.500_-69.500",
+  "planet": "earth",
+  "lat": -22.5,
+  "lon": -69.5,
+  "tile_km": 10,
+  "ndvi": 0.042771330864715004,
+  "chem": {
+   "ferric_index": 1.578777549319493
+  }
+ },
+ {
+  "name": "earth_-22.500_-69.000",
+  "planet": "earth",
+  "lat": -22.5,
+  "lon": -69.0,
+  "tile_km": 10,
+  "ndvi": 0.07421328273421429,
+  "chem": {
+   "ferric_index": 1.601711329636152
+  }
+ },
+ {
+  "name": "earth_-22.500_-68.500",
+  "planet": "earth",
+  "lat": -22.5,
+  "lon": -68.5,
+  "tile_km": 10,
+  "ndvi": 0.04760277606907288,
+  "chem": {
+   "ferric_index": 1.526713055097123
+  }
+ },
+ {
+  "name": "earth_-22.500_-68.000",
+  "planet": "earth",
+  "lat": -22.5,
+  "lon": -68.0,
+  "tile_km": 10,
+  "ndvi": 0.0835958664284841,
+  "chem": {
+   "ferric_index": 2.250149895081809
+  }
+ },
+ {
+  "name": "earth_-22.000_-70.000",
+  "planet": "earth",
+  "lat": -22.0,
+  "lon": -70.0,
+  "tile_km": 10,
+  "ndvi": 0.03913573546513135,
+  "chem": {
+   "ferric_index": 1.6302899098266224
+  }
+ },
+ {
+  "name": "earth_-22.000_-69.500",
+  "planet": "earth",
+  "lat": -22.0,
+  "lon": -69.5,
+  "tile_km": 10,
+  "ndvi": 0.06301396950654403,
+  "chem": {
+   "ferric_index": 1.6094306240350111
+  }
+ },
+ {
+  "name": "earth_-22.000_-69.000",
+  "planet": "earth",
+  "lat": -22.0,
+  "lon": -69.0,
+  "tile_km": 10,
+  "ndvi": 0.04528600765250798,
+  "chem": {
+   "ferric_index": 1.6824572697093085
+  }
+ },
+ {
+  "name": "earth_-22.000_-68.500",
+  "planet": "earth",
+  "lat": -22.0,
+  "lon": -68.5,
+  "tile_km": 10,
+  "ndvi": 0.029407105384459883,
+  "chem": {
+   "ferric_index": 1.6114184728030905
+  }
+ },
+ {
+  "name": "earth_-22.000_-68.000",
+  "planet": "earth",
+  "lat": -22.0,
+  "lon": -68.0,
+  "tile_km": 10,
+  "ndvi": 0.06740100672024185,
+  "chem": {
+   "ferric_index": 1.9933285129752494
+  }
+ },
+ {
+  "name": "earth_-25.000_14.000",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 14.0,
+  "tile_km": 10,
+  "ndvi": -0.061167171642490026,
+  "chem": {
+   "ferric_index": 0.5928901681022613
+  }
+ },
+ {
+  "name": "earth_-25.000_14.500",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 14.5,
+  "tile_km": 10,
+  "ndvi": -0.07161408070317161,
+  "chem": {
+   "ferric_index": 0.6581112849032709
+  }
+ },
+ {
+  "name": "earth_-25.000_15.000",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 15.0,
+  "tile_km": 10,
+  "ndvi": 0.08348803428706822,
+  "chem": {
+   "ferric_index": 2.235078303551604
+  }
+ },
+ {
+  "name": "earth_-25.000_15.500",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 15.5,
+  "tile_km": 10,
+  "ndvi": 0.10234770435945921,
+  "chem": {
+   "ferric_index": 3.22705706532019
+  }
+ },
+ {
+  "name": "earth_-24.500_14.000",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 14.0,
+  "tile_km": 10,
+  "ndvi": -0.06510566103218837,
+  "chem": {
+   "ferric_index": 0.6009487721081211
+  }
+ },
+ {
+  "name": "earth_-24.500_14.500",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 14.5,
+  "tile_km": 10,
+  "ndvi": -0.13891162248932726,
+  "chem": {
+   "ferric_index": 0.5896168920438106
+  }
+ },
+ {
+  "name": "earth_-24.500_15.000",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 15.0,
+  "tile_km": 10,
+  "ndvi": 0.0946126356444067,
+  "chem": {
+   "ferric_index": 2.6849186039305826
+  }
+ },
+ {
+  "name": "earth_-24.500_15.500",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 15.5,
+  "tile_km": 10,
+  "ndvi": 0.13001408673834824,
+  "chem": {
+   "ferric_index": 3.6566620341546674
+  }
+ },
+ {
+  "name": "earth_-24.000_14.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 14.0,
+  "tile_km": 10,
+  "ndvi": -0.10291471427574504,
+  "chem": {
+   "ferric_index": 0.6060235724438661
+  }
+ },
+ {
+  "name": "earth_-24.000_14.500",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 14.5,
+  "tile_km": 10,
+  "ndvi": 0.053749638123663956,
+  "chem": {
+   "ferric_index": 1.7496260260560126
+  }
+ },
+ {
+  "name": "earth_-24.000_15.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 15.0,
+  "tile_km": 10,
+  "ndvi": 0.0988117027588806,
+  "chem": {
+   "ferric_index": 2.8254596678186648
+  }
+ },
+ {
+  "name": "earth_-24.000_15.500",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 15.5,
+  "tile_km": 10,
+  "ndvi": 0.09778056444389108,
+  "chem": {
+   "ferric_index": 2.659495061910456
+  }
+ },
+ {
+  "name": "earth_-23.500_14.000",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": 14.0,
+  "tile_km": 10,
+  "ndvi": -0.10757144162083097,
+  "chem": {
+   "ferric_index": 0.5492232333420406
+  }
+ },
+ {
+  "name": "earth_-23.500_14.500",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": 14.5,
+  "tile_km": 10,
+  "ndvi": 0.031308886728690616,
+  "chem": {
+   "ferric_index": 1.7839116347009403
+  }
+ },
+ {
+  "name": "earth_-23.500_15.000",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": 15.0,
+  "tile_km": 10,
+  "ndvi": 0.06914326048869128,
+  "chem": {
+   "ferric_index": 1.9753353103311873
+  }
+ },
+ {
+  "name": "earth_-23.500_15.500",
+  "planet": "earth",
+  "lat": -23.5,
+  "lon": 15.5,
+  "tile_km": 10,
+  "ndvi": 0.07037234251356683,
+  "chem": {
+   "ferric_index": 2.0070964055942255
+  }
+ },
+ {
+  "name": "earth_-23.000_14.000",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": 14.0,
+  "tile_km": 10,
+  "ndvi": -0.15974628293410087,
+  "chem": {
+   "ferric_index": 0.531108210514159
+  }
+ },
+ {
+  "name": "earth_-23.000_14.500",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": 14.5,
+  "tile_km": 10,
+  "ndvi": 0.05274475539517492,
+  "chem": {
+   "ferric_index": 1.820021559277904
+  }
+ },
+ {
+  "name": "earth_-23.000_15.000",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": 15.0,
+  "tile_km": 10,
+  "ndvi": 0.04632563412666797,
+  "chem": {
+   "ferric_index": 1.7335281848763826
+  }
+ },
+ {
+  "name": "earth_-23.000_15.500",
+  "planet": "earth",
+  "lat": -23.0,
+  "lon": 15.5,
+  "tile_km": 10,
+  "ndvi": 0.07367821278101395,
+  "chem": {
+   "ferric_index": 2.037561409394298
+  }
+ },
+ {
+  "name": "earth_34.000_-117.500",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": -117.5,
+  "tile_km": 10,
+  "ndvi": 0.24020320806372747,
+  "chem": {
+   "ferric_index": 1.5765305009671766
+  }
+ },
+ {
+  "name": "earth_34.000_-117.000",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": -117.0,
+  "tile_km": 10,
+  "ndvi": 0.366296037789547,
+  "chem": {
+   "ferric_index": 1.6500317628326697
+  }
+ },
+ {
+  "name": "earth_34.000_-116.500",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": -116.5,
+  "tile_km": 10,
+  "ndvi": 0.1517839352044912,
+  "chem": {
+   "ferric_index": 1.5537696994611987
+  }
+ },
+ {
+  "name": "earth_34.000_-116.000",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": -116.0,
+  "tile_km": 10,
+  "ndvi": 0.11631324445770458,
+  "chem": {
+   "ferric_index": 1.7123174751748031
+  }
+ },
+ {
+  "name": "earth_34.000_-115.500",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": -115.5,
+  "tile_km": 10,
+  "ndvi": 0.07513384852642739,
+  "chem": {
+   "ferric_index": 1.580188034164305
+  }
+ },
+ {
+  "name": "earth_34.500_-117.500",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": -117.5,
+  "tile_km": 10,
+  "ndvi": 0.18322170431559573,
+  "chem": {
+   "ferric_index": 1.8790886555598734
+  }
+ },
+ {
+  "name": "earth_34.500_-117.000",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": -117.0,
+  "tile_km": 10,
+  "ndvi": 0.11578577992962752,
+  "chem": {
+   "ferric_index": 1.825531859942398
+  }
+ },
+ {
+  "name": "earth_34.500_-116.500",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": -116.5,
+  "tile_km": 10,
+  "ndvi": 0.07418072076110682,
+  "chem": {
+   "ferric_index": 1.6150689136006826
+  }
+ },
+ {
+  "name": "earth_34.500_-116.000",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": -116.0,
+  "tile_km": 10,
+  "ndvi": 0.06358148137801144,
+  "chem": {
+   "ferric_index": 1.598063103264574
+  }
+ },
+ {
+  "name": "earth_34.500_-115.500",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": -115.5,
+  "tile_km": 10,
+  "ndvi": 0.0866712692975569,
+  "chem": {
+   "ferric_index": 1.6236610811377297
+  }
+ },
+ {
+  "name": "earth_35.000_-117.500",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": -117.5,
+  "tile_km": 10,
+  "ndvi": 0.12006856222175738,
+  "chem": {
+   "ferric_index": 1.9217435135606507
+  }
+ },
+ {
+  "name": "earth_35.000_-117.000",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": -117.0,
+  "tile_km": 10,
+  "ndvi": 0.11382037325685744,
+  "chem": {
+   "ferric_index": 1.7489934748696516
+  }
+ },
+ {
+  "name": "earth_35.000_-116.500",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": -116.5,
+  "tile_km": 10,
+  "ndvi": 0.0754234583734393,
+  "chem": {
+   "ferric_index": 1.5989233709588437
+  }
+ },
+ {
+  "name": "earth_35.000_-116.000",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": -116.0,
+  "tile_km": 10,
+  "ndvi": 0.06978597226514507,
+  "chem": {
+   "ferric_index": 1.592102392236265
+  }
+ },
+ {
+  "name": "earth_35.000_-115.500",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": -115.5,
+  "tile_km": 10,
+  "ndvi": 0.17939490722071705,
+  "chem": {
+   "ferric_index": 1.6185910421511522
+  }
+ },
+ {
+  "name": "earth_35.500_-117.500",
+  "planet": "earth",
+  "lat": 35.5,
+  "lon": -117.5,
+  "tile_km": 10,
+  "ndvi": 0.14028593568614117,
+  "chem": {
+   "ferric_index": 1.735134781744522
+  }
+ },
+ {
+  "name": "earth_35.500_-117.000",
+  "planet": "earth",
+  "lat": 35.5,
+  "lon": -117.0,
+  "tile_km": 10,
+  "ndvi": 0.10947578016840112,
+  "chem": {
+   "ferric_index": 1.7232850838415517
+  }
+ },
+ {
+  "name": "earth_35.500_-116.500",
+  "planet": "earth",
+  "lat": 35.5,
+  "lon": -116.5,
+  "tile_km": 10,
+  "ndvi": 0.10842355495462215,
+  "chem": {
+   "ferric_index": 1.6202650249528425
+  }
+ },
+ {
+  "name": "earth_35.500_-116.000",
+  "planet": "earth",
+  "lat": 35.5,
+  "lon": -116.0,
+  "tile_km": 10,
+  "ndvi": 0.09244554604501479,
+  "chem": {
+   "ferric_index": 1.5503107846649413
+  }
+ },
+ {
+  "name": "earth_35.500_-115.500",
+  "planet": "earth",
+  "lat": 35.5,
+  "lon": -115.5,
+  "tile_km": 10,
+  "ndvi": 0.13919820397125615,
+  "chem": {
+   "ferric_index": 1.6619989283186025
+  }
+ },
+ {
+  "name": "earth_36.000_-117.500",
+  "planet": "earth",
+  "lat": 36.0,
+  "lon": -117.5,
+  "tile_km": 10,
+  "ndvi": 0.18230918568120824,
+  "chem": {
+   "ferric_index": 1.7489238420321551
+  }
+ },
+ {
+  "name": "earth_36.000_-117.000",
+  "planet": "earth",
+  "lat": 36.0,
+  "lon": -117.0,
+  "tile_km": 10,
+  "ndvi": 0.16398471055187475,
+  "chem": {
+   "ferric_index": 1.6561930945788073
+  }
+ },
+ {
+  "name": "earth_36.000_-116.500",
+  "planet": "earth",
+  "lat": 36.0,
+  "lon": -116.5,
+  "tile_km": 10,
+  "ndvi": 0.1580441085867183,
+  "chem": {
+   "ferric_index": 1.68238186930333
+  }
+ },
+ {
+  "name": "earth_36.000_-116.000",
+  "planet": "earth",
+  "lat": 36.0,
+  "lon": -116.0,
+  "tile_km": 10,
+  "ndvi": 0.11165281852106208,
+  "chem": {
+   "ferric_index": 1.5908133114012983
+  }
+ },
+ {
+  "name": "earth_36.000_-115.500",
+  "planet": "earth",
+  "lat": 36.0,
+  "lon": -115.5,
+  "tile_km": 10,
+  "ndvi": 0.20794684199074992,
+  "chem": {
+   "ferric_index": 1.4902286126257644
+  }
+ },
+ {
+  "name": "earth_20.000_24.000",
+  "planet": "earth",
+  "lat": 20.0,
+  "lon": 24.0,
+  "tile_km": 10,
+  "ndvi": 0.084230618929714,
+  "chem": {
+   "ferric_index": 3.1499116397325757
+  }
+ },
+ {
+  "name": "earth_20.000_24.500",
+  "planet": "earth",
+  "lat": 20.0,
+  "lon": 24.5,
+  "tile_km": 10,
+  "ndvi": 0.08300552992003925,
+  "chem": {
+   "ferric_index": 3.2276504215660915
+  }
+ },
+ {
+  "name": "earth_20.000_25.000",
+  "planet": "earth",
+  "lat": 20.0,
+  "lon": 25.0,
+  "tile_km": 10,
+  "ndvi": 0.08137823771152466,
+  "chem": {
+   "ferric_index": 2.818506463481025
+  }
+ },
+ {
+  "name": "earth_20.000_25.500",
+  "planet": "earth",
+  "lat": 20.0,
+  "lon": 25.5,
+  "tile_km": 10,
+  "ndvi": 0.08026626441775159,
+  "chem": {
+   "ferric_index": 2.6563233664708434
+  }
+ },
+ {
+  "name": "earth_20.000_26.000",
+  "planet": "earth",
+  "lat": 20.0,
+  "lon": 26.0,
+  "tile_km": 10,
+  "ndvi": 0.09676299277296768,
+  "chem": {
+   "ferric_index": 2.3945896910555327
+  }
+ },
+ {
+  "name": "earth_20.500_24.000",
+  "planet": "earth",
+  "lat": 20.5,
+  "lon": 24.0,
+  "tile_km": 10,
+  "ndvi": 0.0862657971493413,
+  "chem": {
+   "ferric_index": 2.6712635207463844
+  }
+ },
+ {
+  "name": "earth_20.500_24.500",
+  "planet": "earth",
+  "lat": 20.5,
+  "lon": 24.5,
+  "tile_km": 10,
+  "ndvi": 0.09054934534239154,
+  "chem": {
+   "ferric_index": 2.7721399088620418
+  }
+ },
+ {
+  "name": "earth_20.500_25.000",
+  "planet": "earth",
+  "lat": 20.5,
+  "lon": 25.0,
+  "tile_km": 10,
+  "ndvi": 0.09335911859914141,
+  "chem": {
+   "ferric_index": 2.6141401886241264
+  }
+ },
+ {
+  "name": "earth_20.500_25.500",
+  "planet": "earth",
+  "lat": 20.5,
+  "lon": 25.5,
+  "tile_km": 10,
+  "ndvi": 0.09918304305288997,
+  "chem": {
+   "ferric_index": 2.72195541716181
+  }
+ },
+ {
+  "name": "earth_20.500_26.000",
+  "planet": "earth",
+  "lat": 20.5,
+  "lon": 26.0,
+  "tile_km": 10,
+  "ndvi": 0.09500556898274264,
+  "chem": {
+   "ferric_index": 2.63681401148606
+  }
+ },
+ {
+  "name": "earth_21.000_24.000",
+  "planet": "earth",
+  "lat": 21.0,
+  "lon": 24.0,
+  "tile_km": 10,
+  "ndvi": 0.08976669849555693,
+  "chem": {
+   "ferric_index": 2.492626621089445
+  }
+ },
+ {
+  "name": "earth_21.000_24.500",
+  "planet": "earth",
+  "lat": 21.0,
+  "lon": 24.5,
+  "tile_km": 10,
+  "ndvi": 0.09747883038324828,
+  "chem": {
+   "ferric_index": 2.8951096000291074
+  }
+ },
+ {
+  "name": "earth_21.000_25.000",
+  "planet": "earth",
+  "lat": 21.0,
+  "lon": 25.0,
+  "tile_km": 10,
+  "ndvi": 0.09854933533665708,
+  "chem": {
+   "ferric_index": 3.244936271652013
+  }
+ },
+ {
+  "name": "earth_21.000_25.500",
+  "planet": "earth",
+  "lat": 21.0,
+  "lon": 25.5,
+  "tile_km": 10,
+  "ndvi": 0.09926956193795451,
+  "chem": {
+   "ferric_index": 2.9721046464800134
+  }
+ },
+ {
+  "name": "earth_21.000_26.000",
+  "planet": "earth",
+  "lat": 21.0,
+  "lon": 26.0,
+  "tile_km": 10,
+  "ndvi": 0.10203719660012986,
+  "chem": {
+   "ferric_index": 2.8033983327679772
+  }
+ },
+ {
+  "name": "earth_21.500_24.000",
+  "planet": "earth",
+  "lat": 21.5,
+  "lon": 24.0,
+  "tile_km": 10,
+  "ndvi": 0.09191454836568558,
+  "chem": {
+   "ferric_index": 2.9378969725881863
+  }
+ },
+ {
+  "name": "earth_21.500_24.500",
+  "planet": "earth",
+  "lat": 21.5,
+  "lon": 24.5,
+  "tile_km": 10,
+  "ndvi": 0.07491414007968576,
+  "chem": {
+   "ferric_index": 2.032086374232194
+  }
+ },
+ {
+  "name": "earth_21.500_25.000",
+  "planet": "earth",
+  "lat": 21.5,
+  "lon": 25.0,
+  "tile_km": 10,
+  "ndvi": 0.08379335625985826,
+  "chem": {
+   "ferric_index": 2.2103634768990137
+  }
+ },
+ {
+  "name": "earth_21.500_25.500",
+  "planet": "earth",
+  "lat": 21.5,
+  "lon": 25.5,
+  "tile_km": 10,
+  "ndvi": 0.08852649537631968,
+  "chem": {
+   "ferric_index": 2.759202973893132
+  }
+ },
+ {
+  "name": "earth_21.500_26.000",
+  "planet": "earth",
+  "lat": 21.5,
+  "lon": 26.0,
+  "tile_km": 10,
+  "ndvi": 0.08517292385997405,
+  "chem": {
+   "ferric_index": 2.771821398171089
+  }
+ },
+ {
+  "name": "earth_22.000_24.000",
+  "planet": "earth",
+  "lat": 22.0,
+  "lon": 24.0,
+  "tile_km": 10,
+  "ndvi": 0.08758765748401412,
+  "chem": {
+   "ferric_index": 2.8448006710115683
+  }
+ },
+ {
+  "name": "earth_22.000_24.500",
+  "planet": "earth",
+  "lat": 22.0,
+  "lon": 24.5,
+  "tile_km": 10,
+  "ndvi": 0.09378029000495045,
+  "chem": {
+   "ferric_index": 2.495473941176605
+  }
+ },
+ {
+  "name": "earth_22.000_25.000",
+  "planet": "earth",
+  "lat": 22.0,
+  "lon": 25.0,
+  "tile_km": 10,
+  "ndvi": 0.06805720175626181,
+  "chem": {
+   "ferric_index": 2.0522433352402736
+  }
+ },
+ {
+  "name": "earth_22.000_25.500",
+  "planet": "earth",
+  "lat": 22.0,
+  "lon": 25.5,
+  "tile_km": 10,
+  "ndvi": 0.08167390717305933,
+  "chem": {
+   "ferric_index": 2.3386759928234695
+  }
+ },
+ {
+  "name": "earth_22.000_26.000",
+  "planet": "earth",
+  "lat": 22.0,
+  "lon": 26.0,
+  "tile_km": 10,
+  "ndvi": 0.08966534935373482,
+  "chem": {
+   "ferric_index": 2.8094160715947933
+  }
+ },
+ {
+  "name": "earth_-26.000_130.000",
+  "planet": "earth",
+  "lat": -26.0,
+  "lon": 130.0,
+  "tile_km": 10,
+  "ndvi": 0.16893305321859636,
+  "chem": {
+   "ferric_index": 2.5153291652454586
+  }
+ },
+ {
+  "name": "earth_-26.000_130.500",
+  "planet": "earth",
+  "lat": -26.0,
+  "lon": 130.5,
+  "tile_km": 10,
+  "ndvi": 0.18860475537267712,
+  "chem": {
+   "ferric_index": 3.0217526413711377
+  }
+ },
+ {
+  "name": "earth_-26.000_131.000",
+  "planet": "earth",
+  "lat": -26.0,
+  "lon": 131.0,
+  "tile_km": 10,
+  "ndvi": 0.1593432835220598,
+  "chem": {
+   "ferric_index": 2.5504749327840424
+  }
+ },
+ {
+  "name": "earth_-26.000_131.500",
+  "planet": "earth",
+  "lat": -26.0,
+  "lon": 131.5,
+  "tile_km": 10,
+  "ndvi": 0.1393324543751061,
+  "chem": {
+   "ferric_index": 2.8241030827779965
+  }
+ },
+ {
+  "name": "earth_-26.000_132.000",
+  "planet": "earth",
+  "lat": -26.0,
+  "lon": 132.0,
+  "tile_km": 10,
+  "ndvi": 0.1709670773132998,
+  "chem": {
+   "ferric_index": 2.797421232132044
+  }
+ },
+ {
+  "name": "earth_-25.500_130.000",
+  "planet": "earth",
+  "lat": -25.5,
+  "lon": 130.0,
+  "tile_km": 10,
+  "ndvi": 0.16372979533106136,
+  "chem": {
+   "ferric_index": 2.9418006916717028
+  }
+ },
+ {
+  "name": "earth_-25.500_130.500",
+  "planet": "earth",
+  "lat": -25.5,
+  "lon": 130.5,
+  "tile_km": 10,
+  "ndvi": 0.16728889488261678,
+  "chem": {
+   "ferric_index": 2.9599693073739775
+  }
+ },
+ {
+  "name": "earth_-25.500_131.000",
+  "planet": "earth",
+  "lat": -25.5,
+  "lon": 131.0,
+  "tile_km": 10,
+  "ndvi": 0.17354241655185274,
+  "chem": {
+   "ferric_index": 3.1295580839896955
+  }
+ },
+ {
+  "name": "earth_-25.500_131.500",
+  "planet": "earth",
+  "lat": -25.5,
+  "lon": 131.5,
+  "tile_km": 10,
+  "ndvi": 0.15815823429098064,
+  "chem": {
+   "ferric_index": 3.0009388810366566
+  }
+ },
+ {
+  "name": "earth_-25.500_132.000",
+  "planet": "earth",
+  "lat": -25.5,
+  "lon": 132.0,
+  "tile_km": 10,
+  "ndvi": 0.1743100504602546,
+  "chem": {
+   "ferric_index": 2.9975614295850184
+  }
+ },
+ {
+  "name": "earth_-25.000_130.000",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 130.0,
+  "tile_km": 10,
+  "ndvi": 0.13731877607260265,
+  "chem": {
+   "ferric_index": 3.303696672366386
+  }
+ },
+ {
+  "name": "earth_-25.000_130.500",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 130.5,
+  "tile_km": 10,
+  "ndvi": 0.1570746686982413,
+  "chem": {
+   "ferric_index": 3.2431803529481535
+  }
+ },
+ {
+  "name": "earth_-25.000_131.000",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 131.0,
+  "tile_km": 10,
+  "ndvi": 0.18787763606044938,
+  "chem": {
+   "ferric_index": 2.6597737963591905
+  }
+ },
+ {
+  "name": "earth_-25.000_131.500",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 131.5,
+  "tile_km": 10,
+  "ndvi": 0.19404894270395612,
+  "chem": {
+   "ferric_index": 2.674271434775501
+  }
+ },
+ {
+  "name": "earth_-25.000_132.000",
+  "planet": "earth",
+  "lat": -25.0,
+  "lon": 132.0,
+  "tile_km": 10,
+  "ndvi": 0.19679174537921118,
+  "chem": {
+   "ferric_index": 2.692452395671966
+  }
+ },
+ {
+  "name": "earth_-24.500_130.000",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 130.0,
+  "tile_km": 10,
+  "ndvi": 0.15936785132131331,
+  "chem": {
+   "ferric_index": 2.7720893297105516
+  }
+ },
+ {
+  "name": "earth_-24.500_130.500",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 130.5,
+  "tile_km": 10,
+  "ndvi": 0.16202046894867925,
+  "chem": {
+   "ferric_index": 2.774312575786001
+  }
+ },
+ {
+  "name": "earth_-24.500_131.000",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 131.0,
+  "tile_km": 10,
+  "ndvi": 0.20166519811971395,
+  "chem": {
+   "ferric_index": 2.8509481789031996
+  }
+ },
+ {
+  "name": "earth_-24.500_131.500",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 131.5,
+  "tile_km": 10,
+  "ndvi": 0.16357314176170656,
+  "chem": {
+   "ferric_index": 2.8862327337403015
+  }
+ },
+ {
+  "name": "earth_-24.500_132.000",
+  "planet": "earth",
+  "lat": -24.5,
+  "lon": 132.0,
+  "tile_km": 10,
+  "ndvi": 0.17342618548263644,
+  "chem": {
+   "ferric_index": 2.709191642138399
+  }
+ },
+ {
+  "name": "earth_-24.000_130.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 130.0,
+  "tile_km": 10,
+  "ndvi": 0.16245708822806124,
+  "chem": {
+   "ferric_index": 3.3036320618153194
+  }
+ },
+ {
+  "name": "earth_-24.000_130.500",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 130.5,
+  "tile_km": 10,
+  "ndvi": 0.16116845540305963,
+  "chem": {
+   "ferric_index": 2.996781360668081
+  }
+ },
+ {
+  "name": "earth_-24.000_131.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 131.0,
+  "tile_km": 10,
+  "ndvi": 0.1793828867100037,
+  "chem": {
+   "ferric_index": 3.2818951255103084
+  }
+ },
+ {
+  "name": "earth_-24.000_131.500",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 131.5,
+  "tile_km": 10,
+  "ndvi": 0.19557074932147903,
+  "chem": {
+   "ferric_index": 2.874060227406933
+  }
+ },
+ {
+  "name": "earth_-24.000_132.000",
+  "planet": "earth",
+  "lat": -24.0,
+  "lon": 132.0,
+  "tile_km": 10,
+  "ndvi": 0.18786272903853818,
+  "chem": {
+   "ferric_index": 2.4331640444134575
+  }
+ },
+ {
+  "name": "earth_30.000_57.500",
+  "planet": "earth",
+  "lat": 30.0,
+  "lon": 57.5,
+  "tile_km": 10,
+  "ndvi": 0.08037853670684102,
+  "chem": {
+   "ferric_index": 1.658945389738794
+  }
+ },
+ {
+  "name": "earth_30.000_58.000",
+  "planet": "earth",
+  "lat": 30.0,
+  "lon": 58.0,
+  "tile_km": 10,
+  "ndvi": 0.06095115729197553,
+  "chem": {
+   "ferric_index": 1.7680607771720056
+  }
+ },
+ {
+  "name": "earth_30.000_58.500",
+  "planet": "earth",
+  "lat": 30.0,
+  "lon": 58.5,
+  "tile_km": 10,
+  "ndvi": 0.06332031265024855,
+  "chem": {
+   "ferric_index": 1.8394506755112539
+  }
+ },
+ {
+  "name": "earth_30.000_59.000",
+  "planet": "earth",
+  "lat": 30.0,
+  "lon": 59.0,
+  "tile_km": 10,
+  "ndvi": 0.06477094606050392,
+  "chem": {
+   "ferric_index": 1.7902568858158645
+  }
+ },
+ {
+  "name": "earth_30.000_59.500",
+  "planet": "earth",
+  "lat": 30.0,
+  "lon": 59.5,
+  "tile_km": 10,
+  "ndvi": 0.0673773504574339,
+  "chem": {
+   "ferric_index": 1.9111332861848886
+  }
+ },
+ {
+  "name": "earth_30.500_57.500",
+  "planet": "earth",
+  "lat": 30.5,
+  "lon": 57.5,
+  "tile_km": 10,
+  "ndvi": 0.0778956082668498,
+  "chem": {
+   "ferric_index": 1.7625296090651128
+  }
+ },
+ {
+  "name": "earth_30.500_58.000",
+  "planet": "earth",
+  "lat": 30.5,
+  "lon": 58.0,
+  "tile_km": 10,
+  "ndvi": 0.06798247955134512,
+  "chem": {
+   "ferric_index": 1.8946446301863007
+  }
+ },
+ {
+  "name": "earth_30.500_58.500",
+  "planet": "earth",
+  "lat": 30.5,
+  "lon": 58.5,
+  "tile_km": 10,
+  "ndvi": 0.05308417723452301,
+  "chem": {
+   "ferric_index": 1.7165768106123207
+  }
+ },
+ {
+  "name": "earth_30.500_59.000",
+  "planet": "earth",
+  "lat": 30.5,
+  "lon": 59.0,
+  "tile_km": 10,
+  "ndvi": 0.052812421269019916,
+  "chem": {
+   "ferric_index": 1.5130475814323825
+  }
+ },
+ {
+  "name": "earth_30.500_59.500",
+  "planet": "earth",
+  "lat": 30.5,
+  "lon": 59.5,
+  "tile_km": 10,
+  "ndvi": 0.09924005914443271,
+  "chem": {
+   "ferric_index": 2.1992925140242625
+  }
+ },
+ {
+  "name": "earth_31.000_57.500",
+  "planet": "earth",
+  "lat": 31.0,
+  "lon": 57.5,
+  "tile_km": 10,
+  "ndvi": 0.061642931378145506,
+  "chem": {
+   "ferric_index": 1.6593287429486305
+  }
+ },
+ {
+  "name": "earth_31.000_58.000",
+  "planet": "earth",
+  "lat": 31.0,
+  "lon": 58.0,
+  "tile_km": 10,
+  "ndvi": 0.053573852116158616,
+  "chem": {
+   "ferric_index": 1.6137597183099572
+  }
+ },
+ {
+  "name": "earth_31.000_58.500",
+  "planet": "earth",
+  "lat": 31.0,
+  "lon": 58.5,
+  "tile_km": 10,
+  "ndvi": 0.06213078105730085,
+  "chem": {
+   "ferric_index": 1.5924122278137833
+  }
+ },
+ {
+  "name": "earth_31.000_59.000",
+  "planet": "earth",
+  "lat": 31.0,
+  "lon": 59.0,
+  "tile_km": 10,
+  "ndvi": 0.038496123109713246,
+  "chem": {
+   "ferric_index": 1.4358645912358985
+  }
+ },
+ {
+  "name": "earth_31.000_59.500",
+  "planet": "earth",
+  "lat": 31.0,
+  "lon": 59.5,
+  "tile_km": 10,
+  "ndvi": 0.024452796210021725,
+  "chem": {
+   "ferric_index": 1.424898397008298
+  }
+ },
+ {
+  "name": "earth_31.500_57.500",
+  "planet": "earth",
+  "lat": 31.5,
+  "lon": 57.5,
+  "tile_km": 10,
+  "ndvi": 0.06423116306802601,
+  "chem": {
+   "ferric_index": 1.7371301502629266
+  }
+ },
+ {
+  "name": "earth_31.500_58.000",
+  "planet": "earth",
+  "lat": 31.5,
+  "lon": 58.0,
+  "tile_km": 10,
+  "ndvi": 0.062451650368930606,
+  "chem": {
+   "ferric_index": 1.6190798818200287
+  }
+ },
+ {
+  "name": "earth_31.500_58.500",
+  "planet": "earth",
+  "lat": 31.5,
+  "lon": 58.5,
+  "tile_km": 10,
+  "ndvi": 0.04590143276855379,
+  "chem": {
+   "ferric_index": 1.4738744817129363
+  }
+ },
+ {
+  "name": "earth_31.500_59.000",
+  "planet": "earth",
+  "lat": 31.5,
+  "lon": 59.0,
+  "tile_km": 10,
+  "ndvi": 0.0405999226740508,
+  "chem": {
+   "ferric_index": 1.4779786502114687
+  }
+ },
+ {
+  "name": "earth_31.500_59.500",
+  "planet": "earth",
+  "lat": 31.5,
+  "lon": 59.5,
+  "tile_km": 10,
+  "ndvi": 0.04219588575143415,
+  "chem": {
+   "ferric_index": 1.479906305181954
+  }
+ },
+ {
+  "name": "earth_32.000_57.500",
+  "planet": "earth",
+  "lat": 32.0,
+  "lon": 57.5,
+  "tile_km": 10,
+  "ndvi": 0.06127135213406367,
+  "chem": {
+   "ferric_index": 1.6147722793403236
+  }
+ },
+ {
+  "name": "earth_32.000_58.000",
+  "planet": "earth",
+  "lat": 32.0,
+  "lon": 58.0,
+  "tile_km": 10,
+  "ndvi": 0.05563973587234888,
+  "chem": {
+   "ferric_index": 1.5268080490171048
+  }
+ },
+ {
+  "name": "earth_32.000_58.500",
+  "planet": "earth",
+  "lat": 32.0,
+  "lon": 58.5,
+  "tile_km": 10,
+  "ndvi": 0.035727553446130926,
+  "chem": {
+   "ferric_index": 1.4774473183320804
+  }
+ },
+ {
+  "name": "earth_32.000_59.000",
+  "planet": "earth",
+  "lat": 32.0,
+  "lon": 59.0,
+  "tile_km": 10,
+  "ndvi": 0.04448283251133214,
+  "chem": {
+   "ferric_index": 1.5409621553674255
+  }
+ },
+ {
+  "name": "earth_32.000_59.500",
+  "planet": "earth",
+  "lat": 32.0,
+  "lon": 59.5,
+  "tile_km": 10,
+  "ndvi": 0.05248574778336814,
+  "chem": {
+   "ferric_index": 1.5856284563726348
+  }
+ },
+ {
+  "name": "earth_41.000_102.000",
+  "planet": "earth",
+  "lat": 41.0,
+  "lon": 102.0,
+  "tile_km": 10,
+  "ndvi": 0.06105971242444048,
+  "chem": {
+   "ferric_index": 2.03530285331957
+  }
+ },
+ {
+  "name": "earth_41.000_102.500",
+  "planet": "earth",
+  "lat": 41.0,
+  "lon": 102.5,
+  "tile_km": 10,
+  "ndvi": 0.0625815147677875,
+  "chem": {
+   "ferric_index": 2.1118827742095028
+  }
+ },
+ {
+  "name": "earth_41.000_103.000",
+  "planet": "earth",
+  "lat": 41.0,
+  "lon": 103.0,
+  "tile_km": 10,
+  "ndvi": 0.0662284948094961,
+  "chem": {
+   "ferric_index": 2.098176425163409
+  }
+ },
+ {
+  "name": "earth_41.000_103.500",
+  "planet": "earth",
+  "lat": 41.0,
+  "lon": 103.5,
+  "tile_km": 10,
+  "ndvi": 0.06120793245763147,
+  "chem": {
+   "ferric_index": 2.0892686232114297
+  }
+ },
+ {
+  "name": "earth_41.000_104.000",
+  "planet": "earth",
+  "lat": 41.0,
+  "lon": 104.0,
+  "tile_km": 10,
+  "ndvi": 0.05416166019351285,
+  "chem": {
+   "ferric_index": 1.828146658691763
+  }
+ },
+ {
+  "name": "earth_41.500_103.000",
+  "planet": "earth",
+  "lat": 41.5,
+  "lon": 103.0,
+  "tile_km": 10,
+  "ndvi": 0.04552436473880071,
+  "chem": {
+   "ferric_index": 1.8066293514947942
+  }
+ },
+ {
+  "name": "earth_41.500_103.500",
+  "planet": "earth",
+  "lat": 41.5,
+  "lon": 103.5,
+  "tile_km": 10,
+  "ndvi": 0.04488547385568218,
+  "chem": {
+   "ferric_index": 1.7144785841852679
+  }
+ },
+ {
+  "name": "earth_41.500_104.000",
+  "planet": "earth",
+  "lat": 41.5,
+  "lon": 104.0,
+  "tile_km": 10,
+  "ndvi": 0.052124417638488595,
+  "chem": {
+   "ferric_index": 1.7180393423198375
+  }
+ },
+ {
+  "name": "earth_42.000_103.000",
+  "planet": "earth",
+  "lat": 42.0,
+  "lon": 103.0,
+  "tile_km": 10,
+  "ndvi": 0.045189457938279075,
+  "chem": {
+   "ferric_index": 1.7078073323781846
+  }
+ },
+ {
+  "name": "earth_42.000_103.500",
+  "planet": "earth",
+  "lat": 42.0,
+  "lon": 103.5,
+  "tile_km": 10,
+  "ndvi": 0.06527072652619592,
+  "chem": {
+   "ferric_index": 1.8018098658513746
+  }
+ },
+ {
+  "name": "earth_42.000_104.000",
+  "planet": "earth",
+  "lat": 42.0,
+  "lon": 104.0,
+  "tile_km": 10,
+  "ndvi": 0.07705015146639205,
+  "chem": {
+   "ferric_index": 1.7467313600150078
+  }
+ },
+ {
+  "name": "earth_42.500_102.000",
+  "planet": "earth",
+  "lat": 42.5,
+  "lon": 102.0,
+  "tile_km": 10,
+  "ndvi": 0.055557672669069164,
+  "chem": {
+   "ferric_index": 1.6674338960150226
+  }
+ },
+ {
+  "name": "earth_42.500_102.500",
+  "planet": "earth",
+  "lat": 42.5,
+  "lon": 102.5,
+  "tile_km": 10,
+  "ndvi": 0.06477915295994977,
+  "chem": {
+   "ferric_index": 1.8487630447582766
+  }
+ },
+ {
+  "name": "earth_42.500_103.000",
+  "planet": "earth",
+  "lat": 42.5,
+  "lon": 103.0,
+  "tile_km": 10,
+  "ndvi": 0.07480148080612115,
+  "chem": {
+   "ferric_index": 2.0375677982587446
+  }
+ },
+ {
+  "name": "earth_42.500_103.500",
+  "planet": "earth",
+  "lat": 42.5,
+  "lon": 103.5,
+  "tile_km": 10,
+  "ndvi": 0.08921684131779484,
+  "chem": {
+   "ferric_index": 2.3891494995489473
+  }
+ },
+ {
+  "name": "earth_42.500_104.000",
+  "planet": "earth",
+  "lat": 42.5,
+  "lon": 104.0,
+  "tile_km": 10,
+  "ndvi": 0.06724557351508215,
+  "chem": {
+   "ferric_index": 1.7408060804856573
+  }
+ },
+ {
+  "name": "earth_43.000_102.000",
+  "planet": "earth",
+  "lat": 43.0,
+  "lon": 102.0,
+  "tile_km": 10,
+  "ndvi": 0.056607432453591525,
+  "chem": {
+   "ferric_index": 1.6113163172186065
+  }
+ },
+ {
+  "name": "earth_43.000_102.500",
+  "planet": "earth",
+  "lat": 43.0,
+  "lon": 102.5,
+  "tile_km": 10,
+  "ndvi": 0.05074127076039408,
+  "chem": {
+   "ferric_index": 1.6581173184991091
+  }
+ },
+ {
+  "name": "earth_43.000_103.000",
+  "planet": "earth",
+  "lat": 43.0,
+  "lon": 103.0,
+  "tile_km": 10,
+  "ndvi": 0.05406724653931903,
+  "chem": {
+   "ferric_index": 1.8992032974518005
+  }
+ },
+ {
+  "name": "earth_43.000_103.500",
+  "planet": "earth",
+  "lat": 43.0,
+  "lon": 103.5,
+  "tile_km": 10,
+  "ndvi": 0.053690277745061264,
+  "chem": {
+   "ferric_index": 1.6750178616071447
+  }
+ },
+ {
+  "name": "earth_43.000_104.000",
+  "planet": "earth",
+  "lat": 43.0,
+  "lon": 104.0,
+  "tile_km": 10,
+  "ndvi": 0.06137994652624606,
+  "chem": {
+   "ferric_index": 1.6962244370927642
+  }
+ },
+ {
+  "name": "earth_33.000_80.000",
+  "planet": "earth",
+  "lat": 33.0,
+  "lon": 80.0,
+  "tile_km": 10,
+  "ndvi": 0.049172029331724584,
+  "chem": {
+   "ferric_index": 1.4131415272536063
+  }
+ },
+ {
+  "name": "earth_33.000_80.500",
+  "planet": "earth",
+  "lat": 33.0,
+  "lon": 80.5,
+  "tile_km": 10,
+  "ndvi": 0.027208803404100385,
+  "chem": {
+   "ferric_index": 1.6451974967796308
+  }
+ },
+ {
+  "name": "earth_33.000_81.000",
+  "planet": "earth",
+  "lat": 33.0,
+  "lon": 81.0,
+  "tile_km": 10,
+  "ndvi": 0.07257807327702656,
+  "chem": {
+   "ferric_index": 1.6557878156213857
+  }
+ },
+ {
+  "name": "earth_33.000_81.500",
+  "planet": "earth",
+  "lat": 33.0,
+  "lon": 81.5,
+  "tile_km": 10,
+  "ndvi": 0.07580449896782662,
+  "chem": {
+   "ferric_index": 1.7902632425171352
+  }
+ },
+ {
+  "name": "earth_33.000_82.000",
+  "planet": "earth",
+  "lat": 33.0,
+  "lon": 82.0,
+  "tile_km": 10,
+  "ndvi": 0.05869749543594491,
+  "chem": {
+   "ferric_index": 1.7394428557702852
+  }
+ },
+ {
+  "name": "earth_33.500_80.000",
+  "planet": "earth",
+  "lat": 33.5,
+  "lon": 80.0,
+  "tile_km": 10,
+  "ndvi": 0.0635364012974828,
+  "chem": {
+   "ferric_index": 1.770170501483805
+  }
+ },
+ {
+  "name": "earth_33.500_80.500",
+  "planet": "earth",
+  "lat": 33.5,
+  "lon": 80.5,
+  "tile_km": 10,
+  "ndvi": 0.08104998018365314,
+  "chem": {
+   "ferric_index": 1.80284958835182
+  }
+ },
+ {
+  "name": "earth_33.500_81.000",
+  "planet": "earth",
+  "lat": 33.5,
+  "lon": 81.0,
+  "tile_km": 10,
+  "ndvi": 0.0752004993276102,
+  "chem": {
+   "ferric_index": 1.6796035349937128
+  }
+ },
+ {
+  "name": "earth_33.500_81.500",
+  "planet": "earth",
+  "lat": 33.5,
+  "lon": 81.5,
+  "tile_km": 10,
+  "ndvi": 0.07449635472323402,
+  "chem": {
+   "ferric_index": 1.76748696191446
+  }
+ },
+ {
+  "name": "earth_33.500_82.000",
+  "planet": "earth",
+  "lat": 33.5,
+  "lon": 82.0,
+  "tile_km": 10,
+  "ndvi": 0.08004454838576024,
+  "chem": {
+   "ferric_index": 1.876560090350789
+  }
+ },
+ {
+  "name": "earth_34.000_80.000",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": 80.0,
+  "tile_km": 10,
+  "ndvi": 0.046835132286994596,
+  "chem": {
+   "ferric_index": 1.4309442454863466
+  }
+ },
+ {
+  "name": "earth_34.000_80.500",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": 80.5,
+  "tile_km": 10,
+  "ndvi": 0.06338270370327129,
+  "chem": {
+   "ferric_index": 1.7029265034087981
+  }
+ },
+ {
+  "name": "earth_34.000_81.000",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": 81.0,
+  "tile_km": 10,
+  "ndvi": 0.06308542282993869,
+  "chem": {
+   "ferric_index": 1.7814366779455633
+  }
+ },
+ {
+  "name": "earth_34.000_81.500",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": 81.5,
+  "tile_km": 10,
+  "ndvi": -0.06753488969962257,
+  "chem": {
+   "ferric_index": 1.3277568299947582
+  }
+ },
+ {
+  "name": "earth_34.000_82.000",
+  "planet": "earth",
+  "lat": 34.0,
+  "lon": 82.0,
+  "tile_km": 10,
+  "ndvi": 0.030927680140341272,
+  "chem": {
+   "ferric_index": 1.3570004577558499
+  }
+ },
+ {
+  "name": "earth_34.500_80.000",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": 80.0,
+  "tile_km": 10,
+  "ndvi": 0.037239543613591275,
+  "chem": {
+   "ferric_index": 1.5882447349573208
+  }
+ },
+ {
+  "name": "earth_34.500_80.500",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": 80.5,
+  "tile_km": 10,
+  "ndvi": 0.02286560615818902,
+  "chem": {
+   "ferric_index": 1.4955011848750241
+  }
+ },
+ {
+  "name": "earth_34.500_81.000",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": 81.0,
+  "tile_km": 10,
+  "ndvi": -0.05511753082744245,
+  "chem": {
+   "ferric_index": 1.1620660622655454
+  }
+ },
+ {
+  "name": "earth_34.500_81.500",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": 81.5,
+  "tile_km": 10,
+  "ndvi": 0.02596498684332101,
+  "chem": {
+   "ferric_index": 1.2896453333380786
+  }
+ },
+ {
+  "name": "earth_34.500_82.000",
+  "planet": "earth",
+  "lat": 34.5,
+  "lon": 82.0,
+  "tile_km": 10,
+  "ndvi": 0.04569581288710002,
+  "chem": {
+   "ferric_index": 1.6752970275865804
+  }
+ },
+ {
+  "name": "earth_35.000_80.000",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": 80.0,
+  "tile_km": 10,
+  "ndvi": 0.0669353067202633,
+  "chem": {
+   "ferric_index": 1.7623772600529153
+  }
+ },
+ {
+  "name": "earth_35.000_80.500",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": 80.5,
+  "tile_km": 10,
+  "ndvi": 0.008598933068149085,
+  "chem": {
+   "ferric_index": 1.481653812830525
+  }
+ },
+ {
+  "name": "earth_35.000_81.000",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": 81.0,
+  "tile_km": 10,
+  "ndvi": -0.1385068682599398,
+  "chem": {
+   "ferric_index": 0.806049497518321
+  }
+ },
+ {
+  "name": "earth_35.000_81.500",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": 81.5,
+  "tile_km": 10,
+  "ndvi": -0.03466736964500049,
+  "chem": {
+   "ferric_index": 1.4541070172496546
+  }
+ },
+ {
+  "name": "earth_35.000_82.000",
+  "planet": "earth",
+  "lat": 35.0,
+  "lon": 82.0,
+  "tile_km": 10,
+  "ndvi": 0.03331612245225145,
+  "chem": {
+   "ferric_index": 1.532170631126496
+  }
+ }
+]

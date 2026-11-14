@@ -33,9 +33,9 @@ def run(mars_tiles, earth_tiles, *, w_morph=0.7, w_chem=0.3,
         raise ValueError("No features are available on both planets.")
 
     m_s, e_s = prepare(mars_df, earth_df, cols)
-    S = similarity_matrix(m_s, e_s, cols)            # shape
+    S = similarity_matrix(m_s, e_s, cols)            # shape (mars tiles, earth tiles)
 
-   
+    # Step 1: which Mars tiles have terrain closest to something on Earth?
     closest = S.argmax(axis=1)
     ranking = pd.DataFrame({
         "mars_tile": mars_df["name"],
@@ -45,14 +45,14 @@ def run(mars_tiles, earth_tiles, *, w_morph=0.7, w_chem=0.3,
         "closest_earth_tile": earth_df["name"].to_numpy()[closest],
     }).sort_values("best_earth_similarity", ascending=False).reset_index(drop=True)
 
-    
+    # Step 2: choose the Mars target
     if target is None:
         t = int(np.argmax(S.max(axis=1)))
     else:
         lat, lon = target
         t = int(((mars_df["lat"] - lat) ** 2 + (mars_df["lon"] - lon) ** 2).idxmin())
 
-    
+    # Step 3: rank Earth tiles against the target
     morph = S[t]
     chem = chemistry_scores(mars_df, t, earth_df)
     chem_score = chem["score"]
