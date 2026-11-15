@@ -9,15 +9,15 @@
     "grad_rel"
   ],
   "weights": {
-    "slope_mean_deg": 1.3886,
-    "slope_p90_deg": 1.2454,
+    "slope_mean_deg": 1.3802,
+    "slope_p90_deg": 1.2195,
     "relief_m": 0.0,
-    "roughness_m": 0.0663,
-    "curvature_per_m": 1.0654,
+    "roughness_m": 0.0464,
+    "curvature_per_m": 1.0441,
     "texture_rel": 0.0,
     "grad_rel": 0.0
   },
-  "intercept": 4.2268,
+  "intercept": 4.2636,
   "labels_similar": 59,
   "labels_different": 27,
   "pairs": 86,
@@ -28,19 +28,19 @@
     "label_sheet_3.csv"
   ],
   "leave_one_out_auc": 0.91,
-  "hand_set_auc": 0.776,
+  "hand_set_auc": 0.781,
   "leave_one_out_auc_range": [
-    0.817,
-    0.974
+    0.818,
+    0.975
   ],
   "hand_set_auc_range": [
-    0.67,
-    0.874
+    0.675,
+    0.877
   ],
-  "auc_difference": 0.134,
+  "auc_difference": 0.129,
   "auc_difference_range": [
-    0.054,
-    0.228
+    0.053,
+    0.22
   ],
   "agreement": {
     "pairs_shared": 0,
@@ -58,7 +58,7 @@
       "auc": 0.9
     },
     "difference_range": [
-      -0.034,
+      -0.036,
       0.011
     ]
   }

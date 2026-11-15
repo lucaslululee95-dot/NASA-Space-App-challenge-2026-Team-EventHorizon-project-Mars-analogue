@@ -129,7 +129,9 @@ python -c "import ee; ee.Authenticate()"
 
 A browser window opens for the Google login.
 
-Earth tiles come from Sentinel-2 satellite images (`COPERNICUS/S2_SR_HARMONIZED`) and the Copernicus 30 m elevation model (`COPERNICUS/DEM/GLO30_2024_1`). Tiles with mean NDVI above 0.15 are dropped, since vegetated ground doesn't resemble Mars.
+Earth tiles come from Sentinel-2 satellite images (`COPERNICUS/S2_SR_HARMONIZED`) and the Copernicus 30 m elevation model (`COPERNICUS/DEM/GLO30_2024_1`). Tiles with mean NDVI above 0.15 are dropped, since vegetated ground doesn't resemble Mars. Above 55° latitude only local summer images are used (June to August in the north, December to February in the south), so polar regions aren't dominated by winter snow and darkness.
+
+Besides the deserts, the Earth data includes five classic Mars analog regions from the Catalogue of Planetary Analogues: the Antarctic Dry Valleys, the Iceland highlands, Devon Island (Haughton crater), Hawaii's lava fields, and the San Francisco Volcanic Field in Arizona.
 
 ## Configure
 

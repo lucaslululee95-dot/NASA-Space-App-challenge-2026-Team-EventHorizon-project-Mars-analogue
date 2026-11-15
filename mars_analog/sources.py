@@ -12,7 +12,7 @@ import pandas as pd
 from scipy.ndimage import gaussian_filter
 
 from .features import stretch
-from .geo import box_from_center, utm_epsg
+from .geo import box_from_center, summer_months, utm_epsg
 from .tile import Tile
 
 
@@ -148,6 +148,12 @@ def earth_tiles_from_gee(centers, tile_km, n=64, project=None, year=2023, cache_
     s2_year = (ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
                .filterDate(f"{year}-01-01", f"{year + 1}-01-01")
                .filter(ee.Filter.lt("CLOUDY_PIXEL_PERCENTAGE", 20)))
+
+    def s2_for(lat):
+        months = summer_months(lat)            # summer only, near the poles
+        if months is None:
+            return s2_year
+        return s2_year.filter(ee.Filter.calendarRange(months[0], months[1], "month"))
     dem_img = ee.ImageCollection("COPERNICUS/DEM/GLO30_2024_1").mosaic().select("DEM")
 
     cache = _load_cache(cache_path)
@@ -163,7 +169,7 @@ def earth_tiles_from_gee(centers, tile_km, n=64, project=None, year=2023, cache_
             geom = ee.Geometry.Rectangle(list(bbox))
             # Average the 10 m and 30 m pixels into each output cell before resampling,
             # so each tile cell is an average, not one sampled pixel.
-            s2 = (s2_year.filterBounds(geom).median()
+            s2 = (s2_for(lat).filterBounds(geom).median()
                   .select(["B2", "B3", "B4", "B8"]).multiply(0.0001).setDefaultProjection(crs=f"EPSG:{utm_epsg(lon, lat)}", scale=10)
                   .reduceResolution(ee.Reducer.mean(), False, 1024))
             dem_avg = dem_img.setDefaultProjection(crs=f"EPSG:{utm_epsg(lon, lat)}", scale=30).reduceResolution(ee.Reducer.mean(), False, 1024)

@@ -13,7 +13,7 @@ from mars_analog.geo import nearest_tile
 from mars_analog.pipeline import run, run_from_earth
 from mars_analog.regions import REGIONS, fmt_place, place_name, region_of
 from mars_analog.viz import hillshade, surface_image
-from mars_analog.water import is_water
+from mars_analog.water import is_water, water_reason
 
 BUNDLE_DIR = os.environ.get("MARS_BUNDLE_DIR", "bundle")
 MODEL_PATH = os.environ.get("MARS_MODEL_PATH", os.path.join("models", "learned_weights.json"))
@@ -205,7 +205,9 @@ with st.sidebar:
         where = (f"in {region} ({fmt_place(land.lat, land.lon)})" if region
                  else f"at {fmt_place(land.lat, land.lon)}")
         if km <= EARTH_REACH_KM and is_water(tile):
-            too_far = (f"That looks like sea in our data, so there's no land to compare. "
+            what = ("We have no satellite image there" if water_reason(tile) == "no satellite image"
+                    else "That looks like sea in our data")
+            too_far = (f"{what}, so there's no land to compare. "
                        f"The nearest land we have is {where}, {land_km:,.0f} km away.")
         elif land_km > EARTH_REACH_KM:
             named = [r for r in region_names if r != "Other places"]

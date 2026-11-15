@@ -44,3 +44,19 @@ def nearest_tile(tiles, lat, lon, planet):
     """The tile whose centre is closest to (lat, lon), and how far away it is in km."""
     best = min(tiles, key=lambda t: km_between(lat, lon, t.lat, t.lon, planet))
     return best, km_between(lat, lon, best.lat, best.lon, planet)
+
+
+POLAR_LAT = 55.0
+
+
+def summer_months(lat):
+    """(first, last) month of local summer above POLAR_LAT degrees, or None nearer the equator.
+
+    Near the poles a whole year of images mixes in winter snow and months of
+    darkness, so only summer images are used there. (12, 2) wraps round the new year.
+    """
+    if lat > POLAR_LAT:
+        return (6, 8)
+    if lat < -POLAR_LAT:
+        return (12, 2)
+    return None

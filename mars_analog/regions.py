@@ -13,6 +13,11 @@ REGIONS = [
     ("Taklamakan Desert, China", [80.0, 38.0, 82.0, 40.0]),
     ("Central Australia, near Alice Springs", [133.0, -24.5, 134.5, -23.0]),
     ("Erfoud, Morocco", [-5.0, 30.5, -3.5, 31.5]),
+    ("Antarctic Dry Valleys", [161.0, -77.75, 162.5, -77.25]),
+    ("Iceland highlands", [-17.0, 64.9, -16.0, 65.4]),
+    ("Devon Island, Canadian Arctic", [-90.5, 75.0, -89.0, 75.5]),
+    ("Hawaii lava fields", [-155.75, 19.25, -155.25, 19.75]),
+    ("San Francisco Volcanic Field, Arizona", [-112.0, 35.0, -111.0, 36.0]),
 ]
 
 

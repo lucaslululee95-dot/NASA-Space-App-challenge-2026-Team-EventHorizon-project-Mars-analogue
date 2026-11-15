@@ -63,3 +63,26 @@ def test_typed_sea_coordinates_get_a_clear_message(tmp_path, monkeypatch):
     assert any("looks like sea" in i.value and "km away" in i.value for i in at.info)
     number("Longitude").set_value(14.95).run()               # near the land place
     assert any(c.value.startswith("Using our nearest place") for c in at.sidebar.caption)
+
+
+def test_summer_only_near_the_poles():
+    from mars_analog.geo import summer_months
+    assert summer_months(75.4) == (6, 8)          # Devon Island
+    assert summer_months(-77.5) == (12, 2)        # Dry Valleys, wrapping round the new year
+    assert summer_months(-24.0) is None           # Atacama: the whole year
+    assert summer_months(65.1) == (6, 8)          # Iceland highlands
+
+
+def test_analog_regions_are_named():
+    from mars_analog.regions import region_of
+    assert region_of(-77.5, 161.5) == "Antarctic Dry Valleys"
+    assert region_of(75.5, -89.5) == "Devon Island, Canadian Arctic"
+    assert region_of(35.5, -111.5) == "San Francisco Volcanic Field, Arizona"
+
+
+def test_catalogue_sites_reach_the_new_regions():
+    import make_label_sheet
+    (site, *_), km = make_label_sheet.nearest_site(75.5, -89.5)
+    assert site.startswith("Haughton") and km < 75
+    (site, *_), km = make_label_sheet.nearest_site(-77.25, 161.0)
+    assert site.startswith("Wright Valley") and km < 75

@@ -42,6 +42,16 @@ CATALOGUE_SITES = [
      "dunes, soils, mud volcanoes, hydrothermal deposits (chapter 11)"),
     ("Chebbi, near Erfoud, Morocco", 31.214, -3.995,
      "dunes, soils, mud volcanoes, hydrothermal deposits (chapter 11)"),
+    ("Wright Valley, Antarctic Dry Valleys", -77.3336, 161.1724,
+     "polygon terrain, gullies, soils, glacial features (chapter 1)"),
+    ("Beacon Valley, Antarctic Dry Valleys", -77.842, 160.844,
+     "polygon terrain, gullies, soils, glacial features (chapter 1)"),
+    ("Haughton impact structure, Devon Island", 75.367, -89.683,
+     "impact craters, ejecta, gullies, ice polygons (chapter 10)"),
+    ("Black Point Lava Flow, Arizona", 35.70, -111.30,
+     "lava flows, soils, basalt (chapter 6)"),
+    ("Cinder Lake, Arizona", 35.3225, -111.518,
+     "craters, lava flows, soils (chapter 7)"),
 ]
 NEAR_KM = 75
 COLUMNS = ["pair_id", "mars_tile", "mars_lat", "mars_lon", "earth_tile", "earth_lat", "earth_lon",
