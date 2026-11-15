@@ -203,11 +203,19 @@ hand-set weights, and the About tab shows what the model learned. To use the lea
 weights on the command line too, add `"terrain_model": "models/learned_weights.json"` to
 `config.json`.
 
-First result: 58 pairs labelled by one person (41 alike, 17 different). On pairs it
-hadn't trained on, the learned model scored 0.93, against 0.88 for the hand-set weights
-(1.0 is perfect, 0.5 is guessing). Slope and curvature got the most weight, and image
-texture and edge sharpness got none. That's a promising start, not proof: more labels,
-from more people and more Mars spots, would make it trustworthy.
+Latest result: 88 labelled pairs over 5 Mars spots (61 alike, 27 different), labelled
+by one person. Some pairs were chosen where an earlier model was least sure. On pairs it
+hadn't trained on, the learned model scored 0.91 (likely range 0.82 to 0.98), against
+0.77 (0.66 to 0.86) for the hand-set weights, where 1.0 is perfect and 0.5 is guessing.
+The difference, +0.14, has a likely range of +0.06 to +0.23, so on these labels the
+learned weights are better. The model relies on average slope, steepest slopes and
+curvature, and gives roughness, height range, image texture and edge sharpness almost
+no weight.
+
+Two cautions. The labeller was asked to judge the shape of the land, not its colour, so
+the model partly learns those instructions; the hand-set weights include image texture,
+which the labeller ignored. And 88 pairs from one person is still a small sample. Labels
+from teammates on the same pairs would show how much people agree.
 
 ## Limits
 
