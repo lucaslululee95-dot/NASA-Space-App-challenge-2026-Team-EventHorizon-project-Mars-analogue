@@ -42,3 +42,13 @@ def explain(m_row, e_row, cols, k=3):
     agree = [c for _, c in diffs[:k]]
     disagree = [c for _, c in diffs[-k:][::-1]]
     return agree, disagree
+
+
+def learned_similarity_matrix(m_scaled, e_scaled, model):
+    """Chance a person would call each Mars-Earth pair alike, from train_model.py's weights."""
+    feats = model["features"]
+    w = np.array([model["weights"][f] for f in feats], dtype=float)
+    M = m_scaled[feats].to_numpy(dtype=float)
+    E = e_scaled[feats].to_numpy(dtype=float)
+    D = np.abs(M[:, None, :] - E[None, :, :])          # (mars tiles, earth tiles, measures)
+    return 1.0 / (1.0 + np.exp(-(model["intercept"] - D @ w)))

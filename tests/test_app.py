@@ -11,6 +11,8 @@ APP = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 def _app(tmp_path, monkeypatch):
     save_bundle(str(tmp_path), synthetic_tiles("mars", 30, seed=1), synthetic_tiles("earth", 90, seed=2))
     monkeypatch.setenv("MARS_BUNDLE_DIR", str(tmp_path))
+    if "MARS_MODEL_PATH" not in os.environ:          # don't pick up a real model from models/
+        monkeypatch.setenv("MARS_MODEL_PATH", str(tmp_path / "no_model.json"))
     at = AppTest.from_file(APP, default_timeout=60)
     at.run()
     return at
@@ -41,3 +43,28 @@ def test_app_explains_a_missing_bundle(tmp_path, monkeypatch):
     at.run()
     assert not at.exception
     assert any("bundle_data.py" in e.value for e in at.error)
+
+
+def test_app_offers_the_learned_score_when_a_model_exists(tmp_path, monkeypatch):
+    import json
+    cols = ["slope_mean_deg", "slope_p90_deg", "relief_m", "roughness_m", "curvature_per_m",
+            "texture_rel", "grad_rel"]
+    model = {"features": cols, "weights": {c: (1.0 if i < 3 else 0.0) for i, c in enumerate(cols)},
+             "intercept": 2.0, "labels_similar": 41, "labels_different": 17,
+             "leave_one_out_auc": 0.93, "hand_set_auc": 0.88, "max_ndvi": 0.15}
+    (tmp_path / "model.json").write_text(json.dumps(model))
+    monkeypatch.setenv("MARS_MODEL_PATH", str(tmp_path / "model.json"))
+    at = _app(tmp_path, monkeypatch)
+    assert not at.exception
+    radio = [r for r in at.sidebar.radio if r.label == "Terrain score"][0]
+    assert radio.value == "Learned from labels"
+    assert any("learned" in c.value for c in at.caption)
+    radio.set_value("Hand-set weights").run()
+    assert not at.exception and not at.error
+
+
+def test_app_without_a_model_has_no_score_choice(tmp_path, monkeypatch):
+    monkeypatch.setenv("MARS_MODEL_PATH", str(tmp_path / "missing.json"))
+    at = _app(tmp_path, monkeypatch)
+    assert not at.exception
+    assert not [r for r in at.sidebar.radio if r.label == "Terrain score"]

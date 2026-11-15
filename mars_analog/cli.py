@@ -11,6 +11,17 @@ from .pipeline import run
 from .sources import synthetic_tiles
 
 
+def _load_model(path):
+    """Learned weights from train_model.py, if config.json names a file that exists."""
+    if path and os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            model = json.load(f)
+        print(f"Terrain score: learned from {model['labels_similar'] + model['labels_different']} "
+              "labelled pairs")
+        return model
+    return None
+
+
 def _build_real(cfg):
     from .geo import grid_centers
     from .sources import earth_tiles_from_gee, mars_tiles_from_geotiff
@@ -72,6 +83,7 @@ def main():
         max_ndvi=cfg.get("max_ndvi", 0.15),
         target=target,
         top_k=cfg.get("top_k", 25),
+        terrain_model=_load_model(cfg.get("terrain_model")),
     )
 
     os.makedirs(args.out, exist_ok=True)

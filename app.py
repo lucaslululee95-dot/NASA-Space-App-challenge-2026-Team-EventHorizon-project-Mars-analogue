@@ -1,4 +1,5 @@
 """Web app: find the places on Earth that measure most like a spot on Mars."""
+import json
 import os
 
 import altair as alt
@@ -13,6 +14,7 @@ from mars_analog.regions import fmt_place, place_name, region_of
 from mars_analog.viz import hillshade, surface_image
 
 BUNDLE_DIR = os.environ.get("MARS_BUNDLE_DIR", "bundle")
+MODEL_PATH = os.environ.get("MARS_MODEL_PATH", os.path.join("models", "learned_weights.json"))
 JEZERO = (18.38, 77.58)
 MARS_COLOUR = "#A14A2A"     # iron oxide
 EARTH_COLOUR = "#2F6B7C"    # slate
@@ -43,11 +45,21 @@ def get_tiles(folder):
 
 
 @st.cache_data
-def compare(folder, target_name, terrain_weight, max_ndvi, top_k):
+def load_model(path):
+    """Weights learned by train_model.py, or None if there aren't any yet."""
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+@st.cache_data
+def compare(folder, target_name, terrain_weight, max_ndvi, top_k, use_model):
     mars, earth = get_tiles(folder)
     target = next(t for t in mars if t.name == target_name)
     return run(mars, earth, w_morph=terrain_weight, w_chem=1 - terrain_weight,
-               max_ndvi=max_ndvi, target=(target.lat, target.lon), top_k=top_k)
+               max_ndvi=max_ndvi, target=(target.lat, target.lon), top_k=top_k,
+               terrain_model=load_model(MODEL_PATH) if use_model else None)
 
 
 @st.cache_data
@@ -132,6 +144,13 @@ with st.sidebar:
     st.header("Your Mars spot")
     target_name = st.selectbox("Spot on Mars", names, index=start, format_func=mars_label)
     st.header("How to score")
+    model = load_model(MODEL_PATH)
+    use_model = False
+    if model:
+        source = st.radio("Terrain score", ["Learned from labels", "Hand-set weights"],
+                          help="Learned weights come from pairs that people labelled as alike "
+                               "or different. See About the data.")
+        use_model = source == "Learned from labels"
     terrain_weight = st.slider("Weight on terrain", 0.0, 1.0, 0.7, 0.05,
                                help="The rest of the score comes from the iron comparison.")
     st.caption(f"Terrain {terrain_weight:.0%}, iron {1 - terrain_weight:.0%}")
@@ -142,7 +161,7 @@ with st.sidebar:
                     help="Shaded relief uses the same lighting on both planets.")
 
 try:
-    res = compare(BUNDLE_DIR, target_name, terrain_weight, max_ndvi, top_k)
+    res = compare(BUNDLE_DIR, target_name, terrain_weight, max_ndvi, top_k, use_model)
 except ValueError as exc:
     st.error(f"{exc}")
     st.stop()
@@ -160,7 +179,13 @@ chem = "" if pd.isna(best["chem_score"]) else f", iron {best['chem_score']:.2f}"
 st.write(f"Overall score {best['final_score']:.2f} (terrain {best['morph_similarity']:.2f}{chem}). "
          f"Most alike in {readable(best['agrees_on'])}. "
          f"Most different in {readable(best['differs_on'])}.")
-st.caption("A high score means the two places measure alike. It doesn't show they formed the same way.")
+if use_model:
+    n_labels = model["labels_similar"] + model["labels_different"]
+    st.caption(f"The terrain score is the chance a person would call the two places alike, learned "
+               f"from {n_labels} labelled pairs. It doesn't show they formed the same way.")
+else:
+    st.caption("A high score means the two places measure alike. "
+               "It doesn't show they formed the same way.")
 
 tab_map, tab_pair, tab_about = st.tabs(["Map and list", "Compare any match", "About the data"])
 
@@ -228,6 +253,32 @@ with tab_about:
         "and elevation: Copernicus Sentinel-2 and Copernicus DEM, through Google Earth Engine.\n\n"
         "**AI assistance.** Claude, an AI assistant made by Anthropic, helped write the code. "
         "The team ran, tested, and checked it.")
+
+    if model:
+        st.markdown("**What the model learned.**")
+        n_labels = model["labels_similar"] + model["labels_different"]
+        st.write(
+            f"People labelled {n_labels} Mars-Earth pairs: {model['labels_similar']} alike and "
+            f"{model['labels_different']} different. A small model learned from them how much each "
+            f"measurement should count. On pairs it hadn't trained on, it sorted alike from "
+            f"different with a score of {model['leave_one_out_auc']:.2f}, against "
+            f"{model['hand_set_auc']:.2f} for the hand-set weights (1.0 is perfect, 0.5 is "
+            f"guessing). With this few labels, from one Mars spot, that's a promising first "
+            f"result rather than proof.")
+        weights = pd.DataFrame({
+            "Measure": [FEATURE_NAMES.get(f, f) for f in model["features"]],
+            "Weight": [model["weights"][f] for f in model["features"]],
+        }).sort_values("Weight", ascending=False)
+        st.altair_chart(
+            alt.Chart(weights).mark_bar(color="#5F6B73")
+            .encode(y=alt.Y("Measure:N", sort=None, title=None),
+                    x=alt.X("Weight:Q", title="Learned weight (bigger counts more)"),
+                    tooltip=["Measure", alt.Tooltip("Weight:Q", format=".2f")])
+            .properties(height=36 * len(weights)))
+        unused = [m.lower() for m, w in zip(weights["Measure"], weights["Weight"]) if w == 0]
+        if unused:
+            st.caption(f"Weight zero: {', '.join(unused)}. In these labels, they didn't help tell "
+                       "alike from different.")
 
 st.caption(
     "Earth elevation: produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and "

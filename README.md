@@ -30,6 +30,7 @@ mars_analog/
   check_earth_engine.py  optional check that Earth Engine works
   WEB_APP.md             how to build, run, and publish the web app
   make_label_sheet.py    makes a sheet of Mars-Earth pairs for people to label
+  label_app.py           a page for labelling pairs side by side
   train_model.py         learns measurement weights from the labelled pairs
   LABELLING.md           how to label pairs
   labels/                the label sheet
@@ -191,6 +192,18 @@ from examples that people label:
 The model is trained from scratch on this project's own data. With fewer than about
 100 labels its results are rough.
 
+When `models/learned_weights.json` exists, the web app uses it for the terrain score: the
+chance a person would call two places alike. A switch in the sidebar goes back to the
+hand-set weights, and the About tab shows what the model learned. To use the learned
+weights on the command line too, add `"terrain_model": "models/learned_weights.json"` to
+`config.json`.
+
+First result: 58 pairs labelled by one person (41 alike, 17 different). On pairs it
+hadn't trained on, the learned model scored 0.93, against 0.88 for the hand-set weights
+(1.0 is perfect, 0.5 is guessing). Slope and curvature got the most weight, and image
+texture and edge sharpness got none. That's a promising start, not proof: more labels,
+from more people and more Mars spots, would make it trustworthy.
+
 ## Limits
 
 - **One Mars area.** The Mars side covers 16 spots in the middle of Jezero crater. The results are a shortlist to check, not a confirmed answer.
@@ -205,7 +218,7 @@ The model is trained from scratch on this project's own data. With fewer than ab
 
 ## Next steps
 
-- Label the pairs in `labels/label_sheet.csv`, train the model, and show the learned score in the app.
+- Get more pairs labelled, by more people and for more Mars spots, and retrain.
 - Cover the whole crater once the 5 m image is reachable.
 - Find a chlorine or salt measure that can be checked against known sites.
 - Add image embeddings from a pretrained vision model as an extra terrain score.

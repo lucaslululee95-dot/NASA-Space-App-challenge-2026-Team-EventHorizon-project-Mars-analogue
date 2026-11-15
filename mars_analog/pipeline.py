@@ -9,11 +9,11 @@ import pandas as pd
 
 from .chemistry import chemistry_scores
 from .features import feature_columns, feature_table
-from .matching import explain, prepare, similarity_matrix
+from .matching import explain, learned_similarity_matrix, prepare, similarity_matrix
 
 
 def run(mars_tiles, earth_tiles, *, w_morph=0.7, w_chem=0.3,
-        max_ndvi=0.15, target=None, top_k=25):
+        max_ndvi=0.15, target=None, top_k=25, terrain_model=None):
     """Run the full comparison.
 
     target: optional (lat, lon) of a Mars tile. If None, the Mars tile whose
@@ -33,7 +33,14 @@ def run(mars_tiles, earth_tiles, *, w_morph=0.7, w_chem=0.3,
         raise ValueError("No features are available on both planets.")
 
     m_s, e_s = prepare(mars_df, earth_df, cols)
-    S = similarity_matrix(m_s, e_s, cols)            # shape (mars tiles, earth tiles)
+    if terrain_model is None:
+        S = similarity_matrix(m_s, e_s, cols)        # shape (mars tiles, earth tiles)
+    else:
+        missing = [f for f in terrain_model["features"] if f not in cols]
+        if missing:
+            raise ValueError("The learned model needs measurements this data doesn't have: "
+                             + ", ".join(missing) + ". Retrain it with train_model.py.")
+        S = learned_similarity_matrix(m_s, e_s, terrain_model)
 
     # Step 1: which Mars tiles have terrain closest to something on Earth?
     closest = S.argmax(axis=1)
