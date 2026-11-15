@@ -2,7 +2,7 @@
 
 **Try the web app:** https://dvbxnltnopvsnkwnxekywb.streamlit.app/
 
-This tool looks for places on Earth whose terrain and iron content resemble a chosen Mars site. By default the site is Jezero Crater, where NASA's Perseverance rover landed. It compares terrain first, then re-ranks the matches using an iron comparison.
+This tool looks for places on Earth whose terrain and iron content resemble a chosen Mars site, or the other way round. The Mars side is Jezero Crater, where NASA's Perseverance rover landed. The Earth side covers 16 regions: deserts and dry plateaus, plus five classic Mars analog sites. It compares terrain first, using weights learned from pairs our team labelled, then blends in an iron comparison.
 
 ## What it does
 
@@ -44,6 +44,7 @@ mars_analog/
     pipeline.py          the three comparison steps
     bundle.py            saves and loads the web app's data bundle
     regions.py           names of the Earth regions
+    water.py             leaves out sea, lakes and other water
     viz.py               shaded relief and images for the web app
     geo.py, tile.py      tile sizes, grids, and the tile structure
   tests/                 automatic tests
@@ -210,19 +211,21 @@ hand-set weights, and the About tab shows what the model learned. To use the lea
 weights on the command line too, add `"terrain_model": "models/learned_weights.json"` to
 `config.json`.
 
-Latest result: 88 labelled pairs over 5 Mars spots (61 alike, 27 different), labelled
-by one person. Some pairs were chosen where an earlier model was least sure. On pairs it
-hadn't trained on, the learned model scored 0.91 (likely range 0.82 to 0.98), against
-0.77 (0.66 to 0.86) for the hand-set weights, where 1.0 is perfect and 0.5 is guessing.
-The difference, +0.14, has a likely range of +0.06 to +0.23, so on these labels the
-learned weights are better. The model relies on average slope, steepest slopes and
-curvature, and gives roughness, height range, image texture and edge sharpness almost
-no weight.
+Latest result: 86 labelled pairs over 5 Mars spots (59 alike, 27 different), labelled by our
+team. Some pairs were chosen where an earlier model was least sure. On pairs it hadn't trained
+on, the learned model scored 0.91 (likely range 0.82 to 0.97), against 0.78 (0.68 to 0.88) for
+the hand-set weights, where 1.0 is perfect and 0.5 is guessing. The difference, +0.13, has a
+likely range of +0.05 to +0.22, so on these labels the learned weights are better. The model
+relies on average slope, steepest slopes and curvature, and gives roughness, height range,
+image texture and edge sharpness almost no weight.
+
+We also tested six extra landform measurements. They didn't help (0.90 with them, 0.91
+without), so the simpler 7-measurement model is kept.
 
 Two cautions. The labeller was asked to judge the shape of the land, not its colour, so
 the model partly learns those instructions; the hand-set weights include image texture,
-which the labeller ignored. And 88 pairs from one person is still a small sample. Labels
-from teammates on the same pairs would show how much people agree.
+which the labeller ignored. And 86 pairs from our own team is still a small sample. Labels
+from more people on the same pairs would show how much people agree.
 
 ## Limits
 
@@ -232,18 +235,19 @@ from teammates on the same pairs would show how much people agree.
 - **Coarse chemistry.** Each 5-degree cell covers about 300 km, so every tile inside it gets the same chemistry value.
 - **Different instruments.** Mars and Earth images come from different instruments, so the texture features are less reliable than the elevation features.
 - **Earth elevation includes buildings and trees.** The dry filter helps, but built-up tiles can still get through.
-- **Sea is left out.** A square counts as water when most of it sits at sea level, its plant-cover reading (NDVI) is negative, or it has no satellite image. Water squares are never matches or starting places, and typed sea coordinates get a message naming the nearest land.
+- **Sea and lakes are left out.** A square counts as water when most of it sits at sea level, its plant-cover reading (NDVI) is clearly negative, or it has no satellite image. Water squares are never matches or starting places, and typed sea coordinates get a message naming the nearest land.
+- **Polar ice.** Polar squares may still include glacier ice, which looks like smooth ground. An ice check using Sentinel-2's short-wave infrared band is built and planned next. Treat matches in the Antarctic Dry Valleys and Devon Island with care until then.
 - **Lakes can look flat.** Dry salt lakes in dry regions can pass these checks and look like smooth ground.
 - **Gaps in Mars elevation.** Tiles with more than 2% gaps are skipped rather than filled.
 - **Not for the whole planet.** The code keeps tiles in memory and requests Earth tiles one at a time, so a whole-planet search needs a different approach.
 
 ## Next steps
 
+- Add the ice check, so polar squares that are mostly snow or ice are left out.
 - Get more pairs labelled, by more people and for more Mars spots, and retrain.
-- Cover the whole crater once the 5 m image is reachable.
+- Cover the whole crater once a matching image for it is reachable.
 - Find a chlorine or salt measure that can be checked against known sites.
-- Add image embeddings from a pretrained vision model as an extra terrain score.
-- Add a map of the top matches.
+- Extend the Earth side to all dry land by computing the measurements inside Earth Engine.
 
 ## Data sources
 
