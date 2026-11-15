@@ -83,3 +83,48 @@ def test_app_defaults_to_hand_set_when_the_model_is_clearly_worse(tmp_path, monk
     radio = [r for r in at.sidebar.radio if r.label == "Terrain score"][0]
     assert radio.value == "Hand-set weights"
     assert any("hand-set weights do better" in m.value for m in at.markdown)
+
+
+def _radio(at, label):
+    return [r for r in at.sidebar.radio if r.label == label][0]
+
+
+def _number(at, label_start):
+    return [n for n in at.sidebar.number_input if n.label.startswith(label_start)][0]
+
+
+def test_starting_from_earth_lists_mars_spots(tmp_path, monkeypatch):
+    at = _app(tmp_path, monkeypatch)
+    _radio(at, "A place on").set_value("Earth").run()
+    assert not at.exception and not at.error
+    assert at.title[0].value.startswith("Where on Mars")
+    assert at.subheader[0].value.startswith("Closest spot on Mars")
+    assert [s.label for s in at.sidebar.selectbox][:2] == ["Region", "Place"]
+    pick = [s for s in at.selectbox if s.label == "Mars spot"][0]
+    pick.select_index(1).run()
+    assert not at.exception and not at.error
+
+
+def test_typed_earth_coordinates_snap_to_the_nearest_place(tmp_path, monkeypatch):
+    at = _app(tmp_path, monkeypatch)
+    near = synthetic_tiles("earth", 90, seed=2)[1]
+    _radio(at, "A place on").set_value("Earth").run()
+    _radio(at, "Choose it").set_value("By coordinates").run()
+    _number(at, "Latitude").set_value(round(near.lat + 0.1, 2)).run()
+    _number(at, "Longitude").set_value(round(near.lon - 0.1, 2)).run()
+    assert not at.exception
+    assert any(c.value.startswith("Using our nearest place") for c in at.sidebar.caption)
+    assert at.subheader[0].value.startswith("Closest spot on Mars")
+
+
+def test_typed_coordinates_outside_the_data_are_explained(tmp_path, monkeypatch):
+    at = _app(tmp_path, monkeypatch)
+    _radio(at, "Choose it").set_value("By coordinates").run()        # Mars side
+    _number(at, "Latitude").set_value(-60.0).run()
+    assert not at.exception
+    assert any("outside our Mars data" in i.value for i in at.info)
+    assert not at.subheader
+    _radio(at, "A place on").set_value("Earth").run()
+    _number(at, "Latitude").set_value(89.0).run()
+    assert not at.exception
+    assert any("don't have data there yet" in i.value for i in at.info)

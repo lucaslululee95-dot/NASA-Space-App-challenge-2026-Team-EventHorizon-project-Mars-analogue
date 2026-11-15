@@ -174,6 +174,8 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 The web app runs the comparison on the bundled data, so visitors don't need Google Earth Engine or your data files. It uses the bundle in the `bundle` folder. To build or run it yourself, see [WEB_APP.md](WEB_APP.md).
 
+It works in both directions. Start from a spot on Mars to find the closest places on Earth, or from a place on Earth to find the closest spots on Mars. Pick the place from a list, or type its coordinates: the app uses the nearest place it has data for and says how far away that is. If the coordinates are outside the data (more than about 12 km from a Mars spot, or 50 km from an Earth place), it says so and names the nearest covered place instead of guessing.
+
 ## Learning from labelled pairs
 
 The scoring weights in `features.py` were set by hand. The project can also learn them

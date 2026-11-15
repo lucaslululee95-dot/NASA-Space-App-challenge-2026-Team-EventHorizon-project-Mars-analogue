@@ -30,3 +30,17 @@ def utm_epsg(lon, lat):
     """EPSG code of the UTM zone containing (lon, lat). Used for metric resampling."""
     zone = int((lon + 180) // 6) + 1
     return (32600 if lat >= 0 else 32700) + zone
+
+
+def km_between(lat1, lon1, lat2, lon2, planet="earth"):
+    """Great-circle distance in km on Earth or Mars."""
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp, dl = p2 - p1, math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * RADIUS_KM[planet] * math.asin(min(1.0, math.sqrt(a)))
+
+
+def nearest_tile(tiles, lat, lon, planet):
+    """The tile whose centre is closest to (lat, lon), and how far away it is in km."""
+    best = min(tiles, key=lambda t: km_between(lat, lon, t.lat, t.lon, planet))
+    return best, km_between(lat, lon, best.lat, best.lon, planet)

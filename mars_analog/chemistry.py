@@ -73,3 +73,44 @@ def chemistry_scores(mars_df, target_idx, earth_df):
     has = count > 0
     scores[has] = total[has] / count[has]
     return {"score": scores, "compared": compared, "skipped": skipped}
+
+
+def chemistry_scores_for_earth(mars_df, earth_df, earth_idx):
+    """Score each Mars tile against one Earth place, in [0, 1]. NaN where nothing was comparable."""
+    n = len(mars_df)
+    total, count = np.zeros(n), np.zeros(n)
+    compared, skipped = [], []
+
+    for axis, spec in CHEM_AXES.items():
+        mcol = f"chem_{spec['mars_field']}"
+        ecol = f"chem_{spec['earth_field']}" if spec["earth_field"] else None
+        usable = spec["compare"] and ecol is not None and mcol in mars_df and ecol in earth_df
+        if not usable:
+            skipped.append(axis)
+            continue
+        e_pct = pd.Series(earth_df[ecol].astype(float).to_numpy()).rank(pct=True).to_numpy()
+        p_earth = e_pct[earth_idx]
+        if not np.isfinite(p_earth):
+            skipped.append(axis)
+            continue
+
+        m_vals = mars_df[mcol].astype(float).to_numpy()
+        pool = m_vals[np.isfinite(m_vals)]
+        pct_col = f"chem_{spec['mars_pct_field']}" if spec.get("mars_pct_field") else None
+        m_pct = np.full(n, np.nan)
+        for i in range(n):
+            if pct_col and pct_col in mars_df and np.isfinite(mars_df[pct_col].iloc[i]):
+                m_pct[i] = float(mars_df[pct_col].iloc[i])          # against the whole Mars table
+            elif np.isfinite(m_vals[i]) and len(pool):
+                m_pct[i] = (np.sum(pool < m_vals[i]) + 0.5 * np.sum(pool == m_vals[i])) / len(pool)
+        score = 1.0 - np.abs(m_pct - p_earth)
+
+        ok = np.isfinite(score)
+        total[ok] += score[ok]
+        count[ok] += 1
+        compared.append(axis)
+
+    scores = np.full(n, np.nan)
+    has = count > 0
+    scores[has] = total[has] / count[has]
+    return {"score": scores, "compared": compared, "skipped": skipped}

@@ -9,13 +9,16 @@ import streamlit as st
 from mars_analog.bundle import load_bundle
 from mars_analog.features import feature_columns, feature_table
 from mars_analog.matching import prepare
-from mars_analog.pipeline import run
-from mars_analog.regions import fmt_place, place_name, region_of
+from mars_analog.geo import nearest_tile
+from mars_analog.pipeline import run, run_from_earth
+from mars_analog.regions import REGIONS, fmt_place, place_name, region_of
 from mars_analog.viz import hillshade, surface_image
 
 BUNDLE_DIR = os.environ.get("MARS_BUNDLE_DIR", "bundle")
 MODEL_PATH = os.environ.get("MARS_MODEL_PATH", os.path.join("models", "learned_weights.json"))
 JEZERO = (18.38, 77.58)
+MARS_REACH_KM = 12      # a typed Mars spot farther than this from our data is outside it
+EARTH_REACH_KM = 50     # the same for Earth, where our squares are about 55 km apart
 MARS_COLOUR = "#A14A2A"     # iron oxide
 EARTH_COLOUR = "#2F6B7C"    # slate
 
@@ -69,13 +72,21 @@ def compare(folder, target_name, terrain_weight, max_ndvi, top_k, use_model):
 
 
 @st.cache_data
-def scaled_features(folder, max_ndvi):
+def compare_from_earth(folder, earth_name, terrain_weight, max_ndvi, top_k, use_model):
+    mars, earth = get_tiles(folder)
+    return run_from_earth(mars, earth, earth_name, w_morph=terrain_weight,
+                          w_chem=1 - terrain_weight, max_ndvi=max_ndvi, top_k=top_k,
+                          terrain_model=load_model(MODEL_PATH) if use_model else None)
+
+
+@st.cache_data
+def scaled_features(folder, max_ndvi, keep=None):
     """Feature values on the shared Mars-and-Earth scale, the same one the scores use."""
     mars, earth = get_tiles(folder)
     m_df = feature_table(mars).reset_index(drop=True)
     e_df = feature_table(earth).reset_index(drop=True)
     if "ndvi" in e_df.columns:
-        e_df = e_df[e_df["ndvi"] <= max_ndvi].reset_index(drop=True)
+        e_df = e_df[(e_df["ndvi"] <= max_ndvi) | (e_df["name"] == keep)].reset_index(drop=True)
     cols = feature_columns(m_df, e_df, extra=True)
     m_s, e_s = prepare(m_df, e_df, cols)
     m_s.index, e_s.index = m_df["name"], e_df["name"]
@@ -123,11 +134,8 @@ def feature_chart(m_s, e_s, mars_name, earth_name):
 
 # ---------------------------------------------------------------- page
 
-st.title("Where on Earth looks like this part of Mars?")
-st.write("Choose a spot near Jezero crater on Mars. The app measures its terrain and compares it "
-         "with 10 km squares of dry land on Earth, then shows the closest matches.")
-
 if not os.path.exists(os.path.join(BUNDLE_DIR, "earth.npz")):
+    st.title("Mars Analog Finder")
     st.error(f"The data bundle is missing from the '{BUNDLE_DIR}' folder. "
              "Build it with `python bundle_data.py`, then reload this page.")
     st.stop()
@@ -139,6 +147,13 @@ names = sorted(mars_by_name, key=lambda n: (-mars_by_name[n].lat, mars_by_name[n
 start = min(range(len(names)), key=lambda i: (mars_by_name[names[i]].lat - JEZERO[0]) ** 2
             + (mars_by_name[names[i]].lon - JEZERO[1]) ** 2)
 
+# Earth places grouped by region, in the order of the region list
+by_region = {}
+for t in sorted(earth_tiles, key=lambda t: (-t.lat, t.lon)):
+    by_region.setdefault(region_of(t.lat, t.lon) or "Other places", []).append(t.name)
+region_names = [r for r, _ in REGIONS if r in by_region] + \
+    (["Other places"] if "Other places" in by_region else [])
+
 
 def mars_label(name):
     t = mars_by_name[name]
@@ -146,9 +161,56 @@ def mars_label(name):
     return label + " (landing site)" if name == names[start] else label
 
 
+def mars_extent():
+    lats = [t.lat for t in mars_tiles]
+    lons = [t.lon for t in mars_tiles]
+    return f"{min(lats):.2f}° to {max(lats):.2f}° N, {min(lons):.2f}° to {max(lons):.2f}° E"
+
+
 with st.sidebar:
-    st.header("Your Mars spot")
-    target_name = st.selectbox("Spot on Mars", names, index=start, format_func=mars_label)
+    st.header("Start from")
+    side = st.radio("A place on", ["Mars", "Earth"], horizontal=True)
+    how = st.radio("Choose it", ["From the list", "By coordinates"], horizontal=True)
+    target_name, earth_name, too_far = None, None, None
+    if side == "Mars" and how == "From the list":
+        target_name = st.selectbox("Spot on Mars", names, index=start, format_func=mars_label)
+    elif side == "Mars":
+        lat = st.number_input("Latitude, degrees north", -90.0, 90.0, 18.40, 0.05, format="%.2f")
+        lon = st.number_input("Longitude, degrees east", -180.0, 360.0, 77.55, 0.05, format="%.2f")
+        lon = lon - 360.0 if lon > 180 else lon
+        tile, km = nearest_tile(mars_tiles, lat, lon, "mars")
+        if km > MARS_REACH_KM:
+            too_far = (f"That spot is outside our Mars data. We have {len(mars_tiles)} spots in "
+                       f"the middle of Jezero crater ({mars_extent()}), and the nearest is "
+                       f"{km:,.0f} km away. Try a spot inside that area.")
+        else:
+            target_name = tile.name
+            st.caption(f"Using our nearest spot, {fmt_place(tile.lat, tile.lon)}, {km:.0f} km away.")
+    elif how == "From the list":
+        region = st.selectbox("Region", region_names)
+        earth_name = st.selectbox("Place", by_region[region],
+                                  format_func=lambda n: fmt_place(earth_by_name[n].lat,
+                                                                  earth_by_name[n].lon))
+    else:
+        lat = st.number_input("Latitude, degrees (south is negative)", -90.0, 90.0, -24.0, 0.25,
+                              format="%.2f")
+        lon = st.number_input("Longitude, degrees (west is negative)", -180.0, 180.0, 15.5, 0.25,
+                              format="%.2f")
+        tile, km = nearest_tile(earth_tiles, lat, lon, "earth")
+        if km > EARTH_REACH_KM:
+            region = region_of(tile.lat, tile.lon)
+            where = (f"in {region} ({fmt_place(tile.lat, tile.lon)})" if region
+                     else f"at {fmt_place(tile.lat, tile.lon)}")
+            named = [r for r in region_names if r != "Other places"]
+            covers = (f" Our Earth data covers: {', '.join(named)}. Try coordinates inside one "
+                      "of them." if named else "")
+            too_far = (f"We don't have data there yet. The nearest place we have is {where}, "
+                       f"{km:,.0f} km away.{covers}")
+        else:
+            earth_name = tile.name
+            st.caption(f"Using our nearest place, {place_name(tile.lat, tile.lon)} "
+                       f"({fmt_place(tile.lat, tile.lon)}), {km:.0f} km away.")
+
     st.header("How to score")
     model = load_model(MODEL_PATH)
     use_model = False
@@ -168,80 +230,142 @@ with st.sidebar:
     view = st.radio("Picture style", ["Shaded relief", "Satellite image"],
                     help="Shaded relief uses the same lighting on both planets.")
 
+if side == "Mars":
+    st.title("Where on Earth looks like this part of Mars?")
+    st.write("Choose a spot near Jezero crater on Mars. The app measures its terrain and compares "
+             "it with 10 km squares of dry land on Earth, then shows the closest matches.")
+else:
+    st.title("Where on Mars looks like this place on Earth?")
+    st.write("Choose a place on Earth. The app measures its terrain and compares it with the "
+             f"{len(mars_tiles)} spots we have in Jezero crater on Mars, then shows the closest.")
+
+if too_far:
+    st.info(too_far)
+    st.stop()
+
+score_note = ("The terrain score is the chance a person would call the two places alike, learned "
+              f"from {model['labels_similar'] + model['labels_different']} labelled pairs. "
+              "It doesn't show they formed the same way." if use_model else
+              "A high score means the two places measure alike. "
+              "It doesn't show they formed the same way.")
+
+
+def score_line(row):
+    chem = "" if pd.isna(row["chem_score"]) else f", iron {row['chem_score']:.2f}"
+    return (f"Overall score {row['final_score']:.2f} (terrain {row['morph_similarity']:.2f}{chem}). "
+            f"Most alike in {readable(row['agrees_on'])}. "
+            f"Most different in {readable(row['differs_on'])}.")
+
+
 try:
-    res = compare(BUNDLE_DIR, target_name, terrain_weight, max_ndvi, top_k, use_model)
+    if side == "Mars":
+        res = compare(BUNDLE_DIR, target_name, terrain_weight, max_ndvi, top_k, use_model)
+    else:
+        res = compare_from_earth(BUNDLE_DIR, earth_name, terrain_weight, max_ndvi, top_k, use_model)
 except ValueError as exc:
     st.error(f"{exc}")
     st.stop()
 
-matches = res["earth_matches"].copy()
-matches["Place"] = [place_name(a, b) for a, b in zip(matches["lat"], matches["lon"])]
-best = matches.iloc[0]
-m_s, e_s = scaled_features(BUNDLE_DIR, max_ndvi)
-target_tile = mars_by_name[res["target"]]
+m_s, e_s = scaled_features(BUNDLE_DIR, max_ndvi, keep=earth_name)
+shown = [c for c in res["feature_cols"] if c in m_s.columns]
+chart_note = ("Both planets are measured on one shared scale. Bars of similar length mean "
+              "the two places agree on that measure.")
 
-# The twin view: the target and its closest match, drawn the same way.
-st.subheader(f"Closest match: {best['Place']}")
-twin(target_tile, earth_by_name[best["earth_tile"]], view)
-chem = "" if pd.isna(best["chem_score"]) else f", iron {best['chem_score']:.2f}"
-st.write(f"Overall score {best['final_score']:.2f} (terrain {best['morph_similarity']:.2f}{chem}). "
-         f"Most alike in {readable(best['agrees_on'])}. "
-         f"Most different in {readable(best['differs_on'])}.")
-if use_model:
-    n_labels = model["labels_similar"] + model["labels_different"]
-    st.caption(f"The terrain score is the chance a person would call the two places alike, learned "
-               f"from {n_labels} labelled pairs. It doesn't show they formed the same way.")
-else:
-    st.caption("A high score means the two places measure alike. "
-               "It doesn't show they formed the same way.")
+if side == "Mars":
+    matches = res["earth_matches"].copy()
+    matches["Place"] = [place_name(a, b) for a, b in zip(matches["lat"], matches["lon"])]
+    best = matches.iloc[0]
+    target_tile = mars_by_name[res["target"]]
 
-tab_map, tab_pair, tab_about = st.tabs(["Map and list", "Compare any match", "About the data"])
+    # The twin view: the target and its closest match, drawn the same way.
+    st.subheader(f"Closest match: {best['Place']}")
+    twin(target_tile, earth_by_name[best["earth_tile"]], view)
+    st.write(score_line(best))
+    st.caption(score_note)
 
-with tab_map:
-    pts = matches[["lat", "lon", "final_score"]].copy()
-    pts["size"] = 20000 + 60000 * (pts["final_score"] - pts["final_score"].min()) / \
-        max(pts["final_score"].max() - pts["final_score"].min(), 1e-9)
-    pts["color"] = EARTH_COLOUR
-    st.map(pts, latitude="lat", longitude="lon", size="size", color="color", zoom=1)
-    st.caption("Larger dots are closer matches.")
-
-    table = pd.DataFrame({
-        "Rank": range(1, len(matches) + 1),
-        "Place": matches["Place"],
-        "Location": [fmt_place(a, b) for a, b in zip(matches["lat"], matches["lon"])],
-        "Overall": matches["final_score"].round(2),
-        "Terrain": matches["morph_similarity"].round(2),
-        "Iron": matches["chem_score"].round(2),
-        "Most alike in": [readable(x) for x in matches["agrees_on"]],
-        "Most different in": [readable(x) for x in matches["differs_on"]],
-    })
-    st.dataframe(table, hide_index=True)
-    st.download_button("Download matches (CSV)", res["earth_matches"].to_csv(index=False),
-                       "earth_matches.csv", "text/csv")
-
-    with st.expander("Which parts of Mars look most like Earth?"):
-        ranking = res["mars_ranking"]
+    tab_map, tab_pair, tab_about = st.tabs(["Map and list", "Compare any match", "About the data"])
+    with tab_map:
+        pts = matches[["lat", "lon", "final_score"]].copy()
+        pts["size"] = 20000 + 60000 * (pts["final_score"] - pts["final_score"].min()) / \
+            max(pts["final_score"].max() - pts["final_score"].min(), 1e-9)
+        pts["color"] = EARTH_COLOUR
+        st.map(pts, latitude="lat", longitude="lon", size="size", color="color", zoom=1)
+        st.caption("Larger dots are closer matches.")
         st.dataframe(pd.DataFrame({
-            "Mars spot": [fmt_place(a, b) for a, b in zip(ranking["lat"], ranking["lon"])],
-            "Best Earth score": ranking["best_earth_similarity"].round(2),
+            "Rank": range(1, len(matches) + 1),
+            "Place": matches["Place"],
+            "Location": [fmt_place(a, b) for a, b in zip(matches["lat"], matches["lon"])],
+            "Overall": matches["final_score"].round(2),
+            "Terrain": matches["morph_similarity"].round(2),
+            "Iron": matches["chem_score"].round(2),
+            "Most alike in": [readable(x) for x in matches["agrees_on"]],
+            "Most different in": [readable(x) for x in matches["differs_on"]],
         }), hide_index=True)
-        st.download_button("Download Mars ranking (CSV)", ranking.to_csv(index=False),
-                           "mars_most_earthlike.csv", "text/csv")
+        st.download_button("Download matches (CSV)", res["earth_matches"].to_csv(index=False),
+                           "earth_matches.csv", "text/csv")
+        with st.expander("Which parts of Mars look most like Earth?"):
+            ranking = res["mars_ranking"]
+            st.dataframe(pd.DataFrame({
+                "Mars spot": [fmt_place(a, b) for a, b in zip(ranking["lat"], ranking["lon"])],
+                "Best Earth score": ranking["best_earth_similarity"].round(2),
+            }), hide_index=True)
+            st.download_button("Download Mars ranking (CSV)", ranking.to_csv(index=False),
+                               "mars_most_earthlike.csv", "text/csv")
+    with tab_pair:
+        pick = st.selectbox(
+            "Earth match", list(matches.index),
+            format_func=lambda i: (f"{matches.loc[i, 'Place']}: "
+                                   f"{fmt_place(matches.loc[i, 'lat'], matches.loc[i, 'lon'])}, "
+                                   f"score {matches.loc[i, 'final_score']:.2f}"))
+        row = matches.loc[pick]
+        twin(target_tile, earth_by_name[row["earth_tile"]], view)
+        st.write(f"Most alike in {readable(row['agrees_on'])}. "
+                 f"Most different in {readable(row['differs_on'])}.")
+        st.altair_chart(feature_chart(m_s[shown], e_s[shown], res["target"], row["earth_tile"]))
+        st.caption(chart_note)
+else:
+    spots = res["mars_matches"].copy()
+    spots["Spot"] = [fmt_place(a, b) for a, b in zip(spots["lat"], spots["lon"])]
+    best = spots.iloc[0]
+    start_tile = earth_by_name[earth_name]
 
-with tab_pair:
-    options = list(matches.index)
-    pick = st.selectbox(
-        "Earth match", options,
-        format_func=lambda i: (f"{matches.loc[i, 'Place']}: {fmt_place(matches.loc[i, 'lat'], matches.loc[i, 'lon'])}, "
-                               f"score {matches.loc[i, 'final_score']:.2f}"))
-    row = matches.loc[pick]
-    twin(target_tile, earth_by_name[row["earth_tile"]], view)
-    st.write(f"Most alike in {readable(row['agrees_on'])}. "
-             f"Most different in {readable(row['differs_on'])}.")
-    shown = [c for c in res["feature_cols"] if c in m_s.columns]
-    st.altair_chart(feature_chart(m_s[shown], e_s[shown], res["target"], row["earth_tile"]))
-    st.caption("Both planets are measured on one shared scale. Bars of similar length mean "
-               "the two places agree on that measure.")
+    st.subheader(f"Closest spot on Mars: {best['Spot']}")
+    twin(mars_by_name[best["mars_tile"]], start_tile, view)
+    st.write(score_line(best))
+    st.caption(score_note)
+
+    tab_map, tab_pair, tab_about = st.tabs(["Mars spots", "Compare any spot", "About the data"])
+    with tab_map:
+        st.altair_chart(
+            alt.Chart(spots).mark_circle(color=MARS_COLOUR, opacity=0.85)
+            .encode(x=alt.X("lon:Q", title="Longitude, degrees east", scale=alt.Scale(zero=False)),
+                    y=alt.Y("lat:Q", title="Latitude, degrees north", scale=alt.Scale(zero=False)),
+                    size=alt.Size("final_score:Q", title="Overall score",
+                                  scale=alt.Scale(range=[40, 600])),
+                    tooltip=["Spot", alt.Tooltip("final_score:Q", title="Overall", format=".2f")])
+            .properties(height=320))
+        st.caption("Each dot is a 10 km spot in Jezero crater. Larger dots are closer matches.")
+        st.dataframe(pd.DataFrame({
+            "Rank": range(1, len(spots) + 1),
+            "Mars spot": spots["Spot"],
+            "Overall": spots["final_score"].round(2),
+            "Terrain": spots["morph_similarity"].round(2),
+            "Iron": spots["chem_score"].round(2),
+            "Most alike in": [readable(x) for x in spots["agrees_on"]],
+            "Most different in": [readable(x) for x in spots["differs_on"]],
+        }), hide_index=True)
+        st.download_button("Download Mars matches (CSV)", res["mars_matches"].to_csv(index=False),
+                           "mars_matches.csv", "text/csv")
+    with tab_pair:
+        pick = st.selectbox(
+            "Mars spot", list(spots.index),
+            format_func=lambda i: f"{spots.loc[i, 'Spot']}, score {spots.loc[i, 'final_score']:.2f}")
+        row = spots.loc[pick]
+        twin(mars_by_name[row["mars_tile"]], start_tile, view)
+        st.write(f"Most alike in {readable(row['agrees_on'])}. "
+                 f"Most different in {readable(row['differs_on'])}.")
+        st.altair_chart(feature_chart(m_s[shown], e_s[shown], row["mars_tile"], earth_name))
+        st.caption(chart_note)
 
 with tab_about:
     st.markdown(
