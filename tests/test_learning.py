@@ -162,3 +162,19 @@ def test_rows_without_initials_belong_to_the_sheets_labeller(tmp_path):
     sheet.to_csv(tmp_path / "s.csv", index=False)
     pairs = train_model.read_labels([str(tmp_path / "s.csv")])
     assert pairs["who"].nunique() == 1 and set(pairs["who"]) == {"LL"}
+
+
+def test_training_compares_measurement_sets_and_keeps_the_better(tmp_path):
+    from mars_analog.features import EXTRA_FEATURES, FEATURE_WEIGHTS
+    labels = _two_labellers(tmp_path)
+    out = tmp_path / "model.json"
+    assert train_model.main(["--labels", str(labels), "--bundle", str(tmp_path / "b"), "--out", str(out)]) == 0
+    model = json.loads(out.read_text())
+    sets = model["measurement_sets"]
+    assert sets["with_landforms"]["count"] == sets["original"]["count"] + len(EXTRA_FEATURES)
+    kept_all = len(model["features"]) == sets["with_landforms"]["count"]
+    better = "with_landforms" if kept_all else "original"
+    assert model["leave_one_out_auc"] == sets[better]["auc"]
+    assert sets[better]["auc"] >= min(sets["original"]["auc"], sets["with_landforms"]["auc"])
+    if not kept_all:
+        assert set(model["features"]) <= set(FEATURE_WEIGHTS)

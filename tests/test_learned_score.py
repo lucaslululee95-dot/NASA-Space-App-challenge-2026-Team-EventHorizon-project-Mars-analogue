@@ -43,3 +43,18 @@ def test_model_needing_missing_measures_is_explained():
     mars, earth = synthetic_tiles("mars", 6, seed=1), synthetic_tiles("earth", 20, seed=2)
     with pytest.raises(ValueError, match="Retrain"):
         run(mars, earth, target=(17.0, 77.0), terrain_model=_model(["not_a_measure"]))
+
+
+def test_hand_set_mode_explains_with_the_original_measurements():
+    from mars_analog.features import FEATURE_WEIGHTS
+    res = run(synthetic_tiles("mars", 8, seed=1), synthetic_tiles("earth", 30, seed=2), target=(17.0, 77.0))
+    assert set(res["feature_cols"]) <= set(FEATURE_WEIGHTS)
+
+
+def test_learned_mode_can_use_landform_measurements():
+    model = _model(["slope_mean_deg", "aspect_spread", "peaks_per_100km2"])
+    model["weights"]["peaks_per_100km2"] = 0.0
+    res = run(synthetic_tiles("mars", 8, seed=1), synthetic_tiles("earth", 30, seed=2),
+              target=(17.0, 77.0), terrain_model=model)
+    assert res["feature_cols"] == ["slope_mean_deg", "aspect_spread"]     # weight-zero ones left out
+    assert res["earth_matches"]["morph_similarity"].between(0, 1).all()

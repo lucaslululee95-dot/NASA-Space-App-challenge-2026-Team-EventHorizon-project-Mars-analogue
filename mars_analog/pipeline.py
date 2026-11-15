@@ -32,15 +32,19 @@ def run(mars_tiles, earth_tiles, *, w_morph=0.7, w_chem=0.3,
     if not cols:
         raise ValueError("No features are available on both planets.")
 
-    m_s, e_s = prepare(mars_df, earth_df, cols)
+    all_cols = feature_columns(mars_df, earth_df, extra=True)
+    m_s, e_s = prepare(mars_df, earth_df, all_cols)   # each column is scaled on its own
     if terrain_model is None:
-        S = similarity_matrix(m_s, e_s, cols)        # shape (mars tiles, earth tiles)
+        S = similarity_matrix(m_s[cols], e_s[cols], cols)   # shape (mars tiles, earth tiles)
+        used = cols
     else:
-        missing = [f for f in terrain_model["features"] if f not in cols]
+        missing = [f for f in terrain_model["features"] if f not in all_cols]
         if missing:
             raise ValueError("The learned model needs measurements this data doesn't have: "
                              + ", ".join(missing) + ". Retrain it with train_model.py.")
         S = learned_similarity_matrix(m_s, e_s, terrain_model)
+        used = [f for f in terrain_model["features"] if terrain_model["weights"][f] > 0] \
+            or list(terrain_model["features"])
 
     # Step 1: which Mars tiles have terrain closest to something on Earth?
     closest = S.argmax(axis=1)
@@ -77,7 +81,7 @@ def run(mars_tiles, earth_tiles, *, w_morph=0.7, w_chem=0.3,
 
     agrees, differs = [], []
     for j in matches.index:
-        a, d = explain(m_s.iloc[t], e_s.iloc[j], cols)
+        a, d = explain(m_s.iloc[t], e_s.iloc[j], used)
         agrees.append(", ".join(a))
         differs.append(", ".join(d))
     matches["agrees_on"] = agrees
@@ -87,7 +91,7 @@ def run(mars_tiles, earth_tiles, *, w_morph=0.7, w_chem=0.3,
         "target": mars_df["name"].iloc[t],
         "mars_ranking": ranking,
         "earth_matches": matches.reset_index(drop=True),
-        "feature_cols": cols,
+        "feature_cols": used,
         "chem_compared": chem["compared"],
         "chem_skipped": chem["skipped"],
     }

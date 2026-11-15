@@ -186,8 +186,11 @@ from examples that people label:
 2. People mark each pair `1` (alike), `0` (clearly different) or leave it blank, with a
    reason. [LABELLING.md](LABELLING.md) explains how.
 3. `python train_model.py` reads every sheet in `labels/` and fits a small logistic
-   regression (a single neuron: 7 inputs, 8 parameters, 1 output) with one weight per
-   measurement. It tests the model on pairs it didn't train on, compares it with the
+   regression (a single neuron with one input per measurement and one output). It tries
+   the original 7 measurements and 13 that add six landform ones (large-scale roughness,
+   slope variety, slope directions, hills and hollows, share of high ground, and broad
+   slope), and keeps whichever does better on pairs it didn't train on. It compares the
+   kept model with the
    hand-set weights, gives a likely range for each result to allow for chance, reports
    how often labellers agreed, and saves `models/learned_weights.json`.
 4. `python make_label_sheet.py --copy-for AMY` gives a teammate their own copy of the

@@ -152,13 +152,13 @@ def agreement(pairs):
     return {"pairs_shared": int(n), "agreed": round(agreed / n, 3)}
 
 
-def scaled(mars_tiles, earth_tiles, max_ndvi):
+def scaled(mars_tiles, earth_tiles, max_ndvi, extra=True):
     """Feature values on the shared Mars-and-Earth scale, indexed by tile name."""
     m_df = feature_table(mars_tiles).reset_index(drop=True)
     e_df = feature_table(earth_tiles).reset_index(drop=True)
     if "ndvi" in e_df.columns:
         e_df = e_df[e_df["ndvi"] <= max_ndvi].reset_index(drop=True)
-    cols = feature_columns(m_df, e_df)
+    cols = feature_columns(m_df, e_df, extra=extra)
     m_s, e_s = prepare(m_df, e_df, cols)
     m_s.index, e_s.index = m_df["name"], e_df["name"]
     return m_s, e_s, cols
@@ -193,9 +193,20 @@ def main(argv=None):
               f"The model needs at least {MIN_PER_CLASS} of each.")
         return 1
 
-    b, w = fit(D, y)
-    learned = leave_one_out(D, y, groups=groups)
-    hand = hand_set_scores(D, cols)
+    # Two candidates: the original 7 measurements, and those plus the extra landform ones.
+    basic = [i for i, c in enumerate(cols) if c in FEATURE_WEIGHTS]
+    D_basic, cols_basic = D[:, basic], [cols[i] for i in basic]
+    hand = hand_set_scores(D_basic, cols_basic)
+    preds_basic = leave_one_out(D_basic, y, groups=groups)
+    preds_all = leave_one_out(D, y, groups=groups)
+    auc_basic, auc_all = auc(preds_basic, y), auc(preds_all, y)
+    _, _, r_all_vs_basic = likely_range(preds_all, preds_basic, y, groups)
+    if len(cols) > len(cols_basic) and auc_all > auc_basic:
+        learned, chosen_D, chosen_cols = preds_all, D, cols
+    else:
+        learned, chosen_D, chosen_cols = preds_basic, D_basic, cols_basic
+    cols = chosen_cols
+    b, w = fit(chosen_D, y)
     learned_auc, hand_auc = auc(learned, y), auc(hand, y)
     r_learned, r_hand, r_diff = likely_range(learned, hand, y, groups)
     agree = agreement(pairs)
@@ -209,6 +220,11 @@ def main(argv=None):
         "leave_one_out_auc_range": r_learned, "hand_set_auc_range": r_hand,
         "auc_difference": round(learned_auc - hand_auc, 3), "auc_difference_range": r_diff,
         "agreement": agree, "max_ndvi": args.max_ndvi, "trained": datetime.date.today().isoformat(),
+        "measurement_sets": {
+            "original": {"count": len(cols_basic), "auc": round(auc_basic, 3)},
+            "with_landforms": {"count": D.shape[1], "auc": round(auc_all, 3)},
+            "difference_range": r_all_vs_basic,
+        },
     }
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
@@ -216,8 +232,21 @@ def main(argv=None):
 
     print(f"Labels used: {n_pos} alike, {n_neg} different, on {model['pairs']} pairs, "
           f"from {model['labellers']} labeller(s) in {len(model['label_files'])} file(s).")
-    print("How well each method sorts pairs it didn't train on "
-          "(0.5 = guessing, 1.0 = perfect), with the likely range:")
+    n_all = D.shape[1]
+    print(f"Measurements tried: the original {len(cols_basic)}, and {n_all} with the landform ones.")
+    print("How well each sorts pairs it didn't train on (0.5 = guessing, 1.0 = perfect):")
+    print(f"  learned, {len(cols_basic)} measurements   {auc_basic:.2f}")
+    print(f"  learned, {n_all} measurements  {auc_all:.2f}   difference {auc_all - auc_basic:+.2f} "
+          f"({r_all_vs_basic[0]:+.2f} to {r_all_vs_basic[1]:+.2f})")
+    if len(cols) == len(cols_basic):
+        print(f"Kept the {len(cols)}-measurement model: the landform measurements didn't help "
+              "on unseen pairs.")
+    elif r_all_vs_basic[0] > 0:
+        print(f"Kept the {len(cols)}-measurement model: the landform measurements clearly helped.")
+    else:
+        print(f"Kept the {len(cols)}-measurement model: it did slightly better on unseen pairs, "
+              "though the gain may be chance.")
+    print("Kept model against the hand-set weights, with the likely range:")
     print(f"  learned weights   {learned_auc:.2f}  ({r_learned[0]:.2f} to {r_learned[1]:.2f})")
     print(f"  hand-set weights  {hand_auc:.2f}  ({r_hand[0]:.2f} to {r_hand[1]:.2f})")
     print(f"  difference       {learned_auc - hand_auc:+.2f}  ({r_diff[0]:+.2f} to {r_diff[1]:+.2f})")

@@ -28,6 +28,12 @@ FEATURE_NAMES = {
     "texture_rel": "Image texture",
     "grad_rel": "Edge sharpness",
     "red_blue_ratio": "Red-to-blue colour",
+    "roughness_large_m": "Large-scale roughness",
+    "slope_std_deg": "Slope variety",
+    "aspect_spread": "Slope directions",
+    "peaks_per_100km2": "Hills and hollows",
+    "hypsometric": "Share of high ground",
+    "slope_coarse_deg": "Broad slope",
 }
 
 st.set_page_config(page_title="Mars Analog Finder", page_icon="🪨", layout="wide")
@@ -70,7 +76,7 @@ def scaled_features(folder, max_ndvi):
     e_df = feature_table(earth).reset_index(drop=True)
     if "ndvi" in e_df.columns:
         e_df = e_df[e_df["ndvi"] <= max_ndvi].reset_index(drop=True)
-    cols = feature_columns(m_df, e_df)
+    cols = feature_columns(m_df, e_df, extra=True)
     m_s, e_s = prepare(m_df, e_df, cols)
     m_s.index, e_s.index = m_df["name"], e_df["name"]
     return m_s, e_s
@@ -232,7 +238,8 @@ with tab_pair:
     twin(target_tile, earth_by_name[row["earth_tile"]], view)
     st.write(f"Most alike in {readable(row['agrees_on'])}. "
              f"Most different in {readable(row['differs_on'])}.")
-    st.altair_chart(feature_chart(m_s, e_s, res["target"], row["earth_tile"]))
+    shown = [c for c in res["feature_cols"] if c in m_s.columns]
+    st.altair_chart(feature_chart(m_s[shown], e_s[shown], res["target"], row["earth_tile"]))
     st.caption("Both planets are measured on one shared scale. Bars of similar length mean "
                "the two places agree on that measure.")
 

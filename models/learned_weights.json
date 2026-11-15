@@ -47,5 +47,19 @@
     "agreed": null
   },
   "max_ndvi": 0.15,
-  "trained": "2026-11-15"
+  "trained": "2026-11-15",
+  "measurement_sets": {
+    "original": {
+      "count": 7,
+      "auc": 0.913
+    },
+    "with_landforms": {
+      "count": 13,
+      "auc": 0.905
+    },
+    "difference_range": [
+      -0.03,
+      0.011
+    ]
+  }
 }
