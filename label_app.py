@@ -99,6 +99,10 @@ if st.session_state.get("sheet_path") != sheet:
     st.session_state.df = load_sheet(sheet)
     st.session_state.i = next_unlabelled(st.session_state.df, len(st.session_state.df) - 1)
     st.session_state.problem = ""
+    named = st.session_state.df["labeller"].str.strip()
+    named = named[named != ""]
+    if len(named):                                   # remember who labels this sheet
+        st.session_state.labeller = named.mode().iloc[0]
 df, i = st.session_state.df, st.session_state.i
 row = df.loc[i]
 

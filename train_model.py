@@ -128,7 +128,10 @@ def read_labels(paths):
         df["label"] = pd.to_numeric(df["label"].str.strip(), errors="coerce")
         df = df[df["label"].isin([0, 1])].copy()
         who = df["labeller"].str.strip() if "labeller" in df.columns else pd.Series("", index=df.index)
-        df["who"] = who.where(who != "", os.path.basename(p))
+        named = who[who != ""]
+        # A row saved without initials belongs to whoever labelled the rest of that sheet.
+        fallback = named.mode().iloc[0] if len(named) else os.path.basename(p)
+        df["who"] = who.where(who != "", fallback)
         df["source"] = os.path.basename(p)
         frames.append(df[["mars_tile", "earth_tile", "label", "who", "source"]])
     if not frames:

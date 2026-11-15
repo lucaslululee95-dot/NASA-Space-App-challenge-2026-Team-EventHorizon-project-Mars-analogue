@@ -154,3 +154,11 @@ def test_verdict_covers_better_worse_and_unclear():
     assert "learned weights are better" in train_model.verdict([0.01, 0.08])
     assert "hand-set weights do better" in train_model.verdict([-0.04, -0.01])
     assert "Not clearly different" in train_model.verdict([-0.03, 0.09])
+
+
+def test_rows_without_initials_belong_to_the_sheets_labeller(tmp_path):
+    sheet = pd.DataFrame({"mars_tile": ["m"] * 4, "earth_tile": ["a", "b", "c", "d"],
+                          "label": ["1", "0", "1", "1"], "labeller": ["LL", "LL", "", ""]})
+    sheet.to_csv(tmp_path / "s.csv", index=False)
+    pairs = train_model.read_labels([str(tmp_path / "s.csv")])
+    assert pairs["who"].nunique() == 1 and set(pairs["who"]) == {"LL"}

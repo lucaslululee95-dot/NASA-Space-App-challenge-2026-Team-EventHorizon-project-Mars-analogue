@@ -1,6 +1,6 @@
 ﻿pair_id,mars_tile,mars_lat,mars_lon,earth_tile,earth_lat,earth_lon,place,nearest_catalogue_site,km_to_site,catalogue_mars_features,satellite_view,label,reason,labeller
-1,mars_18.400_77.360,18.4,77.36,earth_31.000_-3.500,31.0,-3.5,"Erfoud, Morocco","Chebbi, near Erfoud, Morocco",53,"dunes, soils, mud volcanoes, hydrothermal deposits (chapter 11)","https://www.google.com/maps/@?api=1&map_action=map&center=31.0000,-3.5000&zoom=11&basemap=satellite",,,
-2,mars_18.400_77.360,18.4,77.36,earth_21.000_24.000,21.0,24.0,"Libyan Desert, Sahara",,,,"https://www.google.com/maps/@?api=1&map_action=map&center=21.0000,24.0000&zoom=11&basemap=satellite",,,
+1,mars_18.400_77.360,18.4,77.36,earth_31.000_-3.500,31.0,-3.5,"Erfoud, Morocco","Chebbi, near Erfoud, Morocco",53,"dunes, soils, mud volcanoes, hydrothermal deposits (chapter 11)","https://www.google.com/maps/@?api=1&map_action=map&center=31.0000,-3.5000&zoom=11&basemap=satellite",1,flat ground,A
+2,mars_18.400_77.360,18.4,77.36,earth_21.000_24.000,21.0,24.0,"Libyan Desert, Sahara",,,,"https://www.google.com/maps/@?api=1&map_action=map&center=21.0000,24.0000&zoom=11&basemap=satellite",1,flat ground,A
 3,mars_18.500_77.460,18.5,77.46,earth_22.000_25.000,22.0,25.0,"Libyan Desert, Sahara",,,,"https://www.google.com/maps/@?api=1&map_action=map&center=22.0000,25.0000&zoom=11&basemap=satellite",,,
 4,mars_18.600_77.560,18.6,77.56,earth_30.000_59.500,30.0,59.5,"Lut Desert, Iran",,,,"https://www.google.com/maps/@?api=1&map_action=map&center=30.0000,59.5000&zoom=11&basemap=satellite",,,
 5,mars_18.300_77.260,18.3,77.26,earth_35.000_-117.000,35.0,-117.0,"Mojave Desert, USA",,,,"https://www.google.com/maps/@?api=1&map_action=map&center=35.0000,-117.0000&zoom=11&basemap=satellite",,,

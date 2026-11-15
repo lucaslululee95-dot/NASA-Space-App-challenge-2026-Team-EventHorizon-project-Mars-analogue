@@ -77,3 +77,12 @@ def test_sheet_picker_switches_between_teammates_sheets(tmp_path, monkeypatch):
     amy = _labels(labels / "label_sheet_AMY.csv")
     mine = _labels(labels / "label_sheet.csv")
     assert amy.loc[0, "label"] == "0" and mine.loc[0, "label"] == ""
+
+
+def test_initials_are_remembered_from_the_sheet(tmp_path, monkeypatch):
+    at, sheet = _setup(tmp_path, monkeypatch)
+    at.sidebar.text_input[0].set_value("LL").run()
+    at.button(key="alike").click().run()
+    fresh = AppTest.from_file(APP, default_timeout=60)    # as if the page were restarted
+    fresh.run()
+    assert fresh.sidebar.text_input[0].value == "LL"
