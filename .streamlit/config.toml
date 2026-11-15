@@ -1,0 +1,5 @@
+[theme]
+primaryColor = "#2F6B7C"
+font = "Public Sans:https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap"
+headingFont = "Spectral:https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&display=swap"
+baseRadius = "small"
