@@ -47,6 +47,38 @@ looking like Jezero.
 
 Don't look at the app's scores while labelling.
 
+## Labelling with teammates
+
+Each person labels the same pairs in their own copy of a sheet, so nobody
+overwrites anyone else:
+
+```powershell
+python make_label_sheet.py --copy-for AMY
+```
+
+This makes `labels/label_sheet_AMY.csv` with the same pairs and no answers. In the
+labelling page, pick your sheet from **Label sheet** in the sidebar. Training reads
+every sheet in `labels/`, counts each person's answer, and reports how often people
+agreed. If people often disagree about a pair, the model can't be more certain
+than they are, so agreement is worth reporting.
+
+## The next sheet
+
+Once a model exists, the most useful pairs to label next are the ones it's least
+sure about:
+
+```powershell
+python make_label_sheet.py --next
+```
+
+This makes `labels/label_sheet_2.csv` (then `_3`, and so on) with 60 pairs over 4
+Mars spots: half where the model is closest to 50/50, half at random, and none
+already in a sheet. The random half keeps the testing fair. Because the unsure
+pairs are harder, the score may drop a little after you add them. That's expected,
+and it's a more honest score.
+
+Use `--spots` to change how many Mars spots, and `--size` for how many pairs.
+
 ## How many
 
 The training tool needs at least 10 pairs marked `1` and 10 marked `0`. Aim
@@ -63,8 +95,9 @@ python train_model.py
 ```
 
 It prints how well the learned weights sort pairs it didn't train on, next to
-the app's current hand-set weights, and saves `models/learned_weights.json`.
-With fewer than about 100 labels, treat the numbers as rough.
+the hand-set weights, with a likely range for each that allows for chance. If the
+range of the difference includes zero, the two aren't clearly different yet. It
+saves `models/learned_weights.json`, which the web app uses.
 
 The catalogue sites come from the Catalogue of Planetary Analogues (Preston,
 Grady and Barber, The Open University, 2012, ESA contract 4000104716/11/NL/AF).

@@ -6,6 +6,7 @@ Shows the Mars target and one Earth tile side by side, drawn the same way, and
 saves each answer to labels/label_sheet.csv straight away. Run it on your own
 PC: the public web app can't save files.
 """
+import glob
 import os
 
 import pandas as pd
@@ -15,7 +16,8 @@ from mars_analog.bundle import load_bundle
 from mars_analog.regions import fmt_place
 from mars_analog.viz import hillshade, surface_image
 
-SHEET = os.environ.get("MARS_LABEL_SHEET", os.path.join("labels", "label_sheet.csv"))
+ENV_SHEET = os.environ.get("MARS_LABEL_SHEET")        # used by the tests
+LABEL_DIR = os.environ.get("MARS_LABEL_DIR", "labels")
 BUNDLE_DIR = os.environ.get("MARS_BUNDLE_DIR", "bundle")
 
 st.set_page_config(page_title="Label pairs", page_icon="🪨", layout="wide")
@@ -56,12 +58,13 @@ def next_unlabelled(df, after):
 def answer(value):
     df, i = st.session_state.df, st.session_state.i
     df.loc[i, "label"] = value
-    df.loc[i, "reason"] = st.session_state.get(f"reason_{i}", "").strip()
+    df.loc[i, "reason"] = st.session_state.get(f"reason_{st.session_state.sid}_{i}", "").strip()
     df.loc[i, "labeller"] = st.session_state.get("labeller", "").strip()
     try:
-        save_sheet(df, SHEET)
+        save_sheet(df, st.session_state.sheet_path)
     except PermissionError:
-        st.session_state.problem = ("Couldn't save, because another program has label_sheet.csv "
+        name = os.path.basename(st.session_state.sheet_path)
+        st.session_state.problem = (f"Couldn't save, because another program has {name} "
                                     "open. Close it in Excel, then click the answer again.")
         return
     st.session_state.problem = ""
@@ -76,16 +79,24 @@ def move(step):
 
 st.title("Label pairs")
 
-if not os.path.exists(SHEET):
-    st.error(f"The label sheet {SHEET} is missing. Make it with `python make_label_sheet.py`.")
+sheets = [ENV_SHEET] if ENV_SHEET else sorted(glob.glob(os.path.join(LABEL_DIR, "*.csv")))
+sheets = [p for p in sheets if os.path.exists(p)]
+if not sheets:
+    st.error(f"There's no label sheet in '{LABEL_DIR}'. Make one with `python make_label_sheet.py`.")
     st.stop()
 if not os.path.exists(os.path.join(BUNDLE_DIR, "earth.npz")):
     st.error(f"The data bundle is missing from '{BUNDLE_DIR}'. Build it with `python bundle_data.py`.")
     st.stop()
 
 mars_by_name, earth_by_name = get_tiles(BUNDLE_DIR)
-if "df" not in st.session_state:
-    st.session_state.df = load_sheet(SHEET)
+with st.sidebar:
+    sheet = (st.selectbox("Label sheet", sheets, format_func=os.path.basename,
+                          help="Each teammate labels their own copy, for example label_sheet_AMY.csv.")
+             if len(sheets) > 1 else sheets[0])
+if st.session_state.get("sheet_path") != sheet:
+    st.session_state.sheet_path = sheet
+    st.session_state.sid = sheets.index(sheet)
+    st.session_state.df = load_sheet(sheet)
     st.session_state.i = next_unlabelled(st.session_state.df, len(st.session_state.df) - 1)
     st.session_state.problem = ""
 df, i = st.session_state.df, st.session_state.i
@@ -129,7 +140,7 @@ if row.get("nearest_catalogue_site", ""):
 if row.get("satellite_view", ""):
     st.link_button("See the Earth place in Google Maps", row["satellite_view"])
 
-st.text_input("Reason (a few words)", value=row["reason"], key=f"reason_{i}")
+st.text_input("Reason (a few words)", value=row["reason"], key=f"reason_{st.session_state.sid}_{i}")
 if row["label"] in ("1", "0"):
     st.caption(f"Current answer: {'alike' if row['label'] == '1' else 'different'}. "
                "Click again to change it.")

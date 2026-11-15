@@ -9,19 +9,41 @@
     "grad_rel"
   ],
   "weights": {
-    "slope_mean_deg": 1.0897,
-    "slope_p90_deg": 1.1745,
-    "relief_m": 0.3266,
-    "roughness_m": 0.4762,
-    "curvature_per_m": 0.8083,
+    "slope_mean_deg": 1.131,
+    "slope_p90_deg": 1.2127,
+    "relief_m": 0.4571,
+    "roughness_m": 0.4614,
+    "curvature_per_m": 0.676,
     "texture_rel": 0.0,
     "grad_rel": 0.0
   },
-  "intercept": 4.1691,
-  "labels_similar": 41,
+  "intercept": 4.2799,
+  "labels_similar": 43,
   "labels_different": 17,
-  "leave_one_out_auc": 0.925,
-  "hand_set_auc": 0.878,
+  "pairs": 60,
+  "labellers": 2,
+  "label_files": [
+    "label_sheet.csv"
+  ],
+  "leave_one_out_auc": 0.923,
+  "hand_set_auc": 0.851,
+  "leave_one_out_auc_range": [
+    0.787,
+    0.997
+  ],
+  "hand_set_auc_range": [
+    0.73,
+    0.948
+  ],
+  "auc_difference": 0.073,
+  "auc_difference_range": [
+    0.0,
+    0.156
+  ],
+  "agreement": {
+    "pairs_shared": 0,
+    "agreed": null
+  },
   "max_ndvi": 0.15,
   "trained": "2026-11-15"
 }

@@ -68,3 +68,18 @@ def test_app_without_a_model_has_no_score_choice(tmp_path, monkeypatch):
     at = _app(tmp_path, monkeypatch)
     assert not at.exception
     assert not [r for r in at.sidebar.radio if r.label == "Terrain score"]
+
+
+def test_app_defaults_to_hand_set_when_the_model_is_clearly_worse(tmp_path, monkeypatch):
+    import json
+    cols = ["slope_mean_deg", "slope_p90_deg", "relief_m", "roughness_m", "curvature_per_m",
+            "texture_rel", "grad_rel"]
+    model = {"features": cols, "weights": {c: 1.0 for c in cols}, "intercept": 2.0,
+             "labels_similar": 30, "labels_different": 30, "leave_one_out_auc": 0.80,
+             "hand_set_auc": 0.86, "auc_difference_range": [-0.09, -0.02], "max_ndvi": 0.15}
+    (tmp_path / "model.json").write_text(json.dumps(model))
+    monkeypatch.setenv("MARS_MODEL_PATH", str(tmp_path / "model.json"))
+    at = _app(tmp_path, monkeypatch)
+    radio = [r for r in at.sidebar.radio if r.label == "Terrain score"][0]
+    assert radio.value == "Hand-set weights"
+    assert any("hand-set weights do better" in m.value for m in at.markdown)

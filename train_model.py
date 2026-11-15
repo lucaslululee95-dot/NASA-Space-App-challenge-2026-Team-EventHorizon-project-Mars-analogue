@@ -2,16 +2,21 @@
 
     python train_model.py
 
-Reads labels/label_sheet.csv (rows labelled 1 or 0) and the data bundle, fits a
-small logistic regression, tests it on pairs it didn't see (leave-one-out), and
-writes models/learned_weights.json.
+Reads every sheet in labels/ (rows labelled 1 or 0) and the data bundle, fits a
+small logistic regression, tests it on pairs it didn't see, and writes
+models/learned_weights.json.
 
 The model has one weight per measurement, and a weight can't be negative, so a
 bigger difference never makes two places more alike. That keeps every learned
 number readable.
+
+When several people label the same pair, each answer counts as an example, and
+the report says how often people agreed. Testing leaves out a whole pair at a
+time, so one person's answer can't help predict another's answer for that pair.
 """
 import argparse
 import datetime
+import glob
 import json
 import os
 
@@ -38,8 +43,7 @@ def fit(D, y, l2=1.0):
         b, w = params[0], params[1:]
         z = b - D @ w
         nll = np.sum(np.logaddexp(0.0, z) - y * z)
-        p = _sigmoid(z)
-        grad_z = p - y
+        grad_z = _sigmoid(z) - y
         grad = np.concatenate([[grad_z.sum()], -(D.T @ grad_z) + l2 * w])
         return nll + 0.5 * l2 * w @ w, grad
 
@@ -63,28 +67,90 @@ def auc(scores, y):
     return float(wins / (len(pos) * len(neg)))
 
 
-def leave_one_out(D, y, l2=1.0):
+def leave_one_out(D, y, l2=1.0, groups=None):
+    """Predict each pair from a model trained without it (all its rows left out together)."""
+    groups = np.arange(len(y)) if groups is None else np.asarray(groups)
     preds = np.empty(len(y))
-    for i in range(len(y)):
-        keep = np.arange(len(y)) != i
-        b, w = fit(D[keep], y[keep], l2)
-        preds[i] = predict(D[i:i + 1], b, w)[0]
+    for g in np.unique(groups):
+        out = groups == g
+        b, w = fit(D[~out], y[~out], l2)
+        preds[out] = predict(D[out], b, w)
     return preds
 
 
+def likely_range(learned, hand, y, groups, n=2000, seed=0):
+    """95% ranges for both scores and their difference, resampling whole pairs."""
+    rng = np.random.default_rng(seed)
+    keys = np.unique(groups)
+    rows = {g: np.flatnonzero(groups == g) for g in keys}
+    a, b, d = [], [], []
+    for _ in range(n):
+        idx = np.concatenate([rows[g] for g in rng.choice(keys, size=len(keys))])
+        al, ah = auc(learned[idx], y[idx]), auc(hand[idx], y[idx])
+        if np.isfinite(al) and np.isfinite(ah):
+            a.append(al), b.append(ah), d.append(al - ah)
+    pct = lambda v: [round(float(np.percentile(v, 2.5)), 3), round(float(np.percentile(v, 97.5)), 3)]
+    return pct(a), pct(b), pct(d)
+
+
+def verdict(diff_range):
+    """Plain words for the likely range of (learned - hand-set)."""
+    lo, hi = diff_range
+    if lo > 0:
+        return "The learned weights are better: the whole likely range is above zero."
+    if hi < 0:
+        return ("The hand-set weights do better on these labels: the whole likely range is "
+                "below zero. Keep the hand-set weights, or add more labels and retrain.")
+    return "Not clearly different yet: the likely range includes zero. More labels will tell."
+
+
 def hand_set_scores(D, cols):
-    """The app's current score, from the hand-set weights."""
+    """The app's original score, from the hand-set weights."""
     w = np.array([FEATURE_WEIGHTS[c] for c in cols])
     return 1.0 / (1.0 + np.sqrt((D ** 2) @ w / w.sum()))
 
 
-def labelled_pairs(sheet_path):
-    sheet = pd.read_csv(sheet_path, encoding="utf-8-sig")
-    sheet["label"] = pd.to_numeric(sheet["label"], errors="coerce")
-    return sheet[sheet["label"].isin([0, 1])].copy()
+def sheet_paths(labels):
+    """A single sheet, or every .csv in a folder."""
+    if os.path.isdir(labels):
+        return sorted(glob.glob(os.path.join(labels, "*.csv")))
+    return [labels]
 
 
-def differences(mars_tiles, earth_tiles, pairs, max_ndvi):
+def read_labels(paths):
+    """Every row labelled 1 or 0, with who labelled it."""
+    frames = []
+    for p in paths:
+        df = pd.read_csv(p, encoding="utf-8-sig", encoding_errors="replace",
+                         dtype=str, keep_default_na=False)
+        if not {"mars_tile", "earth_tile", "label"} <= set(df.columns):
+            continue
+        df["label"] = pd.to_numeric(df["label"].str.strip(), errors="coerce")
+        df = df[df["label"].isin([0, 1])].copy()
+        who = df["labeller"].str.strip() if "labeller" in df.columns else pd.Series("", index=df.index)
+        df["who"] = who.where(who != "", os.path.basename(p))
+        df["source"] = os.path.basename(p)
+        frames.append(df[["mars_tile", "earth_tile", "label", "who", "source"]])
+    if not frames:
+        return pd.DataFrame(columns=["mars_tile", "earth_tile", "label", "who", "source"])
+    out = pd.concat(frames, ignore_index=True)
+    out["label"] = out["label"].astype(int)
+    return out
+
+
+def agreement(pairs):
+    """How often people agreed, over pairs that more than one person labelled."""
+    g = pairs.groupby(["mars_tile", "earth_tile"])
+    shared = g.filter(lambda x: x["who"].nunique() > 1).groupby(["mars_tile", "earth_tile"])
+    n = shared.ngroups
+    if n == 0:
+        return {"pairs_shared": 0, "agreed": None}
+    agreed = sum(1 for _, x in shared if x["label"].nunique() == 1)
+    return {"pairs_shared": int(n), "agreed": round(agreed / n, 3)}
+
+
+def scaled(mars_tiles, earth_tiles, max_ndvi):
+    """Feature values on the shared Mars-and-Earth scale, indexed by tile name."""
     m_df = feature_table(mars_tiles).reset_index(drop=True)
     e_df = feature_table(earth_tiles).reset_index(drop=True)
     if "ndvi" in e_df.columns:
@@ -92,23 +158,30 @@ def differences(mars_tiles, earth_tiles, pairs, max_ndvi):
     cols = feature_columns(m_df, e_df)
     m_s, e_s = prepare(m_df, e_df, cols)
     m_s.index, e_s.index = m_df["name"], e_df["name"]
+    return m_s, e_s, cols
+
+
+def differences(mars_tiles, earth_tiles, pairs, max_ndvi):
+    m_s, e_s, cols = scaled(mars_tiles, earth_tiles, max_ndvi)
     ok = pairs["mars_tile"].isin(m_s.index) & pairs["earth_tile"].isin(e_s.index)
-    used = pairs[ok]
+    used = pairs[ok].reset_index(drop=True)
     D = np.abs(m_s.loc[used["mars_tile"]].to_numpy() - e_s.loc[used["earth_tile"]].to_numpy())
-    return D, used["label"].to_numpy(int), cols, int((~ok).sum())
+    groups = (used["mars_tile"] + "|" + used["earth_tile"]).to_numpy()
+    return D, used["label"].to_numpy(int), cols, int((~ok).sum()), groups
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Learn measurement weights from labelled pairs.")
-    ap.add_argument("--labels", default=os.path.join("labels", "label_sheet.csv"))
+    ap.add_argument("--labels", default="labels", help="a label sheet, or a folder of them")
     ap.add_argument("--bundle", default="bundle")
     ap.add_argument("--out", default=os.path.join("models", "learned_weights.json"))
     ap.add_argument("--max-ndvi", type=float, default=0.15)
     args = ap.parse_args(argv)
 
-    pairs = labelled_pairs(args.labels)
+    paths = sheet_paths(args.labels)
+    pairs = read_labels(paths)
     mars, earth = load_bundle(args.bundle)
-    D, y, cols, missing = differences(mars, earth, pairs, args.max_ndvi)
+    D, y, cols, missing, groups = differences(mars, earth, pairs, args.max_ndvi)
     n_pos, n_neg = int(y.sum()), int(len(y) - y.sum())
     if missing:
         print(f"{missing} labelled pairs were skipped because their tiles aren't in the bundle.")
@@ -118,29 +191,40 @@ def main(argv=None):
         return 1
 
     b, w = fit(D, y)
-    learned_auc = auc(leave_one_out(D, y), y)
-    baseline_auc = auc(hand_set_scores(D, cols), y)
+    learned = leave_one_out(D, y, groups=groups)
+    hand = hand_set_scores(D, cols)
+    learned_auc, hand_auc = auc(learned, y), auc(hand, y)
+    r_learned, r_hand, r_diff = likely_range(learned, hand, y, groups)
+    agree = agreement(pairs)
     weights = {c: round(float(v), 4) for c, v in zip(cols, w)}
     model = {
         "features": cols, "weights": weights, "intercept": round(b, 4),
         "labels_similar": n_pos, "labels_different": n_neg,
-        "leave_one_out_auc": round(learned_auc, 3), "hand_set_auc": round(baseline_auc, 3),
-        "max_ndvi": args.max_ndvi, "trained": datetime.date.today().isoformat(),
+        "pairs": int(len(np.unique(groups))), "labellers": int(pairs["who"].nunique()),
+        "label_files": sorted(pairs["source"].unique().tolist()),
+        "leave_one_out_auc": round(learned_auc, 3), "hand_set_auc": round(hand_auc, 3),
+        "leave_one_out_auc_range": r_learned, "hand_set_auc_range": r_hand,
+        "auc_difference": round(learned_auc - hand_auc, 3), "auc_difference_range": r_diff,
+        "agreement": agree, "max_ndvi": args.max_ndvi, "trained": datetime.date.today().isoformat(),
     }
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(model, f, indent=2)
 
-    print(f"Labelled pairs used: {n_pos} alike, {n_neg} different.")
+    print(f"Labels used: {n_pos} alike, {n_neg} different, on {model['pairs']} pairs, "
+          f"from {model['labellers']} labeller(s) in {len(model['label_files'])} file(s).")
     print("How well each method sorts pairs it didn't train on "
-          "(0.5 = guessing, 1.0 = perfect):")
-    print(f"  learned weights   {learned_auc:.2f}")
-    print(f"  hand-set weights  {baseline_auc:.2f}")
+          "(0.5 = guessing, 1.0 = perfect), with the likely range:")
+    print(f"  learned weights   {learned_auc:.2f}  ({r_learned[0]:.2f} to {r_learned[1]:.2f})")
+    print(f"  hand-set weights  {hand_auc:.2f}  ({r_hand[0]:.2f} to {r_hand[1]:.2f})")
+    print(f"  difference       {learned_auc - hand_auc:+.2f}  ({r_diff[0]:+.2f} to {r_diff[1]:+.2f})")
+    print(verdict(r_diff))
+    if agree["pairs_shared"]:
+        print(f"People agreed on {agree['agreed']:.0%} of the {agree['pairs_shared']} pairs "
+              "that more than one person labelled.")
     print("Learned weights (bigger = that measure matters more):")
     for c, v in sorted(weights.items(), key=lambda kv: -kv[1]):
         print(f"  {c:18s} {v:.2f}")
-    if len(y) < 100:
-        print("With fewer than about 100 labels, treat these numbers as rough.")
     print(f"Saved {args.out}")
     return 0
 

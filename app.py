@@ -147,7 +147,9 @@ with st.sidebar:
     model = load_model(MODEL_PATH)
     use_model = False
     if model:
+        worse = model.get("auc_difference_range", [0, 0])[1] < 0     # clearly worse than hand-set
         source = st.radio("Terrain score", ["Learned from labels", "Hand-set weights"],
+                          index=1 if worse else 0,
                           help="Learned weights come from pairs that people labelled as alike "
                                "or different. See About the data.")
         use_model = source == "Learned from labels"
@@ -263,8 +265,20 @@ with tab_about:
             f"measurement should count. On pairs it hadn't trained on, it sorted alike from "
             f"different with a score of {model['leave_one_out_auc']:.2f}, against "
             f"{model['hand_set_auc']:.2f} for the hand-set weights (1.0 is perfect, 0.5 is "
-            f"guessing). With this few labels, from one Mars spot, that's a promising first "
-            f"result rather than proof.")
+            f"guessing).")
+        if "auc_difference_range" in model:
+            lo, hi = model["auc_difference_range"]
+            if lo > 0:
+                judgement = "so the learned weights are better"
+            elif hi < 0:
+                judgement = "so the hand-set weights do better, and the app uses them by default"
+            else:
+                judgement = "so the two aren't clearly different yet. More labels will tell"
+            people = (f" People agreed on {model['agreement']['agreed']:.0%} of the pairs that more "
+                      f"than one person labelled." if model.get("agreement", {}).get("pairs_shared")
+                      else "")
+            st.write(f"Allowing for chance, the difference is likely between {lo:+.2f} and "
+                     f"{hi:+.2f}, {judgement}.{people}")
         weights = pd.DataFrame({
             "Measure": [FEATURE_NAMES.get(f, f) for f in model["features"]],
             "Weight": [model["weights"][f] for f in model["features"]],

@@ -185,9 +185,14 @@ from examples that people label:
    labels come from people rather than from the program.
 2. People mark each pair `1` (alike), `0` (clearly different) or leave it blank, with a
    reason. [LABELLING.md](LABELLING.md) explains how.
-3. `python train_model.py` fits a small logistic regression with one weight per
-   measurement, tests it on pairs it didn't train on, compares it with the hand-set
-   weights, and saves `models/learned_weights.json`.
+3. `python train_model.py` reads every sheet in `labels/` and fits a small logistic
+   regression (a single neuron: 7 inputs, 8 parameters, 1 output) with one weight per
+   measurement. It tests the model on pairs it didn't train on, compares it with the
+   hand-set weights, gives a likely range for each result to allow for chance, reports
+   how often labellers agreed, and saves `models/learned_weights.json`.
+4. `python make_label_sheet.py --copy-for AMY` gives a teammate their own copy of the
+   pairs, and `python make_label_sheet.py --next` makes a new sheet over several Mars
+   spots, half of it pairs the model is least sure about (active learning).
 
 The model is trained from scratch on this project's own data. With fewer than about
 100 labels its results are rough.

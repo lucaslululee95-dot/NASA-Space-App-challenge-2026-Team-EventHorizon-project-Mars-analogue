@@ -31,7 +31,7 @@ def test_answers_are_saved_and_move_on(tmp_path, monkeypatch):
     at, sheet = _setup(tmp_path, monkeypatch)
     assert not at.exception
     at.sidebar.text_input[0].set_value("LL").run()
-    at.text_input(key="reason_0").set_value("flat rocky plain").run()
+    at.text_input(key="reason_0_0").set_value("flat rocky plain").run()
     at.button(key="alike").click().run()
     assert not at.exception
     at.button(key="different").click().run()
@@ -55,3 +55,25 @@ def test_missing_sheet_is_explained(tmp_path, monkeypatch):
     at.run()
     assert not at.exception
     assert any("make_label_sheet.py" in e.value for e in at.error)
+
+
+def test_sheet_picker_switches_between_teammates_sheets(tmp_path, monkeypatch):
+    save_bundle(str(tmp_path / "b"), synthetic_tiles("mars", 8, seed=1), synthetic_tiles("earth", 40, seed=2))
+    (tmp_path / "config.json").write_text('{"target": [17.0, 77.0]}')
+    labels = tmp_path / "labels"
+    make_label_sheet.main(["--bundle", str(tmp_path / "b"), "--config", str(tmp_path / "config.json"),
+                           "--labels", str(labels), "--size", "6"])
+    make_label_sheet.main(["--labels", str(labels), "--copy-for", "AMY"])
+    monkeypatch.delenv("MARS_LABEL_SHEET", raising=False)
+    monkeypatch.setenv("MARS_LABEL_DIR", str(labels))
+    monkeypatch.setenv("MARS_BUNDLE_DIR", str(tmp_path / "b"))
+    at = AppTest.from_file(APP, default_timeout=60)
+    at.run()
+    picker = at.sidebar.selectbox[0]
+    assert picker.label == "Label sheet" and len(picker.options) == 2
+    picker.select_index(1).run()                     # label_sheet_AMY.csv
+    at.button(key="different").click().run()
+    assert not at.exception
+    amy = _labels(labels / "label_sheet_AMY.csv")
+    mine = _labels(labels / "label_sheet.csv")
+    assert amy.loc[0, "label"] == "0" and mine.loc[0, "label"] == ""
