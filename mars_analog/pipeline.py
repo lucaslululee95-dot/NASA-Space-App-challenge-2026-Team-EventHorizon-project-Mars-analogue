@@ -12,6 +12,7 @@ import pandas as pd
 from .chemistry import chemistry_scores, chemistry_scores_for_earth
 from .features import feature_columns, feature_table
 from .matching import explain, learned_similarity_matrix, prepare, similarity_matrix
+from .water import is_water
 
 
 def score_matrix(mars_tiles, earth_tiles, max_ndvi=0.15, terrain_model=None, keep_earth=None):
@@ -22,6 +23,9 @@ def score_matrix(mars_tiles, earth_tiles, max_ndvi=0.15, terrain_model=None, kee
     keep_earth names an Earth tile to keep even if the vegetation filter would drop it.
     """
     mars_df = feature_table(mars_tiles).reset_index(drop=True)
+    earth_tiles = [t for t in earth_tiles if not is_water(t)]      # sea isn't dry land
+    if not earth_tiles:
+        raise ValueError("Every Earth place in the data looks like water.")
     earth_df = feature_table(earth_tiles).reset_index(drop=True)
 
     if "ndvi" in earth_df.columns:

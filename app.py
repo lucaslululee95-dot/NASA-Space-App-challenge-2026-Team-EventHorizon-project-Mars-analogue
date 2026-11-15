@@ -13,6 +13,7 @@ from mars_analog.geo import nearest_tile
 from mars_analog.pipeline import run, run_from_earth
 from mars_analog.regions import REGIONS, fmt_place, place_name, region_of
 from mars_analog.viz import hillshade, surface_image
+from mars_analog.water import is_water
 
 BUNDLE_DIR = os.environ.get("MARS_BUNDLE_DIR", "bundle")
 MODEL_PATH = os.environ.get("MARS_MODEL_PATH", os.path.join("models", "learned_weights.json"))
@@ -84,7 +85,7 @@ def scaled_features(folder, max_ndvi, keep=None):
     """Feature values on the shared Mars-and-Earth scale, the same one the scores use."""
     mars, earth = get_tiles(folder)
     m_df = feature_table(mars).reset_index(drop=True)
-    e_df = feature_table(earth).reset_index(drop=True)
+    e_df = feature_table([t for t in earth if not is_water(t)]).reset_index(drop=True)
     if "ndvi" in e_df.columns:
         e_df = e_df[(e_df["ndvi"] <= max_ndvi) | (e_df["name"] == keep)].reset_index(drop=True)
     cols = feature_columns(m_df, e_df, extra=True)
@@ -147,9 +148,11 @@ names = sorted(mars_by_name, key=lambda n: (-mars_by_name[n].lat, mars_by_name[n
 start = min(range(len(names)), key=lambda i: (mars_by_name[names[i]].lat - JEZERO[0]) ** 2
             + (mars_by_name[names[i]].lon - JEZERO[1]) ** 2)
 
+land_tiles = [t for t in earth_tiles if not is_water(t)]
+
 # Earth places grouped by region, in the order of the region list
 by_region = {}
-for t in sorted(earth_tiles, key=lambda t: (-t.lat, t.lon)):
+for t in sorted(land_tiles, key=lambda t: (-t.lat, t.lon)):
     by_region.setdefault(region_of(t.lat, t.lon) or "Other places", []).append(t.name)
 region_names = [r for r, _ in REGIONS if r in by_region] + \
     (["Other places"] if "Other places" in by_region else [])
@@ -197,19 +200,23 @@ with st.sidebar:
         lon = st.number_input("Longitude, degrees (west is negative)", -180.0, 180.0, 15.5, 0.25,
                               format="%.2f")
         tile, km = nearest_tile(earth_tiles, lat, lon, "earth")
-        if km > EARTH_REACH_KM:
-            region = region_of(tile.lat, tile.lon)
-            where = (f"in {region} ({fmt_place(tile.lat, tile.lon)})" if region
-                     else f"at {fmt_place(tile.lat, tile.lon)}")
+        land, land_km = nearest_tile(land_tiles, lat, lon, "earth")
+        region = region_of(land.lat, land.lon)
+        where = (f"in {region} ({fmt_place(land.lat, land.lon)})" if region
+                 else f"at {fmt_place(land.lat, land.lon)}")
+        if km <= EARTH_REACH_KM and is_water(tile):
+            too_far = (f"That looks like sea in our data, so there's no land to compare. "
+                       f"The nearest land we have is {where}, {land_km:,.0f} km away.")
+        elif land_km > EARTH_REACH_KM:
             named = [r for r in region_names if r != "Other places"]
             covers = (f" Our Earth data covers: {', '.join(named)}. Try coordinates inside one "
                       "of them." if named else "")
             too_far = (f"We don't have data there yet. The nearest place we have is {where}, "
-                       f"{km:,.0f} km away.{covers}")
+                       f"{land_km:,.0f} km away.{covers}")
         else:
-            earth_name = tile.name
-            st.caption(f"Using our nearest place, {place_name(tile.lat, tile.lon)} "
-                       f"({fmt_place(tile.lat, tile.lon)}), {km:.0f} km away.")
+            earth_name = land.name
+            st.caption(f"Using our nearest place, {place_name(land.lat, land.lon)} "
+                       f"({fmt_place(land.lat, land.lon)}), {land_km:.0f} km away.")
 
     st.header("How to score")
     model = load_model(MODEL_PATH)

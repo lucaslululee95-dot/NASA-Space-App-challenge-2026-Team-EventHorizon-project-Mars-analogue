@@ -230,7 +230,8 @@ from teammates on the same pairs would show how much people agree.
 - **Coarse chemistry.** Each 5-degree cell covers about 300 km, so every tile inside it gets the same chemistry value.
 - **Different instruments.** Mars and Earth images come from different instruments, so the texture features are less reliable than the elevation features.
 - **Earth elevation includes buildings and trees.** The dry filter helps, but built-up tiles can still get through.
-- **Lakes can look flat.** Salt lakes in dry regions can pass the filter and look like smooth ground.
+- **Sea is left out.** A square counts as water when most of it sits at sea level, its plant-cover reading (NDVI) is negative, or it has no satellite image. Water squares are never matches or starting places, and typed sea coordinates get a message naming the nearest land.
+- **Lakes can look flat.** Dry salt lakes in dry regions can pass these checks and look like smooth ground.
 - **Gaps in Mars elevation.** Tiles with more than 2% gaps are skipped rather than filled.
 - **Not for the whole planet.** The code keeps tiles in memory and requests Earth tiles one at a time, so a whole-planet search needs a different approach.
 

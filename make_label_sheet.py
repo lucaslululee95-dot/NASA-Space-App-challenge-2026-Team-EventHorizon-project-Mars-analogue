@@ -29,6 +29,7 @@ import pandas as pd
 
 from mars_analog.bundle import load_bundle
 from mars_analog.regions import place_name
+from mars_analog.water import is_water
 
 # Sites from the Catalogue of Planetary Analogues (Preston, Grady and Barber, 2012,
 # ESA contract 4000104716/11/NL/AF), with the Mars features its directory lists for them.
@@ -79,7 +80,7 @@ def make_row(pair_id, m, e):
 
 def build_sheet(mars_tiles, earth_tiles, target, size=60, max_ndvi=0.15, seed=0):
     t = min(mars_tiles, key=lambda m: (m.lat - target[0]) ** 2 + (m.lon - target[1]) ** 2)
-    earth = [e for e in earth_tiles if e.ndvi is None or e.ndvi <= max_ndvi]
+    earth = [e for e in earth_tiles if (e.ndvi is None or e.ndvi <= max_ndvi) and not is_water(e)]
     near = [e for e in earth if nearest_site(e.lat, e.lon)[1] <= NEAR_KM]
     rest = [e for e in earth if e not in near]
     rng = np.random.default_rng(seed)
@@ -112,7 +113,7 @@ def next_sheet(mars_tiles, earth_tiles, model, seen, spots=4, size=60, max_ndvi=
     """Half the pairs the model is least sure about, half random; none already in a sheet."""
     rng = np.random.default_rng(seed)
     chosen_mars = spread_spots(mars_tiles, spots)
-    earth = [e for e in earth_tiles if e.ndvi is None or e.ndvi <= max_ndvi]
+    earth = [e for e in earth_tiles if (e.ndvi is None or e.ndvi <= max_ndvi) and not is_water(e)]
     candidates = [(m, e) for m in chosen_mars for e in earth if (m.name, e.name) not in seen]
     if not candidates:
         return pd.DataFrame(columns=COLUMNS)

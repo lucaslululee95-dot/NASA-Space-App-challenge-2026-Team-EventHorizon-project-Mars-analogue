@@ -27,6 +27,7 @@ from scipy.optimize import minimize
 from mars_analog.bundle import load_bundle
 from mars_analog.features import FEATURE_WEIGHTS, feature_columns, feature_table
 from mars_analog.matching import prepare
+from mars_analog.water import is_water
 
 MIN_PER_CLASS = 10
 
@@ -155,7 +156,7 @@ def agreement(pairs):
 def scaled(mars_tiles, earth_tiles, max_ndvi, extra=True):
     """Feature values on the shared Mars-and-Earth scale, indexed by tile name."""
     m_df = feature_table(mars_tiles).reset_index(drop=True)
-    e_df = feature_table(earth_tiles).reset_index(drop=True)
+    e_df = feature_table([t for t in earth_tiles if not is_water(t)]).reset_index(drop=True)
     if "ndvi" in e_df.columns:
         e_df = e_df[e_df["ndvi"] <= max_ndvi].reset_index(drop=True)
     cols = feature_columns(m_df, e_df, extra=extra)
@@ -187,7 +188,8 @@ def main(argv=None):
     D, y, cols, missing, groups = differences(mars, earth, pairs, args.max_ndvi)
     n_pos, n_neg = int(y.sum()), int(len(y) - y.sum())
     if missing:
-        print(f"{missing} labelled pairs were skipped because their tiles aren't in the bundle.")
+        print(f"{missing} labelled pairs were skipped because their Earth place looks like water "
+              "or a tile isn't in the bundle.")
     if n_pos < MIN_PER_CLASS or n_neg < MIN_PER_CLASS:
         print(f"Not enough labels yet: {n_pos} marked 1 and {n_neg} marked 0. "
               f"The model needs at least {MIN_PER_CLASS} of each.")

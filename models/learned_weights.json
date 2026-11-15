@@ -9,38 +9,38 @@
     "grad_rel"
   ],
   "weights": {
-    "slope_mean_deg": 1.442,
-    "slope_p90_deg": 1.2222,
+    "slope_mean_deg": 1.3886,
+    "slope_p90_deg": 1.2454,
     "relief_m": 0.0,
-    "roughness_m": 0.0361,
-    "curvature_per_m": 1.0822,
+    "roughness_m": 0.0663,
+    "curvature_per_m": 1.0654,
     "texture_rel": 0.0,
     "grad_rel": 0.0
   },
-  "intercept": 4.2639,
-  "labels_similar": 61,
+  "intercept": 4.2268,
+  "labels_similar": 59,
   "labels_different": 27,
-  "pairs": 88,
+  "pairs": 86,
   "labellers": 3,
   "label_files": [
     "label_sheet.csv",
     "label_sheet_2.csv",
     "label_sheet_3.csv"
   ],
-  "leave_one_out_auc": 0.913,
-  "hand_set_auc": 0.774,
+  "leave_one_out_auc": 0.91,
+  "hand_set_auc": 0.776,
   "leave_one_out_auc_range": [
-    0.816,
-    0.977
+    0.817,
+    0.974
   ],
   "hand_set_auc_range": [
-    0.656,
-    0.864
+    0.67,
+    0.874
   ],
-  "auc_difference": 0.14,
+  "auc_difference": 0.134,
   "auc_difference_range": [
-    0.064,
-    0.234
+    0.054,
+    0.228
   ],
   "agreement": {
     "pairs_shared": 0,
@@ -51,14 +51,14 @@
   "measurement_sets": {
     "original": {
       "count": 7,
-      "auc": 0.913
+      "auc": 0.91
     },
     "with_landforms": {
       "count": 13,
-      "auc": 0.905
+      "auc": 0.9
     },
     "difference_range": [
-      -0.03,
+      -0.034,
       0.011
     ]
   }
