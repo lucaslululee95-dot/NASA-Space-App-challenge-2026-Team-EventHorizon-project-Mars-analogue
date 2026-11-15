@@ -14,6 +14,7 @@ from scipy.ndimage import gaussian_filter
 from .features import stretch
 from .geo import box_from_center, summer_months, utm_epsg
 from .tile import Tile
+from .water import snow_fraction
 
 
 # ------------------------------------------------------------------ Mars
@@ -170,7 +171,7 @@ def earth_tiles_from_gee(centers, tile_km, n=64, project=None, year=2023, cache_
             # Average the 10 m and 30 m pixels into each output cell before resampling,
             # so each tile cell is an average, not one sampled pixel.
             s2 = (s2_for(lat).filterBounds(geom).median()
-                  .select(["B2", "B3", "B4", "B8"]).multiply(0.0001).setDefaultProjection(crs=f"EPSG:{utm_epsg(lon, lat)}", scale=10)
+                  .select(["B2", "B3", "B4", "B8", "B11"]).multiply(0.0001).setDefaultProjection(crs=f"EPSG:{utm_epsg(lon, lat)}", scale=10)
                   .reduceResolution(ee.Reducer.mean(), False, 1024))
             dem_avg = dem_img.setDefaultProjection(crs=f"EPSG:{utm_epsg(lon, lat)}", scale=30).reduceResolution(ee.Reducer.mean(), False, 1024)
             img = (s2.addBands(dem_avg)
@@ -178,20 +179,20 @@ def earth_tiles_from_gee(centers, tile_km, n=64, project=None, year=2023, cache_
                               scale=tile_km * 1000.0 / n))
             data = img.sampleRectangle(region=geom, defaultValue=0).getInfo()["properties"]
             band = {k: np.asarray(v, dtype=float)[:n, :n] for k, v in data.items()}
-            if any(band[k].shape != (n, n) for k in ("B2", "B3", "B4", "B8", "DEM")):
+            if any(band[k].shape != (n, n) for k in ("B2", "B3", "B4", "B8", "B11", "DEM")):
                 failed += 1
                 continue
         except Exception:
             failed += 1
             continue
 
-        b2, b3, b4, b8 = band["B2"], band["B3"], band["B4"], band["B8"]
+        b2, b3, b4, b8, b11 = band["B2"], band["B3"], band["B4"], band["B8"], band["B11"]
         ndvi = float(np.mean((b8 - b4) / (b8 + b4 + 1e-6)))
         ferric = float(np.mean(b4 / (b2 + 1e-6)))
         tiles.append(Tile(
             name=f"earth_{lat:.3f}_{lon:.3f}", planet="earth", lat=lat, lon=lon,
             tile_km=tile_km, dem=band["DEM"], rgb=stretch(np.stack([b4, b3, b2])),
-            ndvi=ndvi, chem={"ferric_index": ferric},
+            ndvi=ndvi, chem={"ferric_index": ferric}, snow_fraction=snow_fraction(b3, b8, b11),
         ))
         cache[key] = tiles[-1]          # save after every tile, so a stopped run keeps its progress
         _save_cache(cache_path, cache)

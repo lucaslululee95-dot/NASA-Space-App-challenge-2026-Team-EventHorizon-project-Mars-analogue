@@ -10,7 +10,7 @@ import numpy as np
 
 from .tile import Tile
 
-LABELS = ("name", "planet", "lat", "lon", "tile_km", "ndvi")
+LABELS = ("name", "planet", "lat", "lon", "tile_km", "ndvi", "snow_fraction")
 
 
 def _finite_or_none(v):
@@ -28,6 +28,7 @@ def _save_side(folder, side, tiles):
     for t in tiles:
         row = {k: getattr(t, k) for k in LABELS}
         row["ndvi"] = None if t.ndvi is None else float(t.ndvi)
+        row["snow_fraction"] = None if t.snow_fraction is None else float(t.snow_fraction)
         row["chem"] = {k: _finite_or_none(v) for k, v in t.chem.items()}
         labels.append(row)
     with open(os.path.join(folder, f"{side}.json"), "w", encoding="utf-8") as f:
@@ -50,7 +51,8 @@ def _load_side(folder, side):
         chem = {k: (np.nan if v is None else float(v)) for k, v in row["chem"].items()}
         tiles.append(Tile(name=row["name"], planet=row["planet"], lat=row["lat"], lon=row["lon"],
                           tile_km=row["tile_km"], dem=dem[i].astype(float),
-                          rgb=rgb[i].astype(float), ndvi=row["ndvi"], chem=chem))
+                          rgb=rgb[i].astype(float), ndvi=row["ndvi"], chem=chem,
+                          snow_fraction=row.get("snow_fraction")))
     return tiles
 
 

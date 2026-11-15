@@ -9,15 +9,15 @@
     "grad_rel"
   ],
   "weights": {
-    "slope_mean_deg": 1.3802,
-    "slope_p90_deg": 1.2195,
+    "slope_mean_deg": 1.3604,
+    "slope_p90_deg": 1.1869,
     "relief_m": 0.0,
-    "roughness_m": 0.0464,
-    "curvature_per_m": 1.0441,
+    "roughness_m": 0.0178,
+    "curvature_per_m": 1.0094,
     "texture_rel": 0.0,
     "grad_rel": 0.0
   },
-  "intercept": 4.2636,
+  "intercept": 4.3191,
   "labels_similar": 59,
   "labels_different": 27,
   "pairs": 86,
@@ -28,19 +28,19 @@
     "label_sheet_3.csv"
   ],
   "leave_one_out_auc": 0.91,
-  "hand_set_auc": 0.781,
+  "hand_set_auc": 0.793,
   "leave_one_out_auc_range": [
     0.818,
     0.975
   ],
   "hand_set_auc_range": [
-    0.675,
-    0.877
+    0.688,
+    0.887
   ],
-  "auc_difference": 0.129,
+  "auc_difference": 0.117,
   "auc_difference_range": [
-    0.053,
-    0.22
+    0.045,
+    0.205
   ],
   "agreement": {
     "pairs_shared": 0,
@@ -55,11 +55,11 @@
     },
     "with_landforms": {
       "count": 13,
-      "auc": 0.9
+      "auc": 0.898
     },
     "difference_range": [
-      -0.036,
-      0.011
+      -0.037,
+      0.007
     ]
   }
 }

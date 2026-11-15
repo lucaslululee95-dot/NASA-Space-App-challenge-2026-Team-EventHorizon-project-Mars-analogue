@@ -6,6 +6,7 @@
   "lon": 77.26,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -20,6 +21,7 @@
   "lon": 77.36,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -34,6 +36,7 @@
   "lon": 77.46,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -48,6 +51,7 @@
   "lon": 77.55999999999999,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -62,6 +66,7 @@
   "lon": 77.26,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -76,6 +81,7 @@
   "lon": 77.36,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -90,6 +96,7 @@
   "lon": 77.46,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -104,6 +111,7 @@
   "lon": 77.55999999999999,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -118,6 +126,7 @@
   "lon": 77.26,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -132,6 +141,7 @@
   "lon": 77.36,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -146,6 +156,7 @@
   "lon": 77.46,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -160,6 +171,7 @@
   "lon": 77.55999999999999,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -174,6 +186,7 @@
   "lon": 77.26,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -188,6 +201,7 @@
   "lon": 77.36,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -202,6 +216,7 @@
   "lon": 77.46,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,
@@ -216,6 +231,7 @@
   "lon": 77.55999999999999,
   "tile_km": 10,
   "ndvi": null,
+  "snow_fraction": null,
   "chem": {
    "Fe": 16.338,
    "Fe_pct": 0.7798408488063661,

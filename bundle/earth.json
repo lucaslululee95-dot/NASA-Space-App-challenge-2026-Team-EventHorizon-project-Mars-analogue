@@ -6,6 +6,7 @@
   "lon": -70.0,
   "tile_km": 10,
   "ndvi": 0.07482429242156304,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6396029221514594
   }
@@ -17,6 +18,7 @@
   "lon": -69.5,
   "tile_km": 10,
   "ndvi": 0.05241155732334955,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5763659143769568
   }
@@ -28,6 +30,7 @@
   "lon": -69.0,
   "tile_km": 10,
   "ndvi": 0.08216782539193276,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8113487215917026
   }
@@ -39,6 +42,7 @@
   "lon": -68.5,
   "tile_km": 10,
   "ndvi": 0.05451197411724093,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.987176442790881
   }
@@ -50,6 +54,7 @@
   "lon": -68.0,
   "tile_km": 10,
   "ndvi": 0.0979775562375639,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.112329454512243
   }
@@ -61,6 +66,7 @@
   "lon": -69.5,
   "tile_km": 10,
   "ndvi": 0.05032331925548748,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6090718372568544
   }
@@ -72,6 +78,7 @@
   "lon": -69.0,
   "tile_km": 10,
   "ndvi": 0.07792641406901057,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7498655021113503
   }
@@ -83,6 +90,7 @@
   "lon": -68.5,
   "tile_km": 10,
   "ndvi": 0.06404880436013721,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7836644837805302
   }
@@ -94,6 +102,7 @@
   "lon": -68.0,
   "tile_km": 10,
   "ndvi": 0.03108302973168639,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5070216506824772
   }
@@ -105,6 +114,7 @@
   "lon": -70.0,
   "tile_km": 10,
   "ndvi": 0.05965069556847746,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6890353178976496
   }
@@ -116,6 +126,7 @@
   "lon": -69.5,
   "tile_km": 10,
   "ndvi": 0.04875765704590781,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5725118954636543
   }
@@ -127,6 +138,7 @@
   "lon": -69.0,
   "tile_km": 10,
   "ndvi": 0.049842426479869154,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6633069702852001
   }
@@ -138,6 +150,7 @@
   "lon": -68.5,
   "tile_km": 10,
   "ndvi": 0.06533083930310157,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7044396344757768
   }
@@ -149,6 +162,7 @@
   "lon": -68.0,
   "tile_km": 10,
   "ndvi": 0.08755486206517209,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.01136547987503
   }
@@ -160,6 +174,7 @@
   "lon": -70.0,
   "tile_km": 10,
   "ndvi": 0.03539707849774621,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5735377036692473
   }
@@ -171,6 +186,7 @@
   "lon": -69.5,
   "tile_km": 10,
   "ndvi": 0.042771330864715004,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.578777549319493
   }
@@ -182,6 +198,7 @@
   "lon": -69.0,
   "tile_km": 10,
   "ndvi": 0.07421328273421429,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.601711329636152
   }
@@ -193,6 +210,7 @@
   "lon": -68.5,
   "tile_km": 10,
   "ndvi": 0.04760277606907288,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.526713055097123
   }
@@ -204,6 +222,7 @@
   "lon": -68.0,
   "tile_km": 10,
   "ndvi": 0.0835958664284841,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.250149895081809
   }
@@ -215,6 +234,7 @@
   "lon": -70.0,
   "tile_km": 10,
   "ndvi": 0.03913573546513135,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6302899098266224
   }
@@ -226,6 +246,7 @@
   "lon": -69.5,
   "tile_km": 10,
   "ndvi": 0.06301396950654403,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6094306240350111
   }
@@ -237,6 +258,7 @@
   "lon": -69.0,
   "tile_km": 10,
   "ndvi": 0.04528600765250798,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6824572697093085
   }
@@ -248,6 +270,7 @@
   "lon": -68.5,
   "tile_km": 10,
   "ndvi": 0.029407105384459883,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6114184728030905
   }
@@ -259,6 +282,7 @@
   "lon": -68.0,
   "tile_km": 10,
   "ndvi": 0.06740100672024185,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.9933285129752494
   }
@@ -270,6 +294,7 @@
   "lon": 14.0,
   "tile_km": 10,
   "ndvi": -0.061167171642490026,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.5928901681022613
   }
@@ -281,6 +306,7 @@
   "lon": 14.5,
   "tile_km": 10,
   "ndvi": -0.07161408070317161,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.6581112849032709
   }
@@ -292,6 +318,7 @@
   "lon": 15.0,
   "tile_km": 10,
   "ndvi": 0.08348803428706822,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.235078303551604
   }
@@ -303,6 +330,7 @@
   "lon": 15.5,
   "tile_km": 10,
   "ndvi": 0.10234770435945921,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.22705706532019
   }
@@ -314,6 +342,7 @@
   "lon": 14.0,
   "tile_km": 10,
   "ndvi": -0.06510566103218837,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.6009487721081211
   }
@@ -325,6 +354,7 @@
   "lon": 14.5,
   "tile_km": 10,
   "ndvi": -0.13891162248932726,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.5896168920438106
   }
@@ -336,6 +366,7 @@
   "lon": 15.0,
   "tile_km": 10,
   "ndvi": 0.0946126356444067,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.6849186039305826
   }
@@ -347,6 +378,7 @@
   "lon": 15.5,
   "tile_km": 10,
   "ndvi": 0.13001408673834824,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.6566620341546674
   }
@@ -358,6 +390,7 @@
   "lon": 14.0,
   "tile_km": 10,
   "ndvi": -0.10291471427574504,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.6060235724438661
   }
@@ -369,6 +402,7 @@
   "lon": 14.5,
   "tile_km": 10,
   "ndvi": 0.053749638123663956,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7496260260560126
   }
@@ -380,6 +414,7 @@
   "lon": 15.0,
   "tile_km": 10,
   "ndvi": 0.0988117027588806,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8254596678186648
   }
@@ -391,6 +426,7 @@
   "lon": 15.5,
   "tile_km": 10,
   "ndvi": 0.09778056444389108,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.659495061910456
   }
@@ -402,6 +438,7 @@
   "lon": 14.0,
   "tile_km": 10,
   "ndvi": -0.10757144162083097,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.5492232333420406
   }
@@ -413,6 +450,7 @@
   "lon": 14.5,
   "tile_km": 10,
   "ndvi": 0.031308886728690616,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7839116347009403
   }
@@ -424,6 +462,7 @@
   "lon": 15.0,
   "tile_km": 10,
   "ndvi": 0.06914326048869128,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.9753353103311873
   }
@@ -435,6 +474,7 @@
   "lon": 15.5,
   "tile_km": 10,
   "ndvi": 0.07037234251356683,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.0070964055942255
   }
@@ -446,6 +486,7 @@
   "lon": 14.0,
   "tile_km": 10,
   "ndvi": -0.15974628293410087,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.531108210514159
   }
@@ -457,6 +498,7 @@
   "lon": 14.5,
   "tile_km": 10,
   "ndvi": 0.05274475539517492,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.820021559277904
   }
@@ -468,6 +510,7 @@
   "lon": 15.0,
   "tile_km": 10,
   "ndvi": 0.04632563412666797,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7335281848763826
   }
@@ -479,6 +522,7 @@
   "lon": 15.5,
   "tile_km": 10,
   "ndvi": 0.07367821278101395,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.037561409394298
   }
@@ -490,6 +534,7 @@
   "lon": -117.5,
   "tile_km": 10,
   "ndvi": 0.24020320806372747,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5765305009671766
   }
@@ -501,6 +546,7 @@
   "lon": -117.0,
   "tile_km": 10,
   "ndvi": 0.366296037789547,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6500317628326697
   }
@@ -512,6 +558,7 @@
   "lon": -116.5,
   "tile_km": 10,
   "ndvi": 0.1517839352044912,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5537696994611987
   }
@@ -523,6 +570,7 @@
   "lon": -116.0,
   "tile_km": 10,
   "ndvi": 0.11631324445770458,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7123174751748031
   }
@@ -534,6 +582,7 @@
   "lon": -115.5,
   "tile_km": 10,
   "ndvi": 0.07513384852642739,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.580188034164305
   }
@@ -545,6 +594,7 @@
   "lon": -117.5,
   "tile_km": 10,
   "ndvi": 0.18322170431559573,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8790886555598734
   }
@@ -556,6 +606,7 @@
   "lon": -117.0,
   "tile_km": 10,
   "ndvi": 0.11578577992962752,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.825531859942398
   }
@@ -567,6 +618,7 @@
   "lon": -116.5,
   "tile_km": 10,
   "ndvi": 0.07418072076110682,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6150689136006826
   }
@@ -578,6 +630,7 @@
   "lon": -116.0,
   "tile_km": 10,
   "ndvi": 0.06358148137801144,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.598063103264574
   }
@@ -589,6 +642,7 @@
   "lon": -115.5,
   "tile_km": 10,
   "ndvi": 0.0866712692975569,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6236610811377297
   }
@@ -600,6 +654,7 @@
   "lon": -117.5,
   "tile_km": 10,
   "ndvi": 0.12006856222175738,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.9217435135606507
   }
@@ -611,6 +666,7 @@
   "lon": -117.0,
   "tile_km": 10,
   "ndvi": 0.11382037325685744,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7489934748696516
   }
@@ -622,6 +678,7 @@
   "lon": -116.5,
   "tile_km": 10,
   "ndvi": 0.0754234583734393,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5989233709588437
   }
@@ -633,6 +690,7 @@
   "lon": -116.0,
   "tile_km": 10,
   "ndvi": 0.06978597226514507,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.592102392236265
   }
@@ -644,6 +702,7 @@
   "lon": -115.5,
   "tile_km": 10,
   "ndvi": 0.17939490722071705,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6185910421511522
   }
@@ -655,6 +714,7 @@
   "lon": -117.5,
   "tile_km": 10,
   "ndvi": 0.14028593568614117,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.735134781744522
   }
@@ -666,6 +726,7 @@
   "lon": -117.0,
   "tile_km": 10,
   "ndvi": 0.10947578016840112,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7232850838415517
   }
@@ -677,6 +738,7 @@
   "lon": -116.5,
   "tile_km": 10,
   "ndvi": 0.10842355495462215,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6202650249528425
   }
@@ -688,6 +750,7 @@
   "lon": -116.0,
   "tile_km": 10,
   "ndvi": 0.09244554604501479,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5503107846649413
   }
@@ -699,6 +762,7 @@
   "lon": -115.5,
   "tile_km": 10,
   "ndvi": 0.13919820397125615,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6619989283186025
   }
@@ -710,6 +774,7 @@
   "lon": -117.5,
   "tile_km": 10,
   "ndvi": 0.18230918568120824,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7489238420321551
   }
@@ -721,6 +786,7 @@
   "lon": -117.0,
   "tile_km": 10,
   "ndvi": 0.16398471055187475,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6561930945788073
   }
@@ -732,6 +798,7 @@
   "lon": -116.5,
   "tile_km": 10,
   "ndvi": 0.1580441085867183,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.68238186930333
   }
@@ -743,6 +810,7 @@
   "lon": -116.0,
   "tile_km": 10,
   "ndvi": 0.11165281852106208,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5908133114012983
   }
@@ -754,6 +822,7 @@
   "lon": -115.5,
   "tile_km": 10,
   "ndvi": 0.20794684199074992,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.4902286126257644
   }
@@ -765,6 +834,7 @@
   "lon": 24.0,
   "tile_km": 10,
   "ndvi": 0.084230618929714,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.1499116397325757
   }
@@ -776,6 +846,7 @@
   "lon": 24.5,
   "tile_km": 10,
   "ndvi": 0.08300552992003925,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.2276504215660915
   }
@@ -787,6 +858,7 @@
   "lon": 25.0,
   "tile_km": 10,
   "ndvi": 0.08137823771152466,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.818506463481025
   }
@@ -798,6 +870,7 @@
   "lon": 25.5,
   "tile_km": 10,
   "ndvi": 0.08026626441775159,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.6563233664708434
   }
@@ -809,6 +882,7 @@
   "lon": 26.0,
   "tile_km": 10,
   "ndvi": 0.09676299277296768,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.3945896910555327
   }
@@ -820,6 +894,7 @@
   "lon": 24.0,
   "tile_km": 10,
   "ndvi": 0.0862657971493413,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.6712635207463844
   }
@@ -831,6 +906,7 @@
   "lon": 24.5,
   "tile_km": 10,
   "ndvi": 0.09054934534239154,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.7721399088620418
   }
@@ -842,6 +918,7 @@
   "lon": 25.0,
   "tile_km": 10,
   "ndvi": 0.09335911859914141,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.6141401886241264
   }
@@ -853,6 +930,7 @@
   "lon": 25.5,
   "tile_km": 10,
   "ndvi": 0.09918304305288997,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.72195541716181
   }
@@ -864,6 +942,7 @@
   "lon": 26.0,
   "tile_km": 10,
   "ndvi": 0.09500556898274264,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.63681401148606
   }
@@ -875,6 +954,7 @@
   "lon": 24.0,
   "tile_km": 10,
   "ndvi": 0.08976669849555693,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.492626621089445
   }
@@ -886,6 +966,7 @@
   "lon": 24.5,
   "tile_km": 10,
   "ndvi": 0.09747883038324828,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8951096000291074
   }
@@ -897,6 +978,7 @@
   "lon": 25.0,
   "tile_km": 10,
   "ndvi": 0.09854933533665708,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.244936271652013
   }
@@ -908,6 +990,7 @@
   "lon": 25.5,
   "tile_km": 10,
   "ndvi": 0.09926956193795451,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.9721046464800134
   }
@@ -919,6 +1002,7 @@
   "lon": 26.0,
   "tile_km": 10,
   "ndvi": 0.10203719660012986,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8033983327679772
   }
@@ -930,6 +1014,7 @@
   "lon": 24.0,
   "tile_km": 10,
   "ndvi": 0.09191454836568558,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.9378969725881863
   }
@@ -941,6 +1026,7 @@
   "lon": 24.5,
   "tile_km": 10,
   "ndvi": 0.07491414007968576,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.032086374232194
   }
@@ -952,6 +1038,7 @@
   "lon": 25.0,
   "tile_km": 10,
   "ndvi": 0.08379335625985826,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.2103634768990137
   }
@@ -963,6 +1050,7 @@
   "lon": 25.5,
   "tile_km": 10,
   "ndvi": 0.08852649537631968,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.759202973893132
   }
@@ -974,6 +1062,7 @@
   "lon": 26.0,
   "tile_km": 10,
   "ndvi": 0.08517292385997405,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.771821398171089
   }
@@ -985,6 +1074,7 @@
   "lon": 24.0,
   "tile_km": 10,
   "ndvi": 0.08758765748401412,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8448006710115683
   }
@@ -996,6 +1086,7 @@
   "lon": 24.5,
   "tile_km": 10,
   "ndvi": 0.09378029000495045,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.495473941176605
   }
@@ -1007,6 +1098,7 @@
   "lon": 25.0,
   "tile_km": 10,
   "ndvi": 0.06805720175626181,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.0522433352402736
   }
@@ -1018,6 +1110,7 @@
   "lon": 25.5,
   "tile_km": 10,
   "ndvi": 0.08167390717305933,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.3386759928234695
   }
@@ -1029,6 +1122,7 @@
   "lon": 26.0,
   "tile_km": 10,
   "ndvi": 0.08966534935373482,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8094160715947933
   }
@@ -1040,6 +1134,7 @@
   "lon": 130.0,
   "tile_km": 10,
   "ndvi": 0.16893305321859636,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.5153291652454586
   }
@@ -1051,6 +1146,7 @@
   "lon": 130.5,
   "tile_km": 10,
   "ndvi": 0.18860475537267712,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.0217526413711377
   }
@@ -1062,6 +1158,7 @@
   "lon": 131.0,
   "tile_km": 10,
   "ndvi": 0.1593432835220598,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.5504749327840424
   }
@@ -1073,6 +1170,7 @@
   "lon": 131.5,
   "tile_km": 10,
   "ndvi": 0.1393324543751061,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8241030827779965
   }
@@ -1084,6 +1182,7 @@
   "lon": 132.0,
   "tile_km": 10,
   "ndvi": 0.1709670773132998,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.797421232132044
   }
@@ -1095,6 +1194,7 @@
   "lon": 130.0,
   "tile_km": 10,
   "ndvi": 0.16372979533106136,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.9418006916717028
   }
@@ -1106,6 +1206,7 @@
   "lon": 130.5,
   "tile_km": 10,
   "ndvi": 0.16728889488261678,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.9599693073739775
   }
@@ -1117,6 +1218,7 @@
   "lon": 131.0,
   "tile_km": 10,
   "ndvi": 0.17354241655185274,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.1295580839896955
   }
@@ -1128,6 +1230,7 @@
   "lon": 131.5,
   "tile_km": 10,
   "ndvi": 0.15815823429098064,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.0009388810366566
   }
@@ -1139,6 +1242,7 @@
   "lon": 132.0,
   "tile_km": 10,
   "ndvi": 0.1743100504602546,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.9975614295850184
   }
@@ -1150,6 +1254,7 @@
   "lon": 130.0,
   "tile_km": 10,
   "ndvi": 0.13731877607260265,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.303696672366386
   }
@@ -1161,6 +1266,7 @@
   "lon": 130.5,
   "tile_km": 10,
   "ndvi": 0.1570746686982413,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.2431803529481535
   }
@@ -1172,6 +1278,7 @@
   "lon": 131.0,
   "tile_km": 10,
   "ndvi": 0.18787763606044938,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.6597737963591905
   }
@@ -1183,6 +1290,7 @@
   "lon": 131.5,
   "tile_km": 10,
   "ndvi": 0.19404894270395612,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.674271434775501
   }
@@ -1194,6 +1302,7 @@
   "lon": 132.0,
   "tile_km": 10,
   "ndvi": 0.19679174537921118,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.692452395671966
   }
@@ -1205,6 +1314,7 @@
   "lon": 130.0,
   "tile_km": 10,
   "ndvi": 0.15936785132131331,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.7720893297105516
   }
@@ -1216,6 +1326,7 @@
   "lon": 130.5,
   "tile_km": 10,
   "ndvi": 0.16202046894867925,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.774312575786001
   }
@@ -1227,6 +1338,7 @@
   "lon": 131.0,
   "tile_km": 10,
   "ndvi": 0.20166519811971395,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8509481789031996
   }
@@ -1238,6 +1350,7 @@
   "lon": 131.5,
   "tile_km": 10,
   "ndvi": 0.16357314176170656,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.8862327337403015
   }
@@ -1249,6 +1362,7 @@
   "lon": 132.0,
   "tile_km": 10,
   "ndvi": 0.17342618548263644,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.709191642138399
   }
@@ -1260,6 +1374,7 @@
   "lon": 130.0,
   "tile_km": 10,
   "ndvi": 0.16245708822806124,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.3036320618153194
   }
@@ -1271,6 +1386,7 @@
   "lon": 130.5,
   "tile_km": 10,
   "ndvi": 0.16116845540305963,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.996781360668081
   }
@@ -1282,6 +1398,7 @@
   "lon": 131.0,
   "tile_km": 10,
   "ndvi": 0.1793828867100037,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.2818951255103084
   }
@@ -1293,6 +1410,7 @@
   "lon": 131.5,
   "tile_km": 10,
   "ndvi": 0.19557074932147903,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.874060227406933
   }
@@ -1304,6 +1422,7 @@
   "lon": 132.0,
   "tile_km": 10,
   "ndvi": 0.18786272903853818,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.4331640444134575
   }
@@ -1315,6 +1434,7 @@
   "lon": 57.5,
   "tile_km": 10,
   "ndvi": 0.08037853670684102,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.658945389738794
   }
@@ -1326,6 +1446,7 @@
   "lon": 58.0,
   "tile_km": 10,
   "ndvi": 0.06095115729197553,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7680607771720056
   }
@@ -1337,6 +1458,7 @@
   "lon": 58.5,
   "tile_km": 10,
   "ndvi": 0.06332031265024855,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8394506755112539
   }
@@ -1348,6 +1470,7 @@
   "lon": 59.0,
   "tile_km": 10,
   "ndvi": 0.06477094606050392,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7902568858158645
   }
@@ -1359,6 +1482,7 @@
   "lon": 59.5,
   "tile_km": 10,
   "ndvi": 0.0673773504574339,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.9111332861848886
   }
@@ -1370,6 +1494,7 @@
   "lon": 57.5,
   "tile_km": 10,
   "ndvi": 0.0778956082668498,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7625296090651128
   }
@@ -1381,6 +1506,7 @@
   "lon": 58.0,
   "tile_km": 10,
   "ndvi": 0.06798247955134512,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8946446301863007
   }
@@ -1392,6 +1518,7 @@
   "lon": 58.5,
   "tile_km": 10,
   "ndvi": 0.05308417723452301,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7165768106123207
   }
@@ -1403,6 +1530,7 @@
   "lon": 59.0,
   "tile_km": 10,
   "ndvi": 0.052812421269019916,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5130475814323825
   }
@@ -1414,6 +1542,7 @@
   "lon": 59.5,
   "tile_km": 10,
   "ndvi": 0.09924005914443271,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.1992925140242625
   }
@@ -1425,6 +1554,7 @@
   "lon": 57.5,
   "tile_km": 10,
   "ndvi": 0.061642931378145506,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6593287429486305
   }
@@ -1436,6 +1566,7 @@
   "lon": 58.0,
   "tile_km": 10,
   "ndvi": 0.053573852116158616,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6137597183099572
   }
@@ -1447,6 +1578,7 @@
   "lon": 58.5,
   "tile_km": 10,
   "ndvi": 0.06213078105730085,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5924122278137833
   }
@@ -1458,6 +1590,7 @@
   "lon": 59.0,
   "tile_km": 10,
   "ndvi": 0.038496123109713246,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.4358645912358985
   }
@@ -1469,6 +1602,7 @@
   "lon": 59.5,
   "tile_km": 10,
   "ndvi": 0.024452796210021725,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.424898397008298
   }
@@ -1480,6 +1614,7 @@
   "lon": 57.5,
   "tile_km": 10,
   "ndvi": 0.06423116306802601,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7371301502629266
   }
@@ -1491,6 +1626,7 @@
   "lon": 58.0,
   "tile_km": 10,
   "ndvi": 0.062451650368930606,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6190798818200287
   }
@@ -1502,6 +1638,7 @@
   "lon": 58.5,
   "tile_km": 10,
   "ndvi": 0.04590143276855379,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.4738744817129363
   }
@@ -1513,6 +1650,7 @@
   "lon": 59.0,
   "tile_km": 10,
   "ndvi": 0.0405999226740508,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.4779786502114687
   }
@@ -1524,6 +1662,7 @@
   "lon": 59.5,
   "tile_km": 10,
   "ndvi": 0.04219588575143415,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.479906305181954
   }
@@ -1535,6 +1674,7 @@
   "lon": 57.5,
   "tile_km": 10,
   "ndvi": 0.06127135213406367,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6147722793403236
   }
@@ -1546,6 +1686,7 @@
   "lon": 58.0,
   "tile_km": 10,
   "ndvi": 0.05563973587234888,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5268080490171048
   }
@@ -1557,6 +1698,7 @@
   "lon": 58.5,
   "tile_km": 10,
   "ndvi": 0.035727553446130926,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.4774473183320804
   }
@@ -1568,6 +1710,7 @@
   "lon": 59.0,
   "tile_km": 10,
   "ndvi": 0.04448283251133214,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5409621553674255
   }
@@ -1579,6 +1722,7 @@
   "lon": 59.5,
   "tile_km": 10,
   "ndvi": 0.05248574778336814,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5856284563726348
   }
@@ -1590,6 +1734,7 @@
   "lon": 102.0,
   "tile_km": 10,
   "ndvi": 0.06105971242444048,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.03530285331957
   }
@@ -1601,6 +1746,7 @@
   "lon": 102.5,
   "tile_km": 10,
   "ndvi": 0.0625815147677875,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.1118827742095028
   }
@@ -1612,6 +1758,7 @@
   "lon": 103.0,
   "tile_km": 10,
   "ndvi": 0.0662284948094961,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.098176425163409
   }
@@ -1623,6 +1770,7 @@
   "lon": 103.5,
   "tile_km": 10,
   "ndvi": 0.06120793245763147,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.0892686232114297
   }
@@ -1634,6 +1782,7 @@
   "lon": 104.0,
   "tile_km": 10,
   "ndvi": 0.05416166019351285,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.828146658691763
   }
@@ -1645,6 +1794,7 @@
   "lon": 103.0,
   "tile_km": 10,
   "ndvi": 0.04552436473880071,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8066293514947942
   }
@@ -1656,6 +1806,7 @@
   "lon": 103.5,
   "tile_km": 10,
   "ndvi": 0.04488547385568218,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7144785841852679
   }
@@ -1667,6 +1818,7 @@
   "lon": 104.0,
   "tile_km": 10,
   "ndvi": 0.052124417638488595,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7180393423198375
   }
@@ -1678,6 +1830,7 @@
   "lon": 103.0,
   "tile_km": 10,
   "ndvi": 0.045189457938279075,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7078073323781846
   }
@@ -1689,6 +1842,7 @@
   "lon": 103.5,
   "tile_km": 10,
   "ndvi": 0.06527072652619592,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8018098658513746
   }
@@ -1700,6 +1854,7 @@
   "lon": 104.0,
   "tile_km": 10,
   "ndvi": 0.07705015146639205,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7467313600150078
   }
@@ -1711,6 +1866,7 @@
   "lon": 102.0,
   "tile_km": 10,
   "ndvi": 0.055557672669069164,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6674338960150226
   }
@@ -1722,6 +1878,7 @@
   "lon": 102.5,
   "tile_km": 10,
   "ndvi": 0.06477915295994977,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8487630447582766
   }
@@ -1733,6 +1890,7 @@
   "lon": 103.0,
   "tile_km": 10,
   "ndvi": 0.07480148080612115,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.0375677982587446
   }
@@ -1744,6 +1902,7 @@
   "lon": 103.5,
   "tile_km": 10,
   "ndvi": 0.08921684131779484,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.3891494995489473
   }
@@ -1755,6 +1914,7 @@
   "lon": 104.0,
   "tile_km": 10,
   "ndvi": 0.06724557351508215,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7408060804856573
   }
@@ -1766,6 +1926,7 @@
   "lon": 102.0,
   "tile_km": 10,
   "ndvi": 0.056607432453591525,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6113163172186065
   }
@@ -1777,6 +1938,7 @@
   "lon": 102.5,
   "tile_km": 10,
   "ndvi": 0.05074127076039408,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6581173184991091
   }
@@ -1788,6 +1950,7 @@
   "lon": 103.0,
   "tile_km": 10,
   "ndvi": 0.05406724653931903,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8992032974518005
   }
@@ -1799,6 +1962,7 @@
   "lon": 103.5,
   "tile_km": 10,
   "ndvi": 0.053690277745061264,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6750178616071447
   }
@@ -1810,6 +1974,7 @@
   "lon": 104.0,
   "tile_km": 10,
   "ndvi": 0.06137994652624606,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6962244370927642
   }
@@ -1821,6 +1986,7 @@
   "lon": 80.0,
   "tile_km": 10,
   "ndvi": 0.049172029331724584,
+  "snow_fraction": 0.092529296875,
   "chem": {
    "ferric_index": 1.4131415272536063
   }
@@ -1832,6 +1998,7 @@
   "lon": 80.5,
   "tile_km": 10,
   "ndvi": 0.027208803404100385,
+  "snow_fraction": 0.005859375,
   "chem": {
    "ferric_index": 1.6451974967796308
   }
@@ -1843,6 +2010,7 @@
   "lon": 81.0,
   "tile_km": 10,
   "ndvi": 0.07257807327702656,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.6557878156213857
   }
@@ -1854,6 +2022,7 @@
   "lon": 81.5,
   "tile_km": 10,
   "ndvi": 0.07580449896782662,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.7902632425171352
   }
@@ -1865,6 +2034,7 @@
   "lon": 82.0,
   "tile_km": 10,
   "ndvi": 0.05869749543594491,
+  "snow_fraction": 0.00341796875,
   "chem": {
    "ferric_index": 1.7394428557702852
   }
@@ -1876,6 +2046,7 @@
   "lon": 80.0,
   "tile_km": 10,
   "ndvi": 0.0635364012974828,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.770170501483805
   }
@@ -1887,6 +2058,7 @@
   "lon": 80.5,
   "tile_km": 10,
   "ndvi": 0.08104998018365314,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.80284958835182
   }
@@ -1898,6 +2070,7 @@
   "lon": 81.0,
   "tile_km": 10,
   "ndvi": 0.0752004993276102,
+  "snow_fraction": 0.022705078125,
   "chem": {
    "ferric_index": 1.6796035349937128
   }
@@ -1909,6 +2082,7 @@
   "lon": 81.5,
   "tile_km": 10,
   "ndvi": 0.07449635472323402,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.76748696191446
   }
@@ -1920,6 +2094,7 @@
   "lon": 82.0,
   "tile_km": 10,
   "ndvi": 0.08004454838576024,
+  "snow_fraction": 0.007080078125,
   "chem": {
    "ferric_index": 1.876560090350789
   }
@@ -1931,6 +2106,7 @@
   "lon": 80.0,
   "tile_km": 10,
   "ndvi": 0.046835132286994596,
+  "snow_fraction": 0.127197265625,
   "chem": {
    "ferric_index": 1.4309442454863466
   }
@@ -1942,6 +2118,7 @@
   "lon": 80.5,
   "tile_km": 10,
   "ndvi": 0.06338270370327129,
+  "snow_fraction": 0.02685546875,
   "chem": {
    "ferric_index": 1.7029265034087981
   }
@@ -1953,6 +2130,7 @@
   "lon": 81.0,
   "tile_km": 10,
   "ndvi": 0.06308542282993869,
+  "snow_fraction": 0.0009765625,
   "chem": {
    "ferric_index": 1.7814366779455633
   }
@@ -1964,6 +2142,7 @@
   "lon": 81.5,
   "tile_km": 10,
   "ndvi": -0.06753488969962257,
+  "snow_fraction": 0.529541015625,
   "chem": {
    "ferric_index": 1.3277568299947582
   }
@@ -1975,6 +2154,7 @@
   "lon": 82.0,
   "tile_km": 10,
   "ndvi": 0.030927680140341272,
+  "snow_fraction": 0.311279296875,
   "chem": {
    "ferric_index": 1.3570004577558499
   }
@@ -1986,6 +2166,7 @@
   "lon": 80.0,
   "tile_km": 10,
   "ndvi": 0.037239543613591275,
+  "snow_fraction": 0.070068359375,
   "chem": {
    "ferric_index": 1.5882447349573208
   }
@@ -1997,6 +2178,7 @@
   "lon": 80.5,
   "tile_km": 10,
   "ndvi": 0.02286560615818902,
+  "snow_fraction": 0.0458984375,
   "chem": {
    "ferric_index": 1.4955011848750241
   }
@@ -2008,6 +2190,7 @@
   "lon": 81.0,
   "tile_km": 10,
   "ndvi": -0.05511753082744245,
+  "snow_fraction": 0.12646484375,
   "chem": {
    "ferric_index": 1.1620660622655454
   }
@@ -2019,6 +2202,7 @@
   "lon": 81.5,
   "tile_km": 10,
   "ndvi": 0.02596498684332101,
+  "snow_fraction": 0.3037109375,
   "chem": {
    "ferric_index": 1.2896453333380786
   }
@@ -2030,6 +2214,7 @@
   "lon": 82.0,
   "tile_km": 10,
   "ndvi": 0.04569581288710002,
+  "snow_fraction": 0.01171875,
   "chem": {
    "ferric_index": 1.6752970275865804
   }
@@ -2041,6 +2226,7 @@
   "lon": 80.0,
   "tile_km": 10,
   "ndvi": 0.0669353067202633,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.7623772600529153
   }
@@ -2052,6 +2238,7 @@
   "lon": 80.5,
   "tile_km": 10,
   "ndvi": 0.008598933068149085,
+  "snow_fraction": 0.17236328125,
   "chem": {
    "ferric_index": 1.481653812830525
   }
@@ -2063,6 +2250,7 @@
   "lon": 81.0,
   "tile_km": 10,
   "ndvi": -0.1385068682599398,
+  "snow_fraction": 0.065673828125,
   "chem": {
    "ferric_index": 0.806049497518321
   }
@@ -2074,6 +2262,7 @@
   "lon": 81.5,
   "tile_km": 10,
   "ndvi": -0.03466736964500049,
+  "snow_fraction": 0.262939453125,
   "chem": {
    "ferric_index": 1.4541070172496546
   }
@@ -2085,6 +2274,7 @@
   "lon": 82.0,
   "tile_km": 10,
   "ndvi": 0.03331612245225145,
+  "snow_fraction": 0.0263671875,
   "chem": {
    "ferric_index": 1.532170631126496
   }
@@ -2096,6 +2286,7 @@
   "lon": -70.5,
   "tile_km": 10,
   "ndvi": -0.06600987440750812,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.7823824012014076
   }
@@ -2107,6 +2298,7 @@
   "lon": -70.0,
   "tile_km": 10,
   "ndvi": 0.0734582253400067,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7692299039300097
   }
@@ -2118,6 +2310,7 @@
   "lon": -69.5,
   "tile_km": 10,
   "ndvi": 0.06730992318659934,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8131136639381564
   }
@@ -2129,6 +2322,7 @@
   "lon": -69.0,
   "tile_km": 10,
   "ndvi": 0.08285275348292173,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.285032755100262
   }
@@ -2140,6 +2334,7 @@
   "lon": -70.5,
   "tile_km": 10,
   "ndvi": 0.04095702199098081,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7046535165736083
   }
@@ -2151,6 +2346,7 @@
   "lon": -69.5,
   "tile_km": 10,
   "ndvi": 0.05212232915971656,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5150232033514586
   }
@@ -2162,6 +2358,7 @@
   "lon": -69.0,
   "tile_km": 10,
   "ndvi": 0.055524112584058746,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.668366141368294
   }
@@ -2173,6 +2370,7 @@
   "lon": -70.5,
   "tile_km": 10,
   "ndvi": -0.019710894054437038,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.214196762999305
   }
@@ -2184,6 +2382,7 @@
   "lon": -70.5,
   "tile_km": 10,
   "ndvi": -0.04656091605599248,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.0143571742111117
   }
@@ -2195,6 +2394,7 @@
   "lon": 133.0,
   "tile_km": 10,
   "ndvi": 0.16962658493920915,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.9331030066578685
   }
@@ -2206,6 +2406,7 @@
   "lon": 133.5,
   "tile_km": 10,
   "ndvi": 0.1781058728548743,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.2990765638995274
   }
@@ -2217,6 +2418,7 @@
   "lon": 134.5,
   "tile_km": 10,
   "ndvi": 0.14858041878443157,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 3.38678671059922
   }
@@ -2228,6 +2430,7 @@
   "lon": 133.0,
   "tile_km": 10,
   "ndvi": 0.20163765855577215,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.269143386635061
   }
@@ -2239,6 +2442,7 @@
   "lon": 133.5,
   "tile_km": 10,
   "ndvi": 0.22576403776740378,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.071184266699542
   }
@@ -2250,6 +2454,7 @@
   "lon": 134.0,
   "tile_km": 10,
   "ndvi": 0.22533513865492888,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.2484686946904873
   }
@@ -2261,6 +2466,7 @@
   "lon": 134.5,
   "tile_km": 10,
   "ndvi": 0.21980232940583036,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.9935635234341953
   }
@@ -2272,6 +2478,7 @@
   "lon": 133.0,
   "tile_km": 10,
   "ndvi": 0.21714517853084836,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.019520166395481
   }
@@ -2283,6 +2490,7 @@
   "lon": 133.5,
   "tile_km": 10,
   "ndvi": 0.2062067060254673,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.130045419137818
   }
@@ -2294,6 +2502,7 @@
   "lon": 134.5,
   "tile_km": 10,
   "ndvi": 0.22746180085648496,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.7920557510934145
   }
@@ -2305,6 +2514,7 @@
   "lon": 133.0,
   "tile_km": 10,
   "ndvi": 0.22218483530336852,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.5844929277232436
   }
@@ -2316,6 +2526,7 @@
   "lon": 133.5,
   "tile_km": 10,
   "ndvi": 0.2283917052899867,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.500873770680348
   }
@@ -2327,6 +2538,7 @@
   "lon": 134.0,
   "tile_km": 10,
   "ndvi": 0.22393519420629063,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.9708744287196498
   }
@@ -2338,6 +2550,7 @@
   "lon": 134.5,
   "tile_km": 10,
   "ndvi": 0.21034966935185853,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.9615618562030184
   }
@@ -2349,6 +2562,7 @@
   "lon": -5.0,
   "tile_km": 10,
   "ndvi": 0.07312611482918202,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.438559119946684
   }
@@ -2360,6 +2574,7 @@
   "lon": -4.5,
   "tile_km": 10,
   "ndvi": 0.10937451566827008,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.3588952179636147
   }
@@ -2371,6 +2586,7 @@
   "lon": -4.0,
   "tile_km": 10,
   "ndvi": 0.11381650644731513,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.3223424800325456
   }
@@ -2382,6 +2598,7 @@
   "lon": -3.5,
   "tile_km": 10,
   "ndvi": 0.09649589471425501,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.412167847284667
   }
@@ -2393,6 +2610,7 @@
   "lon": -5.0,
   "tile_km": 10,
   "ndvi": 0.06231999789239409,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8638729564487493
   }
@@ -2404,6 +2622,7 @@
   "lon": -4.5,
   "tile_km": 10,
   "ndvi": 0.06841479010417545,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.0836066208446353
   }
@@ -2415,6 +2634,7 @@
   "lon": -3.5,
   "tile_km": 10,
   "ndvi": 0.10581498404162479,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.4796980069875634
   }
@@ -2426,6 +2646,7 @@
   "lon": -5.0,
   "tile_km": 10,
   "ndvi": 0.09481775171161727,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.101717051363536
   }
@@ -2437,6 +2658,7 @@
   "lon": -4.5,
   "tile_km": 10,
   "ndvi": 0.07764182902266015,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.0561055769253813
   }
@@ -2448,6 +2670,7 @@
   "lon": -3.5,
   "tile_km": 10,
   "ndvi": 0.10346710664332608,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.7844542516988735
   }
@@ -2459,6 +2682,7 @@
   "lon": 161.0,
   "tile_km": 10,
   "ndvi": -0.11985118036463877,
+  "snow_fraction": 0.97412109375,
   "chem": {
    "ferric_index": 0.9106532056859854
   }
@@ -2470,6 +2694,7 @@
   "lon": 161.5,
   "tile_km": 10,
   "ndvi": -0.08161423889308,
+  "snow_fraction": 0.360107421875,
   "chem": {
    "ferric_index": 1.0264024572679382
   }
@@ -2481,6 +2706,7 @@
   "lon": 162.0,
   "tile_km": 10,
   "ndvi": -0.09218825034338408,
+  "snow_fraction": 0.532470703125,
   "chem": {
    "ferric_index": 0.9738109593062387
   }
@@ -2492,6 +2718,7 @@
   "lon": 162.5,
   "tile_km": 10,
   "ndvi": -0.04891525607724859,
+  "snow_fraction": 0.640380859375,
   "chem": {
    "ferric_index": 0.990339887092492
   }
@@ -2503,6 +2730,7 @@
   "lon": 161.0,
   "tile_km": 10,
   "ndvi": -0.04044553217570845,
+  "snow_fraction": 0.9765625,
   "chem": {
    "ferric_index": 0.9632289978116549
   }
@@ -2514,6 +2742,7 @@
   "lon": 161.5,
   "tile_km": 10,
   "ndvi": -0.05271415095767293,
+  "snow_fraction": 0.70166015625,
   "chem": {
    "ferric_index": 1.025527917137954
   }
@@ -2525,6 +2754,7 @@
   "lon": 162.0,
   "tile_km": 10,
   "ndvi": -0.019535926638246905,
+  "snow_fraction": 0.75732421875,
   "chem": {
    "ferric_index": 1.0632848181885284
   }
@@ -2536,6 +2766,7 @@
   "lon": 162.5,
   "tile_km": 10,
   "ndvi": -0.029811941757871364,
+  "snow_fraction": 0.963134765625,
   "chem": {
    "ferric_index": 0.9887933684338852
   }
@@ -2547,6 +2778,7 @@
   "lon": -17.0,
   "tile_km": 10,
   "ndvi": -0.034146723187606906,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 0.9997340246564936
   }
@@ -2558,6 +2790,7 @@
   "lon": -16.5,
   "tile_km": 10,
   "ndvi": -0.021363456956331052,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 0.991498831605012
   }
@@ -2569,6 +2802,7 @@
   "lon": -16.0,
   "tile_km": 10,
   "ndvi": 0.10599710924281144,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.202286510987942
   }
@@ -2580,6 +2814,7 @@
   "lon": -17.0,
   "tile_km": 10,
   "ndvi": 0.10708335966704163,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.304367206031289
   }
@@ -2591,6 +2826,7 @@
   "lon": -16.5,
   "tile_km": 10,
   "ndvi": 0.11038567329824,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.3771643132946856
   }
@@ -2602,6 +2838,7 @@
   "lon": -16.0,
   "tile_km": 10,
   "ndvi": 0.09912315578512548,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.2096454857679948
   }
@@ -2613,6 +2850,7 @@
   "lon": -90.5,
   "tile_km": 10,
   "ndvi": 0.07888863917846263,
+  "snow_fraction": 0.0048828125,
   "chem": {
    "ferric_index": 1.4399470132293823
   }
@@ -2624,6 +2862,7 @@
   "lon": -90.0,
   "tile_km": 10,
   "ndvi": 0.11997380098714484,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.4508633788927363
   }
@@ -2635,6 +2874,7 @@
   "lon": -89.5,
   "tile_km": 10,
   "ndvi": 0.14340965038192582,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.4834467339830508
   }
@@ -2646,6 +2886,7 @@
   "lon": -89.0,
   "tile_km": 10,
   "ndvi": 0.08468724290705945,
+  "snow_fraction": 0.03125,
   "chem": {
    "ferric_index": 1.328734466155853
   }
@@ -2657,6 +2898,7 @@
   "lon": -90.5,
   "tile_km": 10,
   "ndvi": 0.09013882564488783,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.492133745979181
   }
@@ -2668,6 +2910,7 @@
   "lon": -90.0,
   "tile_km": 10,
   "ndvi": 0.12163737569713101,
+  "snow_fraction": 0.00341796875,
   "chem": {
    "ferric_index": 1.4513788199219857
   }
@@ -2679,6 +2922,7 @@
   "lon": -89.5,
   "tile_km": 10,
   "ndvi": 0.10608263386316583,
+  "snow_fraction": 0.0,
   "chem": {
    "ferric_index": 1.334201493100557
   }
@@ -2690,6 +2934,7 @@
   "lon": -89.0,
   "tile_km": 10,
   "ndvi": -0.09832959512571826,
+  "snow_fraction": 0.596923828125,
   "chem": {
    "ferric_index": 0.9303162204362432
   }
@@ -2701,6 +2946,7 @@
   "lon": -155.75,
   "tile_km": 10,
   "ndvi": 0.13034484151453007,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.190606972685012
   }
@@ -2712,6 +2958,7 @@
   "lon": -155.25,
   "tile_km": 10,
   "ndvi": 0.049547277734311626,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 0.7203714976926056
   }
@@ -2723,6 +2970,7 @@
   "lon": -155.75,
   "tile_km": 10,
   "ndvi": 0.24678070123874635,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.3792432947606146
   }
@@ -2734,6 +2982,7 @@
   "lon": -155.25,
   "tile_km": 10,
   "ndvi": 0.7441362040206712,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.0651738857900899
   }
@@ -2745,6 +2994,7 @@
   "lon": -112.0,
   "tile_km": 10,
   "ndvi": 0.3382090595864987,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8376575501409294
   }
@@ -2756,6 +3006,7 @@
   "lon": -111.5,
   "tile_km": 10,
   "ndvi": 0.4475220693297015,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.5975606684484425
   }
@@ -2767,6 +3018,7 @@
   "lon": -111.0,
   "tile_km": 10,
   "ndvi": 0.12475767511997098,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 2.2279573994749478
   }
@@ -2778,6 +3030,7 @@
   "lon": -112.0,
   "tile_km": 10,
   "ndvi": 0.27032271777114114,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.630993138545837
   }
@@ -2789,6 +3042,7 @@
   "lon": -111.5,
   "tile_km": 10,
   "ndvi": 0.16564429837210393,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.4401057636350723
   }
@@ -2800,6 +3054,7 @@
   "lon": -111.0,
   "tile_km": 10,
   "ndvi": 0.09622288782364631,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8205240152244966
   }
@@ -2811,6 +3066,7 @@
   "lon": -112.0,
   "tile_km": 10,
   "ndvi": 0.29961271304114917,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.6563965453920195
   }
@@ -2822,6 +3078,7 @@
   "lon": -111.5,
   "tile_km": 10,
   "ndvi": 0.0927031300895268,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.8942140121288613
   }
@@ -2833,6 +3090,7 @@
   "lon": -111.0,
   "tile_km": 10,
   "ndvi": 0.11761154372485871,
+  "snow_fraction": null,
   "chem": {
    "ferric_index": 1.857072982204866
   }

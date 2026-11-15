@@ -205,8 +205,10 @@ with st.sidebar:
         where = (f"in {region} ({fmt_place(land.lat, land.lon)})" if region
                  else f"at {fmt_place(land.lat, land.lon)}")
         if km <= EARTH_REACH_KM and is_water(tile):
-            what = ("We have no satellite image there" if water_reason(tile) == "no satellite image"
-                    else "That looks like sea in our data")
+            what = {"no satellite image": "We have no satellite image there",
+                    "mostly snow or ice": "That's mostly snow or ice in our data",
+                    "mostly at sea level": "That looks like sea in our data"}.get(
+                water_reason(tile), "That looks like water or ice in our data")
             too_far = (f"{what}, so there's no land to compare. "
                        f"The nearest land we have is {where}, {land_km:,.0f} km away.")
         elif land_km > EARTH_REACH_KM:

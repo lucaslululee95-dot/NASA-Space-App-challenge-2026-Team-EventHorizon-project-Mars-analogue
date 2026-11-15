@@ -26,7 +26,9 @@ def test_three_signs_of_water():
     assert water_reason(_sea("b", 0, 0, ndvi=0.05, image=False)) == "no satellite image"
     wet = synthetic_tiles("earth", 3, seed=2)[1]
     wet.ndvi = -0.3
-    assert water_reason(wet) == "plant cover reads as water"
+    assert water_reason(wet) == "plant cover reads as water or ice"     # no snow measurement yet
+    wet.snow_fraction = 0.1
+    assert water_reason(wet) == "plant cover reads as water"            # measured: not snow
     assert not is_water(synthetic_tiles("mars", 1, seed=1)[0])
 
 
