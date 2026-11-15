@@ -34,3 +34,8 @@ def test_select_earth_finds_configured_tiles_and_reports_missing():
     cache = {k: "tile" for k in keys[:7]}
     tiles, missing = select_earth(cache, keys)
     assert len(tiles) == 7 and len(missing) == 2
+
+
+def test_overlapping_regions_do_not_duplicate_tiles():
+    keys = earth_keys([[0, 0, 1, 1], [0.5, 0.5, 1.5, 1.5]], 0.5, 10, 64, 2023)
+    assert len(keys) == len(set(keys)) == 9 + 9 - 4

@@ -20,6 +20,7 @@ def _build_real(cfg):
 
     mars_centers = grid_centers(m["bbox"], m["step_deg"])
     earth_centers = [c for box in e["boxes"] for c in grid_centers(box, e["step_deg"])]
+    earth_centers = list(dict.fromkeys((round(a, 4), round(b, 4)) for a, b in earth_centers))
     print(f"Candidate tiles: {len(mars_centers)} on Mars, {len(earth_centers)} on Earth")
 
     mars = mars_tiles_from_geotiff(mars_centers, m["dem_geotiff"], m["image_geotiff"],

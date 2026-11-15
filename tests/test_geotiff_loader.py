@@ -116,3 +116,30 @@ def test_tiles_with_too_many_gaps_are_skipped(tmp_path):
     tiles = mars_tiles_from_geotiff([(18.5, 76.8), (18.5, 76.5)], str(dem), str(img),
                                     None, tile_km=10, n=32, max_gap=0.02)
     assert tiles == []
+
+
+def test_projected_raster_with_true_scale_away_from_equator(tmp_path):
+    """USGS Jezero mosaics use an equirectangular projection true at about 18 N, not 0."""
+    from rasterio.crs import CRS
+    from mars_analog.sources import mars_tiles_from_geotiff
+
+    R, lat_ts = 3396160.0, 18.0
+    k = np.cos(np.radians(lat_ts))
+    res = 200.0
+    x0, y0 = R * k * np.radians(76.5), R * np.radians(19.5)
+    w = int(R * k * np.radians(3.0) / res)
+    h = int(R * np.radians(3.0) / res)
+    xs = x0 + (np.arange(w) + 0.5) * res
+    dem = np.tile(xs, (h, 1))                      # elevation = easting, so the mean reveals position
+    img = np.full((h, w), 0.5, dtype="float32")
+    crs = CRS.from_proj4(f"+proj=eqc +lat_ts={lat_ts} +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 "
+                         f"+R={R} +units=m +no_defs")
+    for path, arr, dt in [(tmp_path / "dtm.tif", dem, "float64"), (tmp_path / "ortho.tif", img, "float32")]:
+        with rasterio.open(path, "w", driver="GTiff", height=h, width=w, count=1, dtype=dt,
+                           crs=crs, transform=from_origin(x0, y0, res, res)) as dst:
+            dst.write(arr, 1)
+
+    tiles = mars_tiles_from_geotiff([(18.0, 77.5)], str(tmp_path / "dtm.tif"),
+                                    str(tmp_path / "ortho.tif"), None, tile_km=10, n=32)
+    assert len(tiles) == 1
+    assert abs(tiles[0].dem.mean() - R * k * np.radians(77.5)) < 100.0

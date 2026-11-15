@@ -21,22 +21,31 @@ from .tile import Tile
 MARS_SPHERE_RADIUS_M = 3396190.0  # Mars (2015) sphere, used by the USGS CTX DTMs
 
 
+def _sphere_radius(crs):
+    """The sphere radius of a projected Mars raster, or the USGS default."""
+    try:
+        d = crs.to_dict()
+        return float(d.get("R") or d.get("a") or MARS_SPHERE_RADIUS_M)
+    except Exception:
+        return MARS_SPHERE_RADIUS_M
+
+
 def _to_raster_bounds(src, bbox_deg):
     """Express a lat/lon box in the raster's own coordinates.
 
-    Geographic rasters are used as they are. The USGS CTX DTMs and orthoimages
-    are equirectangular on the Mars sphere, centred on longitude 0, so their
-    coordinates are metres with x = R * lon and y = R * lat.
+    Geographic rasters are used as they are. Projected rasters (such as the
+    USGS equirectangular Mars mosaics, whose true-scale latitude varies) are
+    converted with PROJ, using a lat/lon system on the raster's own sphere.
     """
-    west, south, east, north = bbox_deg
+    from rasterio.crs import CRS
+    from rasterio.warp import transform_bounds
+
     if src.crs is None:
         raise ValueError(f"{src.name} has no coordinate system. Set one before loading.")
     if src.crs.is_geographic:
         return bbox_deg
-    R = MARS_SPHERE_RADIUS_M
-    x_west = R * math.radians(west % 360.0)
-    x_east = x_west + R * math.radians(east - west)
-    return (x_west, R * math.radians(south), x_east, R * math.radians(north))
+    lonlat = CRS.from_proj4(f"+proj=longlat +R={_sphere_radius(src.crs)} +no_defs")
+    return transform_bounds(lonlat, src.crs, *bbox_deg, densify_pts=21)
 
 
 def _read_window(src, bbox, n, resampling):

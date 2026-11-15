@@ -2,14 +2,14 @@
   "tile_km": 10,
   "grid_px": 64,
   "mars": {
-    "dem_geotiff": "data/mars/ctx_dtm.tif",
-    "image_geotiff": "data/mars/ctx_ortho.tif",
+    "dem_geotiff": "data/mars/jezero_dem_20m.tif",
+    "image_geotiff": "data/mars/jezero_ortho_6m.tif",
     "chemistry_csv": "data/mars/elements_grid.csv",
     "bbox": [
-      77.35,
-      17.9,
-      77.8,
-      19.2
+      77.26,
+      18.3,
+      77.6,
+      18.6
     ],
     "step_deg": 0.1,
     "max_gap_fraction": 0.02
@@ -63,6 +63,24 @@
         33,
         82,
         35
+      ],
+      [
+        -70.5,
+        -25,
+        -69,
+        -23.5
+      ],
+      [
+        133,
+        -24.5,
+        134.5,
+        -23
+      ],
+      [
+        -5,
+        30.5,
+        -3.5,
+        31.5
       ]
     ],
     "step_deg": 0.5,

@@ -22,7 +22,7 @@ def earth_keys(boxes, step_deg, tile_km, n, year):
     for box in boxes:
         for lat, lon in grid_centers(box, step_deg):
             keys.append((EARTH_CACHE_VERSION, round(lat, 4), round(lon, 4), tile_km, n, year))
-    return keys
+    return list(dict.fromkeys(keys))
 
 
 def select_earth(cache, keys):
