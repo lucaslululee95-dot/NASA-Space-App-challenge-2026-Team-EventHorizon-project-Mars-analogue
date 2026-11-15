@@ -29,6 +29,11 @@ mars_analog/
   convert_grs.py         turns the GRS iron and chlorine tables into a CSV
   check_earth_engine.py  optional check that Earth Engine works
   WEB_APP.md             how to build, run, and publish the web app
+  make_label_sheet.py    makes a sheet of Mars-Earth pairs for people to label
+  train_model.py         learns measurement weights from the labelled pairs
+  LABELLING.md           how to label pairs
+  labels/                the label sheet
+  models/                the learned weights
   mars_analog/           the comparison code
     cli.py               the command you run
     sources.py           reads Mars files, downloads Earth tiles, cache
@@ -37,6 +42,8 @@ mars_analog/
     chemistry.py         iron comparison
     pipeline.py          the three comparison steps
     bundle.py            saves and loads the web app's data bundle
+    regions.py           names of the Earth regions
+    viz.py               shaded relief and images for the web app
     geo.py, tile.py      tile sizes, grids, and the tile structure
   tests/                 automatic tests
   data/                  your Mars files and Earth cache (not in GitHub)
@@ -66,24 +73,29 @@ New-Item -ItemType Directory -Force data\mars
 
 ### 1. Mars elevation and image (CTX)
 
-The test site uses one USGS stereo pair over Jezero. It has an elevation model (DTM) and a matching orthoimage. Both are public on AWS, and no account is needed:
-https://registry.opendata.aws/nasa-usgs-controlled-mro-ctx-dtms
+The Mars side uses two USGS mosaics of Jezero crater, both public domain and both
+from the server `planetarymaps.usgs.gov`:
 
-Download them:
-
-```powershell
-Invoke-WebRequest -UseBasicParsing "https://astrogeo-ard.s3-us-west-2.amazonaws.com/mars/mro/ctx/controlled/usgs/P18_007925_1987_XN_18N282W__P19_008650_1987_XI_18N282W/P18_007925_1987_XN_18N282W__P19_008650_1987_XI_18N282W_dtm.tif" -OutFile data\mars\ctx_dtm.tif
-Invoke-WebRequest -UseBasicParsing "https://astrogeo-ard.s3-us-west-2.amazonaws.com/mars/mro/ctx/controlled/usgs/P18_007925_1987_XN_18N282W__P19_008650_1987_XI_18N282W/P18_007925_1987_XN_18N282W__P19_008650_1987_XI_18N282W_orthoimage.tif" -OutFile data\mars\ctx_ortho.tif
-```
-
-To see the other pairs in this area, list the files in a pair's folder:
+- **Elevation:** the Mars 2020 Science Investigation CTX DEM Mosaic, 20 m per pixel,
+  covering the whole crater (about 87 MB). It includes the hand-edited elevation made
+  for the rover's landing. https://astrogeology.usgs.gov/search/map/mars_2020_science_investigation_ctx_dem_mosaic
+- **Image:** the Mars 2020 Terrain Relative Navigation CTX orthomosaic, 6 m per pixel,
+  covering the middle of the crater (about 35 MB).
+  https://astrogeology.usgs.gov/search/map/mars_2020_terrain_relative_navigation_context_camera_orthorectified_image_mosaic
 
 ```powershell
-$r = Invoke-WebRequest -UseBasicParsing "https://astrogeo-ard.s3-us-west-2.amazonaws.com/?list-type=2&prefix=mars/mro/ctx/controlled/usgs/P18_007925_1987_XN_18N282W__P19_008650_1987_XI_18N282W/"
-[regex]::Matches($r.Content, "<Key>(.*?)</Key>") | ForEach-Object { $_.Groups[1].Value }
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -UseBasicParsing "https://planetarymaps.usgs.gov/mosaic/mars2020_trn/CTX/ScienceInvestigationMaps_JPL/M20_JezeroCrater_CTXDEM_20m.tif" -OutFile data\mars\jezero_dem_20m.tif
+Invoke-WebRequest -UseBasicParsing "https://planetarymaps.usgs.gov/mosaic/mars2020_trn/CTX/JEZ_ctx_B_soc_008_orthoMosaic_6m_Eqc_latTs0_lon0.tif" -OutFile data\mars\jezero_ortho_6m.tif
 ```
 
-The elevation model has gaps, about 30% in this pair. The program skips any tile with more than 2% gaps, so the number of Mars tiles kept is printed at the start of each run.
+The image covers less ground than the elevation, so the Mars area in `config.json`
+is set to the middle of the crater: 16 spots, including the landing site. A 5 m image
+of the whole crater also exists, but its server (astropedia) wasn't reachable when this
+was written. If it comes back, it would let the Mars area cover the whole crater.
+
+Both mosaics use an equirectangular projection with its true scale away from the
+equator. The loader converts coordinates with PROJ, so any such projection works.
 
 ### 2. Mars iron and chlorine (GRS)
 
@@ -161,9 +173,27 @@ Scores only compare within one run. Differences of about 0.01 are noise, so trea
 
 The web app runs the comparison on the bundled data, so visitors don't need Google Earth Engine or your data files. It uses the bundle in the `bundle` folder. To build or run it yourself, see [WEB_APP.md](WEB_APP.md).
 
+## Learning from labelled pairs
+
+The scoring weights in `features.py` were set by hand. The project can also learn them
+from examples that people label:
+
+1. `python make_label_sheet.py` writes `labels/label_sheet.csv`: about 60 pairs, each
+   the Mars target with one Earth tile. Pairs near sites from the Catalogue of Planetary
+   Analogues are included and marked. The app's scores are left out on purpose, so the
+   labels come from people rather than from the program.
+2. People mark each pair `1` (alike), `0` (clearly different) or leave it blank, with a
+   reason. [LABELLING.md](LABELLING.md) explains how.
+3. `python train_model.py` fits a small logistic regression with one weight per
+   measurement, tests it on pairs it didn't train on, compares it with the hand-set
+   weights, and saves `models/learned_weights.json`.
+
+The model is trained from scratch on this project's own data. With fewer than about
+100 labels its results are rough.
+
 ## Limits
 
-- **Tested on real data for one Mars site and several dry Earth regions.** The results are a shortlist to check, not a confirmed answer.
+- **One Mars area.** The Mars side covers 16 spots in the middle of Jezero crater. The results are a shortlist to check, not a confirmed answer.
 - **Iron only.** The Earth side uses a red-to-blue ratio as a stand-in for iron, which is an approximation.
 - **Chlorine is converted but not scored.** No satellite measure of chlorine on Earth has been validated for this comparison.
 - **Coarse chemistry.** Each 5-degree cell covers about 300 km, so every tile inside it gets the same chemistry value.
@@ -175,14 +205,17 @@ The web app runs the comparison on the bundled data, so visitors don't need Goog
 
 ## Next steps
 
+- Label the pairs in `labels/label_sheet.csv`, train the model, and show the learned score in the app.
+- Cover the whole crater once the 5 m image is reachable.
 - Find a chlorine or salt measure that can be checked against known sites.
-- Add more dry regions, such as the Gobi, Tibet, and the Lut desert.
 - Add image embeddings from a pretrained vision model as an extra terrain score.
 - Add a map of the top matches.
 
 ## Data sources
 
-- Mars elevation and images: NASA and USGS CTX stereo products (public domain).
+- Mars elevation: Mars 2020 Science Investigation CTX DEM Mosaic, USGS Astrogeology (F. Calef); see Mangold et al. 2021, *Science*, https://doi.org/10.1126/science.abl4051.
+- Mars image: Mars 2020 Terrain Relative Navigation CTX orthomosaic, USGS Astrogeology; Fergason et al. 2020, https://doi.org/10.5066/P9GV1ND3.
+- Mars analogue sites: Catalogue of Planetary Analogues, Preston, Grady and Barber, The Open University, 2012 (ESA contract 4000104716/11/NL/AF).
 - Mars iron and chlorine: NASA Mars Odyssey Gamma Ray Spectrometer, via the NASA Planetary Data System.
 - Earth imagery and elevation: Copernicus Sentinel-2 and Copernicus DEM, accessed through Google Earth Engine. Earth elevation: produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved. Earth imagery: contains modified Copernicus Sentinel data 2023.
 
