@@ -1,0 +1,27 @@
+{
+  "features": [
+    "slope_mean_deg",
+    "slope_p90_deg",
+    "relief_m",
+    "roughness_m",
+    "curvature_per_m",
+    "texture_rel",
+    "grad_rel"
+  ],
+  "weights": {
+    "slope_mean_deg": 1.0897,
+    "slope_p90_deg": 1.1745,
+    "relief_m": 0.3266,
+    "roughness_m": 0.4762,
+    "curvature_per_m": 0.8083,
+    "texture_rel": 0.0,
+    "grad_rel": 0.0
+  },
+  "intercept": 4.1691,
+  "labels_similar": 41,
+  "labels_different": 17,
+  "leave_one_out_auc": 0.925,
+  "hand_set_auc": 0.878,
+  "max_ndvi": 0.15,
+  "trained": "2026-11-15"
+}

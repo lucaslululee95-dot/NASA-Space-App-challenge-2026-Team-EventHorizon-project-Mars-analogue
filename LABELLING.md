@@ -16,16 +16,31 @@ the labels come from your own judgement rather than the program's.
 
 ## Label a pair
 
-1. Look at the Mars target in the web app (the left picture at the top).
-2. Open the row's `satellite_view` link to see the Earth tile from above.
-3. Fill in the `label` column:
-   - `1` if the two places show the same kind of landform at this 10 km scale,
-     for example fan or delta deposits, channels, or layered cliffs
-   - `0` if they clearly differ, for example a dune sea compared with a rocky plain
-   - leave it blank if you're not sure
-4. Write a short `reason` and your initials in `labeller`.
+The easiest way is the labelling page, which runs on your own PC:
 
-The `catalogue_mars_features` column says which Mars features a published
+```powershell
+python -m streamlit run label_app.py
+```
+
+It shows the Mars target and one Earth tile side by side, as shaded relief and as
+a satellite image, both 10 km across. Type your initials in the sidebar, then for
+each pair:
+
+- click **Alike (1)** if they show the same kind of land at this scale, for example
+  a gently rolling rocky plain like the Mars picture
+- click **Different (0)** if they clearly differ, for example steep mountains, a sea
+  of large dunes, or a perfectly flat salt pan
+- click **Not sure, skip** if you can't tell
+
+Add a few words in **Reason** before you click. Each answer is saved to
+`labels/label_sheet.csv` straight away, and the page moves to the next unlabelled
+pair. The **See the Earth place in Google Maps** button shows more detail.
+
+You can also edit the CSV in a spreadsheet: fill in the `label`, `reason` and
+`labeller` columns. Close the spreadsheet before using the labelling page, or it
+can't save.
+
+The hint about a catalogue site says which Mars features a published
 catalogue lists for a nearby Earth site. Use it as a hint, not the answer: a
 site can be a good analogue for one feature without the whole 10 km square
 looking like Jezero.
@@ -38,8 +53,8 @@ The training tool needs at least 10 pairs marked `1` and 10 marked `0`. Aim
 for 30 or more of each. Ask a teacher or mentor to check some rows, for
 example every fifth one, and note where you disagree.
 
-If you edit the sheet in Excel, save it with **Save As > CSV UTF-8 (Comma
-delimited)** and keep the column names as they are.
+If you edit the sheet in a spreadsheet, save it as **CSV UTF-8** and keep the
+column names as they are.
 
 ## Train
 
